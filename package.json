@@ -1,0 +1,57 @@
+{
+  "name": "exound-site",
+  "version": "0.0.1",
+  "description": "Isomorphic Exound.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/exound/site.git"
+  },
+  "keywords": [
+    "music",
+    "audio",
+    "trends",
+    "news",
+    "editorials",
+    "turtorials",
+    "columns"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "co": "4.6.0",
+    "flyd": "~0.1.14",
+    "lmount": "~0.0.1",
+    "feq": "~0.0.1",
+    "ramda": "~0.17.1",
+    "react": "~0.14.0-rc1",
+    "react-dom": "~0.14.0-rc1",
+    "react-router": "~1.0.0-rc1",
+    "koa": "~1.0.0",
+    "koa-static": "~1.4.9",
+    "bluebird": "~2.9.34",
+    "history": "~1.8.4",
+    "isomorphic-fetch": "~2.1.1",
+    "handlebars": "~4.0.2",
+    "babel": "~5.8.23",
+    "babel-runtime": "~5.8.20"
+  },
+  "devDependencies": {
+    "webpack": "latest",
+    "webpack-dev-server": "latest",
+    "template-html-loader": "latest",
+    "file-loader": "latest",
+    "eslint": "latest",
+    "eslint-loader": "latest",
+    "babel-loader": "latest",
+    "consolidate": "latest",
+    "style-loader": "latest",
+    "css-loader": "latest",
+    "postcss-loader": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "webpack-dev-server": "latest"
+  },
+  "scripts": {
+    "dev:server": "node_modules/.bin/webpack-dev-server --config webpack/dev.js",
+    "prod": "node_modules/.bin/webpack --config webpack/prod.js",
+    "prod:server": "node --harmony webpack/server.js"
+  }
+}

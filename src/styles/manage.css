@@ -1,0 +1,83 @@
+:root {
+    --link-color: #207ab2;
+}
+
+@custom-selector :--manage-main main.manage;
+
+:--manage-main {
+    padding: 40px;
+}
+
+:--manage-main a {
+    color: var(--link-color);
+}
+
+@custom-selector :--manage-articles main.manage.articles;
+
+:--manage-articles .actions {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 20px;
+}
+
+@custom-selector :--article-editor main.manage.article .editor;
+
+:--article-editor {
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: stretch;
+}
+
+:--article-editor .left {
+    height: 100%;
+    width: 832px;
+    box-sizing: border-box; 
+    border-right: 1px solid #CCCCCC;
+}
+
+:--article-editor .left > * {
+    margin: 0 16px;
+}
+
+:--article-editor .title {
+    font-size: 20px !important;
+}
+
+:--article-editor .right {
+    padding-top: 16px;
+    position: relative;
+    width: calc(100% - 832px);
+}
+
+:--article-editor .cover-uploader {
+    margin: 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+:--article-editor .content {
+    height: 680px;
+    overflow: scroll;
+}
+
+:--article-editor .settings {
+    padding: 16px;
+}
+
+:--article-editor .actions {
+    padding: 16px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    position: absolute;
+    width: calc(100% - 32px);
+    bottom: 0;
+    border-top: 1px solid #EEEEEE;
+    background-color: #FBFBFB;
+}
+
+:--article-editor .progress {
+    border-radius: 0 !important;
+    bottom: 69px;
+    position: absolute !important;
+}

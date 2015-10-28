@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/main.css">
     {{/unless}}
     <meta name="api-root" content="{{apiRoot}}">
-    {{#if data}}
-    <script>window.pageData = {{{data}}};</script>
+    {{#if appState}}
+    <script>window.__appState__ = {{{appState}}};</script>
     {{/if}}
   </head>
   <body>
     <div id="app">{{#if app}}{{{app}}}{{/if}}</div>
+    <script src="//cdn.bootcss.com/tinymce/4.2.6/tinymce.min.js"></script>
     <script src="/main.js"></script>
   </body>
 </html>

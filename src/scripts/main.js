@@ -3,35 +3,44 @@ import flyd from "flyd";
 import React from "react";
 import Router from "react-router";
 import {render} from "react-dom";
+import injectTapEventPlugin from "react-tap-event-plugin";
 
+injectTapEventPlugin();
+
+import title from "./core/title";
 import routes from "./core/routes";
+import store from "./core/store";
 import history from "./core/history";
 import resolveData from "./core/resolveData";
-import populateData from "./core/populateData";
 
-class Bootstrap {
-  static init(history) {
-    return new Bootstrap(history);
+function createElement(Component, props) {
+  return <Component {...R.merge(props, {appState: store.stream$()})} />;
+}
+
+class Bootstrap extends React.Component {
+  constructor(props) {
+    super(props);
+    history.listen(location => {
+      resolveData(location).then(data => store.data = data);
+    });
   }
 
-  constructor(history) {
-    this.history = history;
-    this.location$ = flyd.stream();
-    history.listen(this.location$);
-
-    this.data$ = flyd.map(location => resolveData(location), this.location$);
-
-    flyd.on(this.render.bind(this), this.data$);
+  componentDidMount() {
+    flyd.on(this.onStateChange, store.stream$);
   }
 
-  render(data) {
-    render(
-      <Router createElement={populateData(data)} history={this.history}>
+  onStateChange = (appState) => {
+    document.title = title(appState.data && appState.data.title);
+    this.setState({appState});
+  };
+
+  render() {
+    return (this.state && R.keys(this.state.appState).length) ?
+      <Router {...{createElement, history}}>
         {routes}
-      </Router>,
-      document.querySelector("#app")
-    );
+      </Router> :
+      <div />;
   }
 }
 
-Bootstrap.init(history);
+render(<Bootstrap appState={{}} />, document.querySelector("#app"));

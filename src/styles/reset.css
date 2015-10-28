@@ -1,0 +1,29 @@
+body {
+    background-color: #EFF0F4;
+    color: #2E363B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family:
+    "PingFang SC",
+    "Lantinghei SC",
+    "Microsoft Yahei",
+    "Hiragino Sans GB",
+    "Microsoft Sans Serif",
+    "WenQuanYi Micro Hei",
+    sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+a, button, input, textarea, *[contenteditable] {
+    outline: none;
+}

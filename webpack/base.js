@@ -1,21 +1,20 @@
 const path = require("path")
-    , webpack = require("webpack")
-    , ExtractTextPlugin = require("extract-text-webpack-plugin");
+    , webpack = require("webpack");
 
 const src = path.join(__dirname, "..", "src")
     , dist = path.join(__dirname, "..", "dist");
 
-const apiRoot = "http://127.0.0.1:3000";
-
 module.exports = {
   entry: path.join(__dirname, "client.js"),
+
   output: {
     path: dist,
+    publicPath: "/",
     filename: "main.js"
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+
+  plugins: [],
+
   module: {
     preLoaders: [
       {
@@ -27,18 +26,32 @@ module.exports = {
 
     loaders: [
       {
-        test: /index\.html$/,
-        loader: ExtractTextPlugin.extract(
-          "template-html?engine=handlebars&inlineStyle=true&apiRoot=" + apiRoot
-        ),
-      },
-      {
         test: /\.js$/,
-        exclude: /node_modules/,
+	      exclude: /node_modules/,
         loader: "babel",
         query: {
-          optional: ["runtime"]
+          optional: ["runtime", "es7.decorators", "es7.classProperties"]
         }
+      },
+      {
+        test: /\.json$/,
+        loader: "json"
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff&prefix=fonts"
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/octet-stream&prefix=fonts"
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/vnd.ms-fontobject&prefix=fonts"
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=image/svg+xml&prefix=fonts"
       }
     ],
   }

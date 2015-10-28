@@ -8,10 +8,12 @@ import createLocation from "history/lib/createLocation";
 import {RoutingContext, match} from "react-router";
 import {renderToString} from "react-dom/server";
 import serve from "koa-static";
+import {Data} from "lmount";
 
 import {plain as routes} from "../core/routes";
 import resolveData from "../core/resolveData";
-import populateData from "../core/populateData";
+import store from "../core/store";
+import title from "../core/title";
 
 const connector = koa();
 
@@ -50,19 +52,20 @@ connector.use(function *(next) {
 });
 
 connector.use(function *(next) {
+  if (typeof this.match !== "function") {
+    this.match = (location) => {
+      return new Promise(function(resolve, reject) {
+        match({routes, location}, (error, redirect, props) => {
+          if (error) reject(error);
+          else resolve({redirect, props});
+        });
+      });
+    }
+  }
+
   const url = this.request.url;
 
   const location = createLocation(url);
-
-  if (typeof this.match !== "function") {
-    this.match = (location) => {
-      return function (callback) {
-        match({routes, location}, (error, redirect, props) => {
-          callback(error, {redirect, props});
-        });
-      }
-    }
-  }
 
   const {redirect, props} = yield this.match(location);
 
@@ -71,17 +74,23 @@ connector.use(function *(next) {
     return this.redirect(`${redirect.pathname}${redirect.search}`);
   }
 
-  const data = yield resolveData(location);
+  const resolver = resolveData(location);
+
+  if (!resolver) return yield next;
+
+  const data = yield resolver
+
+  store.content$(data);
 
   const app = renderToString(
-    <RoutingContext {...props} createElement={populateData(R.merge(data))} />
+    <RoutingContext {...props} />
   );
 
   yield this.render({
     app,
     apiRoot,
-    data: JSON.stringify(data),
-    title: data.title
+    appState: data,
+    title: title(data.title)
   });
 
   yield next;

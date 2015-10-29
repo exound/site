@@ -3,9 +3,10 @@ import React from "react";
 import {Link} from "react-router";
 import {Mount} from "lmount";
 import {
-  TextField, Paper, RaisedButton, List,
-  ListItem, LinearProgress, FlatButton
+  Paper, RaisedButton, List, ListItem,
+  LinearProgress, FlatButton
 } from "material-ui";
+import TextField from "./TextField";
 import Switch from "./Switch";
 import MenuItem from "material-ui/lib/menus/menu-item";
 
@@ -16,8 +17,20 @@ import RichEditor from "./RichEditor";
 import Select from "./Select";
 import RemoveButton from "./RemoveButton";
 import hasHistory from "../../decorators/hasHistory";
+import bindForm from "../../decorators/bindForm";
 
 @hasHistory
+@bindForm({
+  name: "article",
+  dataPath: ["article"],
+  url: ({id}) => {
+    return id ?
+      apiPath(`articles/${id}`) :
+      apiPath("articles");
+  },
+  method: ({id}) => id ? "put" : "post",
+  responsePath: ["auth_token"]
+})
 export default class ArticleEditor extends React.Component {
   componentWillMount() {
     this.state = {progressDisplay: "none"};

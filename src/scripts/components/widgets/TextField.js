@@ -1,6 +1,6 @@
 import {TextField} from "material-ui";
 
-import {bindField} from "../../decorators/form";
+import bindField from "../../decorators/bindField";
 
 export default bindField({
   valueGetter() {
@@ -8,7 +8,8 @@ export default bindField({
   },
 
   errorSetter(error) {
-    return this.setState({errorText: error});
+    this.setState({errorText: error});
+    return error;
   },
 
   errorGetter() {

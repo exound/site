@@ -2,6 +2,8 @@ import R from "ramda";
 import React from "react";
 import {Toggle} from "material-ui";
 
+import bindField from "../../decorators/bindField";
+
 export default class Switch extends React.Component {
   componentWillMount() {
     this.state = {

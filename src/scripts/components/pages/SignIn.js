@@ -1,6 +1,6 @@
 import React from "react";
 
-import {bindForm} from "../../decorators/form";
+import bindForm from "../../decorators/bindForm";
 import apiPath from "../../core/apiPath";
 import TextField from "../widgets/TextField";
 
@@ -9,7 +9,19 @@ import TextField from "../widgets/TextField";
   dataPath: ["auth_token"],
   url: apiPath("tokens"),
   method: "post",
-  responsePath: ["auth_token"]
+  responsePath: ["auth_token"],
+  constraints: [
+    {
+      name: "email",
+      message: "请输入邮箱地址22",
+      checker: ({email}) => email && email.length
+    },
+    {
+      name: "email",
+      message: "邮箱格式错误",
+      checker: ({email}) => email.length > 5
+    }
+  ]
 })
 export default class SignIn extends React.Component {
   render() {

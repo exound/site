@@ -77,7 +77,7 @@ export default class RadarChart extends React.Component {
 
     const {
       height,
-      width,
+      width
     } = merged; 
 
     const data = R.map(

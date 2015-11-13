@@ -9,7 +9,8 @@ export default class Home extends React.Component {
     const {
       promotions,
       articles,
-      advertisements
+      advertisements,
+      reviews
     } = this.props.appState.data;
 
     const loadMoreConfig = {
@@ -19,7 +20,7 @@ export default class Home extends React.Component {
 
     return (
       <main className="portal">
-        <Promotions promotions={promotions} />
+        <Promotions reviews={reviews} promotions={promotions} />
 
         <section className="body">
           <ArticlesList className="left"

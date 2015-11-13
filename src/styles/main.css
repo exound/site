@@ -5,6 +5,7 @@
 @import url("article-content.css");
 @import url("portal.css");
 @import url("manage.css");
+@import url("session.css");
 @import url("tinymce.css");
 
 .wrapper {

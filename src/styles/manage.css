@@ -125,15 +125,18 @@
     background-color: var(--exound-orange);
 }
 
+@custom-selector :--session main.session;
 @custom-selector :--manage-form main.manage .body .form;
 
 :--manage-form {
 }
 
+:--session .input, :--session .input input,
 :--manage-form .input, :--manage-form .input input {
     width: 100%;
 }
 
+:--session .control,
 :--manage-form .control {
     position: relative;
     overflow: hidden;
@@ -147,10 +150,12 @@
     padding: 16px;
 }
 
+:--session .input *,
 :--manage-form .input * {
     box-sizing: border-box;
 }
 
+:--session .control .msg,
 :--manage-form .control .msg {
     position: absolute;
     line-height: 48px;
@@ -163,6 +168,7 @@
     color: white;
 }
 
+:--session .control:after,
 :--manage-form .control:after {
     content: "";
     display: block;
@@ -176,18 +182,21 @@
     animation: slide-right 1s;
 }
 
+:--session .control.error:after,
 :--manage-form .control.error:after {
     right: -160px;
     z-index: 0;
     animation: slide-left 1s;
 }
 
-:--manage-form .input input,
+:--session .input input::placeholder,
 :--manage-form .input input::placeholder {
     font-size: 18px;
 }
 
+:--session .input input,
 :--manage-form .input input {
+    font-size: 18px;
     padding: 12px;
     border: 0;
 }

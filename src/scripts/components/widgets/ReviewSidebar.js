@@ -17,6 +17,11 @@ export default class ReviewSidebar extends React.Component {
 
     const chartData = [R.map(item => item.score, scores)];
 
+    const chart = !R.isEmpty(R.keys(chartData[0])) &&
+          <RadarChart data={chartData}
+                      height={370}
+                      width={345} />;
+
     const sellerItems = R.map((seller) => {
       const info = sellers[seller]
            , style = {};
@@ -39,10 +44,7 @@ export default class ReviewSidebar extends React.Component {
     return (
       <aside className="review sidebar">
         <div className="chart">
-          <RadarChart data={chartData}
-                      height={370}
-                      width={345} />
-
+          {chart}
           <div className="price">价格: {price}{currency}</div>
         </div>
 

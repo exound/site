@@ -8,12 +8,11 @@ const apiRoot = hasDom ?
 
 const pageData = hasDom && window.pageData;
 
-const authToken = hasDom &&
-      localStorage.getItem("authToken");
-
 export default {
   hasDom,
   apiRoot,
   pageData,
-  authToken
+  get authToken() {
+    return hasDom && localStorage.getItem("authToken");
+  }
 };

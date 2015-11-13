@@ -200,7 +200,7 @@
 :--promotions .dots {
     position: absolute;
     width: 130px;
-    left: calc(50% + 90px);
+    left: calc(50% + 64px);
     text-align: right;
     bottom: 44px;
 }
@@ -442,6 +442,7 @@
 @custom-selector :--article .wrapper main .article.left;
 @custom-selector :--article-header .wrapper main .article.left header;
 @custom-selector :--article-content .wrapper main .article.left .article-content;
+@custom-selector :--article-claim .wrapper main .article.left .copyright-claim;
 
 :--article {
     background-color: transparent;
@@ -463,6 +464,11 @@
 
 :--article-content {
     padding: 0 16px;
+    padding-bottom: 40px;
+}
+
+:--article-header a {
+    color: var(--exound-orange);
 }
 
 :--article-header {
@@ -540,6 +546,17 @@
     margin-bottom: 32px;
 }
 
+:--article-claim {
+    border-top: 1px solid #EEEEEE;
+    background-color: white;
+    padding: 20px 64px;
+}
+
+:--article-claim span {
+    background-color: var(--exound-orange);
+    padding: 4px 8px;
+}
+
 @custom-selector :--comment-box .wrapper main .article.left .comment-box;
 @custom-selector :--comment .wrapper main .article.left .comment;
 
@@ -549,6 +566,10 @@
     padding: 40px;
     width: 100%;
     background-color: white;
+}
+
+:--comment-box a {
+    color: var(--exound-orange);
 }
 
 :--comment {
@@ -703,4 +724,71 @@
     position: absolute;
     bottom: 50px;
     text-align: center;
+}
+
+@custom-selector :--upper-reviews .wrapper .upper .reviews;
+
+:--upper-reviews {
+    position: absolute;
+    border-radius: 4px;
+    top: 146px;
+    right: 50%;
+    transform: translateX(600px);
+    height: 240px;
+    width: 345px;
+    overflow: hidden;
+}
+
+:--upper-reviews .more {
+    font-size: 16px;
+    line-height: 40px;
+    color: var(--exound-gray);
+    background-color: var(--exound-orange);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+:--upper-reviews .review {
+    background-color: RGBA(42, 42, 42, 0.96);
+    padding: 13px;
+    border-bottom: 1px solid #888888;
+    box-sizing: border-box;
+    transition: padding .4s;
+}
+
+:--upper-reviews .review.active {
+    background-color: RGBA(42, 42, 42, 0.9);
+    padding: 24px 13px;
+    border-bottom: 0;
+    transition: padding .4s;
+}
+
+:--upper-reviews .review.active:last-child {
+    border-bottom: 0;
+}
+
+:--upper-reviews .review * {
+    color: white;
+}
+
+:--upper-reviews .review h2 {
+    text-align: left;
+    font-size: 16px;
+}
+
+:--upper-reviews .review .meta {
+    display: flex;
+    justify-content: space-between;
+    height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    transition: height .4s;
+}
+
+:--upper-reviews .review.active .meta {
+    margin-top: 14px;
+    height: 20px;
+    transition: height .4s;
 }

@@ -3,6 +3,7 @@ import React from "react";
 
 import Link from "./Link";
 import Promotion from "./Promotion";
+import UpperReviews from "./UpperReviews";
 import hasTimers from "../../decorators/hasTimers";
 
 @hasTimers
@@ -78,6 +79,10 @@ export default class Promotions extends React.Component {
   };
 
   render() {
+    const {
+      reviews
+    } = this.props;
+
     const promotions = this.promotions.map((promotion, key) => {
       const className = this.activeClass(key);
 
@@ -88,6 +93,9 @@ export default class Promotions extends React.Component {
       backgroundImage: `url(${this.current.image})`
     };
 
+    const upperReviews = !R.isEmpty(reviews) &&
+          <UpperReviews reviews={reviews} />;
+
     return (
       <div style={style} className="top-promotions upper">
         <Link to={this.current.url}>
@@ -97,6 +105,7 @@ export default class Promotions extends React.Component {
         </Link>
 
         {this.dots}
+        {upperReviews}
       </div>
     );
   }

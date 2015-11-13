@@ -2,7 +2,7 @@ import R from "ramda";
 import React from "react";
 import feq from "../../core/feq";
 import apiPath from "../../core/apiPath";
-import {append} from "../../core/storeUpdaters";
+import {concat} from "../../core/storeUpdaters";
 
 export default class LoadMore extends React.Component {
   componentDidMount() {
@@ -23,7 +23,7 @@ export default class LoadMore extends React.Component {
       offset: this.state.offset
     })).then(({body}) => {
       if (body.length) {
-        append(this.props.mount, body);
+        concat(this.props.mount, body);
 
         this.setState({offset: this.state.offset + limit});
       }

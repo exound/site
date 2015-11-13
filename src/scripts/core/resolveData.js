@@ -29,6 +29,7 @@ function home() {
       withUser
     ],
     resolve: {
+      reviews: apiPath("articles/reviews", {limit: 3}),
       categories,
       advertisements,
       promotions: apiPath("promotions", {limit: 6}),

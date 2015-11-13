@@ -1,0 +1,49 @@
+:root {
+    --exound-orange: #E9B32D;
+    --exound-gray: #444444;
+    --exound-bg-black: #2A2A2A;
+    --exound-black: #2E363B;
+}
+
+@custom-selector :--session-form main.session .form;
+
+:--session-form {
+    margin-top: 12%;
+    width: 400px;
+}
+
+:--session-form h1 {
+    border-left: 8px solid #19DB7F;
+    font-weight: 100;
+    color: white;
+    padding: 3px 20px;
+    position: relative;
+    font-size: 32px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+:--session-form h1:before,
+:--session-form h1:after {
+    content: " ";
+    top: 0;
+    left: -16px;
+    height: 67px;
+    display: block;
+    position:absolute;
+    z-index: -1;
+    width: 300px;
+    transform: skewX(24deg);
+    background-color: #CCCCCC;
+}
+
+:--session-form h1:after {
+    left: 0;
+    z-index: -2;
+    background-color: #19DB7F;
+}
+
+:--session-form .btn {
+    font-size: 16px;
+    padding: 12px 32px;
+}

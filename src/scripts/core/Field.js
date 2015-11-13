@@ -1,5 +1,10 @@
 export default class Field {
-  constructor(valueGetter, errorGetter, errorSetter, context) {
+  constructor(
+    valueGetter,
+    errorGetter = () => {},
+    errorSetter = () => {},
+    context
+  ) {
     this.valueGetter = valueGetter.bind(context);
     this.errorGetter = errorGetter.bind(context);
     this.errorSetter = errorSetter.bind(context);

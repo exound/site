@@ -4,3 +4,4 @@ require("../src/scripts/main.js");
 require("../src/styles/main.css");
 require("../src/index.html");
 require("file?name=tinymce.css!../src/styles/tinymce.css");
+require("file?name=article-content.css!../src/styles/article-content.css");

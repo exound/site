@@ -1,44 +1,45 @@
-import R from "ramda";
 import React from "react";
-import {Toggle} from "material-ui";
+import Toggle from "react-toggle";
 
 import bindField from "../../decorators/bindField";
 
+@bindField({
+  valueGetter() {
+    const toggle = this.refs.toggle;
+    return toggle && toggle.state.checked;
+  },
+
+  errorGetter() {
+    return this.state.error;
+  },
+
+  errorSetter(error) {
+    this.setState({error});
+    return error;
+  }
+})
 export default class Switch extends React.Component {
-  componentWillMount() {
-    this.state = {
-      toggled: this.props.current === this.values[0]
-    };
-  }
-
-  toggle = (_, toggled) => {
-    this.setState({toggled});
-  };
-
-  get values() {
-    return this.props.values || [true, false];
-  }
-
-  get value() {
-    return R.find(
-      pair => pair[1] === this.state.toggled,
-      R.zip(this.values, [true, false])
-    )[0];
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
   render() {
-    const style = {
-      display: "block",
-      position: "absolute",
-      right: 8,
-      top: 13,
-      width: 54
-    };
+    const {
+      onChange,
+      defaultChecked,
+      label,
+      className
+    } = this.props;
 
     return (
-      <Toggle style={style}
-              onToggle={this.toggle}
-              defaultToggled={this.state.toggled} />
+      <label className={`switch ${className || ""}`}>
+        <span>{label}</span>
+
+        <Toggle defaultChecked={defaultChecked}
+                ref="toggle"
+                onChange={onChange} />
+      </label>
     );
   }
 };

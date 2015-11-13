@@ -1,8 +1,7 @@
 import React from "react";
 import HomeSidebar from "../widgets/HomeSidebar";
 import ArticlesList from "../widgets/ArticlesList";
-import LoadMore from "../widgets/LoadMore";
-import store from "../../core/store";
+import ArticleItem from "../widgets/ArticleItem";
 
 export default class Category extends React.Component {
   render() {
@@ -12,19 +11,22 @@ export default class Category extends React.Component {
       advertisements
     } = this.props.appState.data;
 
+    const loadMoreConfig = {
+      url: `/articles/published?category=${name}`,
+      offset: 20
+    };
+
     return (
       <main className="category-page">
         <section className="body">
           <h1 className="category-name">{name}</h1>
-          <ArticlesList className="left" articles={articles} />
+
+          <ArticlesList className="left"
+                        Component={ArticleItem}
+                        loadMoreConfig={loadMoreConfig}
+                        articles={articles} />
+
           <HomeSidebar advertisements={advertisements} />
-
-          <LoadMore url={`/pushes/all?category=${name}`}
-                    mount={store.makeDataMount(["articles"])}
-                    limit={16}
-                    offset={20}
-                    text="更多文章" />
-
         </section>
       </main>
     );

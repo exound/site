@@ -80,7 +80,7 @@
 
 :--sub-menu > ul {
     display: none;
-    z-index: 1;
+    z-index: 12;
 }
 
 :--sub-menu:hover > ul {
@@ -127,6 +127,7 @@
 }
 
 :--user-menu .content .avatar {
+    border-radius: 16px;
     display: block;
     height: 32px;
     width: 32px;
@@ -167,84 +168,123 @@
 
 :--upper {
     width: 100%;
-    height: 480px;
+    height: 425px;
 }
 
-@custom-selector :--stories .wrapper .top-stories;
+@custom-selector :--promotions .wrapper .top-promotions;
 
-:--stories {
+:--promotions {
     width: 100%;
     overflow: hidden;
     text-align: center;
-}
-
-:--stories .stories {
-    display: flex;
-    height: 480px;
-    flex-flow: row nowrap;
+    transition: background-image 2s;
+    background-size: cover;
+    background-position: center;
     position: relative;
-    transition: left .8s;
 }
 
-:--stories .stories .story.item {
-    height: 480px;
+:--promotions .promotions {
+    width: 100%;
+    height: 425px;
 }
 
-:--stories .stories {
+:--promotions .promotions * {
+    color: white;
+    text-shadow: 1px 0px 4px black;
+}
+
+:--promotions .promotions {
     text-shadow: 0 0 2px grey;
 }
 
-:--stories .title,
-:--stories .category {
+:--promotions .dots {
+    position: absolute;
+    width: 130px;
+    left: calc(50% + 90px);
+    text-align: right;
+    bottom: 44px;
+}
+
+:--promotions .dots button {
+    border: 3px solid white;
+    margin-left: 10px;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    box-sizing: border-box;
+    background-color: transparent;
+    transition: all .8s;
+}
+
+:--promotions .dots button.active {
+    border-color: orange;
+    background-color: orange;
+    transition: all .8s;
+}
+
+@custom-selector :--promotion .wrapper main .top-promotions .promotions .promotion.item;
+
+:--promotion {
+    margin-top: 80px;
+    position: absolute;
+    top: 0;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    width: 835px;
+    left: calc(50% - 600px);
+    height: 300px;
+    box-sizing: border-box;
+    transition: visibility 1s, opacity 1s;
+    text-align: justify;
+    padding: 12px;
+}
+
+:--promotion.active {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 1s;
+}
+
+:--promotion .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 140px;
+}
+
+:--promotion .content {
+    transform: translateX(800px);
+    transition: transform 2s;
+}
+
+:--promotion.active .content {
+    transform: translateX(0);
+    transition: transform 1.6s;
+}
+
+:--promotion .title {
     position: relative;
+    top: 80px;
 }
 
-:--stories .category {
-    top: 30%;
-    font-size: 18px;
-}
-
-:--stories .category a {
-    color: orange;
-}
-
-:--stories .title {
-    top: 40%;
+:--promotion .title {
     font-size: 32px;
     font-weight: 700;
 }
 
-:--stories .title a {
+:--promotion .title a {
     color: white;
 }
 
-@custom-selector :--stories-go .wrapper .top-stories button.go;
+@custom-selector :--main-body .wrapper main .body;
 
-:--stories-go {
-    border: none;
-    background-color: transparent;
-    font-size: 58px;
-    position: absolute;
-    top: 280px;
-    color: #CCCCCC;
-}
-
-:--stories-go.left {
-    left: 32px;
-}
-
-:--stories-go.right {
-    right: 32px;
-}
-
-@custom-selector :--portal-body .wrapper main .body;
-
-:--portal-body {
+:--main-body {
     position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     width: 1200px;
+    margin-top: 30px;
 }
 
 @custom-selector :--main-left .wrapper main .body .left;
@@ -252,13 +292,10 @@
 :--main-left {
     background-color: white;
     width: 835px;
+    height: auto;
 }
 
 @custom-selector :--articles .wrapper main .articles;
-
-:--articles {
-    padding-top: 80px;
-}
 
 :--articles .article {
     position: relative;
@@ -266,6 +303,10 @@
     padding: 40px 60px;
     height: 300px;
     border-top: 1px solid #DDDDDD;
+}
+
+:--articles .article:first-child {
+    border: none;
 }
 
 :--articles .article h1.title a {
@@ -304,9 +345,15 @@
     bottom: 40px;
 }
 
+:--articles .article .category:before {
+    font-size: 16px;
+    font-weight: 100;
+}
+
 :--articles .article .category {
     position: absolute;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 800;
     bottom: 40px;
 }
 
@@ -327,19 +374,24 @@
 
 @custom-selector :--portal-sidebar .wrapper main .sidebar;
 
-:--portal-sidebar {
-}
-
 :--portal-sidebar > * {
-    margin-top: 40px;
+    margin-top: 20px;
     box-sizing: border-box;
     width: 345px;
     background-color: white;
-    padding: 20px;
+}
+
+:--portal-sidebar > *:first-child {
+    margin-top: 0;
+}
+
+:--portal-sidebar .advertisement a {
+    line-height: 0;
+    display: block;
 }
 
 :--portal-sidebar .advertisement img {
-    width: 305px;
+    width: 345px;
 }
 
 @custom-selector :--load-more .wrapper main .load-more;
@@ -350,10 +402,9 @@
 }
 
 :--load-more button {
-    margin: 144px 0;
     border-radius: 2px;
     font-size: 18px;
-    width: 150px;
+    width: 100%;
     height: 64px;
     color: white;
     border: none;
@@ -390,36 +441,266 @@
 
 @custom-selector :--article .wrapper main .article.left;
 @custom-selector :--article-header .wrapper main .article.left header;
-@custom-selector :--article-text h1, h2, h3, h4, p, blockquote;
+@custom-selector :--article-content .wrapper main .article.left .article-content;
 
 :--article {
+    background-color: transparent;
     box-sizing: border-box;
-    padding: 40px 16px;
+    margin-right: 20px;
     margin-bottom: 200px;
 }
 
-:--article .content > * {
-    margin-bottom: 40px;
+:--article .cover {
+    width: 835px;
+    height: 425px;
+    background-color: #CCCCCC;
 }
 
-:--article img {
-    max-width: 100%;
+:--article-content,
+:--article-header {
+    background-color: white;
 }
 
-:--article figure {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    padding: 0 auto;
+:--article-content {
+    padding: 0 16px;
 }
 
-:--article-header,
-:--article .content :--article-text {
-    margin-left: 44px;
-    margin-right: 44px;
+:--article-header {
+    position: relative;
+    padding: 40px 60px;
+}
+
+:--article-header .share {
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+}
+
+:--article-header .share > * {
+    margin-left: 8px;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 20px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 16px;
+    border: 1px solid black;
+}
+
+:--article-header .share .weibo {
+    border-color: #EB6625;
+    color: #EB6625;
+}
+
+:--article-header .share .weixin {
+    position: relative;
+    border-color: #7BC549;
+    color: #7BC549;
+}
+
+:--article-header .share .weixin .qrcode {
+    color: var(--exound-gray);
+    position: absolute;
+    display: none;
+    background-color: white;
+    top: -190px;
+    left: -64px;
+    height: 180px;
+    width: 160px;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px #888888;
+}
+
+:--article-header .share .weixin:hover .qrcode {
+    display: block;
+}
+
+:--article-header .share .weixin .qrcode div {
+    padding: 8px 0;
+}
+
+:--article-header .share .weixin .qrcode:after {
+    content: " ";
+    position: absolute;
+    bottom: -8px;
+    left: 68px;
+    border-top: 10px solid white;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    height: 0;
+    width: 0;
 }
 
 :--article-header h1 {
+    margin: 40px 0;
     font-size: 28px;
     margin-bottom: 32px;
+}
+
+@custom-selector :--comment-box .wrapper main .article.left .comment-box;
+@custom-selector :--comment .wrapper main .article.left .comment;
+
+:--comment-box {
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 100%;
+    background-color: white;
+}
+
+:--comment {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 32px 0;
+    border-bottom: 1px solid #EEEEEE;
+
+}
+
+:--comment:first-child {
+    padding-top: 0;
+}
+
+:--comment:last-child {
+    border-bottom: 0;
+}
+
+:--comment .avatar {
+    box-sizing: border-box;
+    margin-right: 20px;
+    height: 48px;
+    width: 48px;
+    background-size: contain;
+    border-radius: 24px;
+    background-repeat: no-repeat no-repeat;
+}
+
+:--comment .right {
+    display: flex;
+    flex-flow: column wrap;
+    width: 688px;
+}
+
+:--comment .right textarea {
+    font-size: 16px;
+    resize: none;
+    border: none;
+    height: 96px;
+    width: 688px;
+    display: block;
+}
+
+:--comment .right textarea::placeholder {
+    color: #DDDDDD;
+}
+
+:--comment .actions {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+
+:--comment .actions .tip {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 36px;
+    color: #CCCCCC;
+}
+
+:--comment .actions .btn {
+    background-color: #5C5D5E;
+    width: 128px;
+}
+
+:--comment .user {
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--exound-black);
+}
+
+:--comment .user:hover {
+    color: var(--exound-orange);
+}
+
+:--comment .publish {
+    font-size: 14px;
+    color: #CCCCCC;
+    margin: 4px 0;
+}
+
+:--comment .content {
+    font-size: 16px;
+    text-align: justify;
+    color: var(--exound-gray);
+}
+
+@custom-selector :--review-sidebar main aside.review.sidebar;
+
+:--review-sidebar .chart .price {
+    box-sizing: border-box;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: -4px;
+    color: white;
+    text-align: center;
+    background-color: var(--exound-bg-black);
+}
+
+:--review-sidebar .sales {
+    position: relative;
+}
+
+:--review-sidebar .sales .sellers {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+:--review-sidebar .sales .seller {
+    text-align: center;
+    box-sizing: border-box;
+    width: 115px;
+    padding: 25px;
+}
+
+:--review-sidebar .sales h2 {
+    padding: 16px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+:--review-sidebar .sales .seller .name {
+    position: relative;
+    top: 8px;
+    color: var(--exound-black);
+    font-weight: 600;
+}
+
+:--review-sidebar .sales .seller .name:hover {
+    color: var(--exound-orange);
+}
+
+:--review-sidebar .sales .seller .logo {
+    box-sizing: border-box;
+    height: 64px;
+    width: 64px;
+    background-color: #CCCCCC;
+    background-size: contain;
+    border-radius: 32px;
+    background-position: center;
+    background-repeat: no-repeat no-repeat;
+}
+
+:--review-sidebar .sales canvas {
+    border-top: 1px solid #EEEEEE;
+    padding: 64px;
+    margin: 20px 44px 40px 44px;
+}
+
+:--review-sidebar .sales .scan-text {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
 }

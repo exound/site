@@ -1,32 +1,33 @@
 import React from "react";
-import TopStories from "../widgets/TopStories";
+import Promotions from "../widgets/Promotions";
 import ArticlesList from "../widgets/ArticlesList";
 import HomeSidebar from "../widgets/HomeSidebar";
-import LoadMore from "../widgets/LoadMore";
-import mountOn from "../../core/mountOn";
+import ArticleItem from "../widgets/ArticleItem";
 
 export default class Home extends React.Component {
   render() {
     const {
-      topStories,
+      promotions,
       articles,
       advertisements
     } = this.props.appState.data;
 
+    const loadMoreConfig = {
+      url: "/articles/published",
+      offset: 20
+    };
+
     return (
-      <main className="home-page">
-        <TopStories stories={topStories} />
+      <main className="portal">
+        <Promotions promotions={promotions} />
 
         <section className="body">
-          <ArticlesList className="left" articles={articles} />
+          <ArticlesList className="left"
+                        Component={ArticleItem}
+                        loadMoreConfig={loadMoreConfig}
+                        articles={articles} />
+
           <HomeSidebar advertisements={advertisements} />
-
-          <LoadMore url="/pushes/ordinary"
-                    mount={mountOn(["articles"])}
-                    limit={16}
-                    offset={20}
-                    text="更多文章" />
-
         </section>
       </main>
     );

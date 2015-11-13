@@ -2,6 +2,7 @@ import R from "ramda";
 import React from "react";
 import feq from "../../core/feq";
 import apiPath from "../../core/apiPath";
+import {append} from "../../core/storeUpdaters";
 
 export default class LoadMore extends React.Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ export default class LoadMore extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.url != this.props.url) {
+    if (nextProps.url !== this.props.url) {
       this.setState({offset: nextProps.offset});
     }
   }
@@ -22,10 +23,7 @@ export default class LoadMore extends React.Component {
       offset: this.state.offset
     })).then(({body}) => {
       if (body.length) {
-        this.props.mount.value = R.concat(
-          this.props.mount.value,
-          body
-        );
+        append(this.props.mount, body);
 
         this.setState({offset: this.state.offset + limit});
       }

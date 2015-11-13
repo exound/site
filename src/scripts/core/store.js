@@ -1,11 +1,14 @@
 import R from "ramda";
 import {Data, Mount} from "lmount";
 
+import user from "./guest";
+
 class Store {
   constructor(state = {}) {
     this.state = Data.wrap(state);
     this.dataMount = this.makeMount(["data"]);
     this.formsMount = this.makeMount(["forms"]);
+    this.userMount = this.makeDataMount(["user"]);
     this.stream$ = this.state.content$;
   }
 

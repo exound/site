@@ -28,7 +28,7 @@ config.module.loaders.push({
 
 config.module.loaders.push({
   test: /\.css$/,
-  exclude: /tinymce/,
+  exclude: /(tinymce|article-content)/,
   loaders: ["style", "css", "cssnext"]
 });
 

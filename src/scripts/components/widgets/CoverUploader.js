@@ -1,7 +1,8 @@
 import React from "react";
-import {Paper, RaisedButton} from "material-ui";
 
+import Button from "./Button";
 import feq from "../../core/feq";
+import apiPath from "../../core/apiPath";
 
 export default class CoverUploader extends React.Component {
   showCoverInput = (event) => {
@@ -21,7 +22,7 @@ export default class CoverUploader extends React.Component {
 
     data.append("file", file);
     data.append("article_id", this.props.articleId);
-    data.append("kind", "header_image");
+    data.append("kind", "cover");
 
     feq.post(apiPath("uploads"), data).then(({body}) => {
       this.props.mount.value = body.src;
@@ -29,18 +30,11 @@ export default class CoverUploader extends React.Component {
   }
 
   render() {
-    const style = {
-      textAlign: "center",
-      verticalAlign: "middle",
-      width: "100%",
-      height: 320,
-      backgroundRepeat: "none",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundColor: "white"
-    };
+    const {
+      cover
+    } = this.props;
 
-    const cover = this.props.cover;
+    const style = {};
 
     if (cover) {
       const coverUrl = cover &&
@@ -52,19 +46,15 @@ export default class CoverUploader extends React.Component {
     }
 
     return (
-      <Paper zDepth={this.props.zDepth || 0}
-             className="cover-uploader"
-             style={style}>
-
-        <RaisedButton style={{marginTop: 142}}
-                      onClick={this.showCoverInput}
-                      label="封面图片" secondary={true} />
+      <div style={style} className="cover-uploader">
+        <Button onClick={this.showCoverInput}
+                text="封面图片" />
 
         <input type="file"
                onChange={this.newCover}
                ref="coverInput"
                style={{display: "none"}} />
-      </Paper>
+      </div>
     );
   };
 };

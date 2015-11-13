@@ -1,0 +1,43 @@
+.article-content {
+    font-size: 16px;
+}
+
+.article-content figure {
+    max-width: 100%;
+    text-align: center;
+}
+
+.article-content figure * {
+    border: none;
+}
+
+.article-content iframe {
+    border: none;
+    height: 480px;
+    width: 800px;
+}
+
+.article-content img {
+    max-width: 100%;
+}
+
+.article-content p img {
+    max-width: calc(100% + 88px);
+    margin: -16px -44px;
+}
+
+.article-content > * {
+    padding-bottom: 20px;
+    text-align: justify;
+}
+
+.article-content p,
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content blockquote,
+.article-content ul,
+.article-content ol {
+    padding: 16px 44px;
+}

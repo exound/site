@@ -13,6 +13,7 @@ import {Data} from "lmount";
 import {plain as routes} from "../core/routes";
 import resolveData from "../core/resolveData";
 import store from "../core/store";
+import createElement from "../core/createElement";
 import title from "../core/title";
 
 const connector = koa();
@@ -80,16 +81,16 @@ connector.use(function *(next) {
 
   const data = yield resolver
 
-  store.content$(data);
+  store.data = data;
 
   const app = renderToString(
-    <RoutingContext {...props} />
+    <RoutingContext {...{createElement, ...props}} />
   );
 
   yield this.render({
     app,
     apiRoot,
-    appState: data,
+    appState: store.stream$(),
     title: title(data.title)
   });
 

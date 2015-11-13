@@ -1,0 +1,15 @@
+@keyframes slide-left {
+    0% {right: -800px;}
+    100% {right: -160px;}
+}
+
+@keyframes slide-right {
+    0% {right: -160px;}
+    100% {right: -800px;}
+}
+
+@keyframes btn-blink {
+    0% {background: #2DD982;}
+    50% {background: orange;}
+    100% {background: #2DD982;}
+}

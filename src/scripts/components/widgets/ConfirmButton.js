@@ -1,49 +1,24 @@
 import React from "react";
-import {FlatButton, Dialog} from "material-ui";
+
+import Button from "./Button";
 
 export default class ConfirmButton extends React.Component {
-  dismissDialog = () => {
-    this.refs.confirmDialog.dismiss();
-  }
-
   showDialog = () => {
-    this.refs.confirmDialog.show();
-  }
+    const onConfirm = this.props.onConfirm;
 
-  confirm = () => {
-    this.props.onConfirm();
-    this.dismissDialog();
+    if (confirm(this.props.message || "确定删除吗?")) {
+      onConfirm && onConfirm();
+    }
   }
 
   render() {
-    const actions = [
-      <FlatButton label="确定"
-                  key="cancel"
-                  primary={true}
-                  onTouchTap={this.confirm} />,
-
-      <FlatButton label="取消"
-                  key="confirm"
-                  secondary={true}
-                  onTouchTap={this.dismissDialog} />
-    ];
-
     const {
-      label,
-      primary,
-      secondary,
-      modal,
-      confirmText
+      text,
+      className
     } = this.props;
 
     return (
-      <div>
-        <Dialog ref="confirmDialog" actions={actions} modal={modal || true}>
-          {this.props.confirmText}
-        </Dialog>
-
-        <FlatButton onClick={this.showDialog} {...{label, primary, secondary}} />
-      </div>
+      <Button className={className} onClick={this.showDialog} text={text} />
     );
   }
 };

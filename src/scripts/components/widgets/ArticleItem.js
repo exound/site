@@ -8,17 +8,17 @@ export default class ArticleItem extends React.Component {
     const {
       id,
       title,
-      header_image,
+      cover,
       category,
       content,
       published_at,
       user
     } = this.props.article;
 
-    const coverUrl = header_image &&
-          (header_image.match(/\?/) ?
-          `${header_image}&max=500` :
-          `${header_image}?max=500`);
+    const coverUrl = cover &&
+          (cover.match(/\?/) ?
+          `${cover}&max=500` :
+          `${cover}?max=500`);
 
     const articleClassName = coverUrl ?
           "article item" :
@@ -28,7 +28,7 @@ export default class ArticleItem extends React.Component {
       backgroundImage: `url('${coverUrl}')`
     };
 
-    const cover = coverUrl &&
+    const coverDisplay = coverUrl &&
           <div className="cover" style={coverStyle} />;
 
     return (
@@ -59,7 +59,7 @@ export default class ArticleItem extends React.Component {
           </span>
         </section>
 
-        {cover}
+        {coverDisplay}
       </article>
     );
   }

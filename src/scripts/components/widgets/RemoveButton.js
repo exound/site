@@ -1,25 +1,32 @@
 import React from "react";
 
 import feq from "../../core/feq";
-import ConfirmButton from "./ConfirmButton";
+import Confirm from "./ConfirmButton";
 
 export default class RemoveButton extends React.Component {
   onConfirm = () => {
-    feq.delete(this.props.url)
-      .then(this.props.afterRemove);
+    const {
+      url,
+      beforeRemove,
+      afterRemove
+    } = this.props;
+
+    if (beforeRemove) beforeRemove();
+
+    if (afterRemove) feq.delete(url)
+      .then(afterRemove);
   };
 
   render() {
     const {
-      label,
-      confirmText
+      text,
+      message
     } = this.props;
 
     return (
-      <ConfirmButton label={label || "删 除"}
-                     onConfirm={this.onConfirm}
-                     confirmText={confirmText}
-                     primary={true} />
+      <Confirm text={text || "删 除"}
+               onConfirm={this.onConfirm}
+               message={message} />
     );
   }
 };

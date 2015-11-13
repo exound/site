@@ -5,12 +5,19 @@ import store from "./store";
 import Validator from "./Validator";
 
 export default class Form {
-  constructor(name, dataPath, url, method, responsePath, constraints = []) {
+  constructor(
+    dataPath,
+    action,
+    method,
+    responsePath,
+    storeUpdater,
+    constraints = []
+  ) {
     this.fields = {};
-    this.name = name;
     this.mount = store.makeDataMount(dataPath);
-    this.__url__ = url;
-    this.__method__ = method;
+    this.action = action;
+    this.method = method;
+    this.storeUpdater = storeUpdater;
     this.constraints = constraints;
 
     if (responsePath) {
@@ -21,29 +28,17 @@ export default class Form {
     }
   }
 
-  get url() {
-    return typeof this.__url__ === "function" ?
-      this.__url__(this.data) :
-      this.__url__;
-  }
-
-  get method() {
-    return typeof this.__method__ === "function" ?
-      this.__method__(this.data) :
-      this.__method__;
-  }
-
   get errors() {
     return R.pickBy(
-      value => {
-        return !R.isNil(value);
+      error => {
+        return !R.isNil(error);
       },
       R.map(field => field.error, this.fields)
     );
   }
 
   set errors(errors) {
-    for (const name in errors) {
+    for (const name in this.fields) {
       this.fields[name].error = errors[name];
     }
 
@@ -51,7 +46,12 @@ export default class Form {
   }
 
   get data() {
-    return R.mapObj(field => field.value, this.fields);
+    return R.pickBy(
+      value => {
+        return !R.isNil(value);
+      },
+      R.map(field => field.value, this.fields)
+    );
   }
 
   validate() {
@@ -61,18 +61,30 @@ export default class Form {
 
   submit = () => {
     if (this.validate()) {
-      jsonFeq[this.method](
-        this.url, JSON.stringify(this.data)
+      return jsonFeq[this.method()](
+        this.action(), JSON.stringify(this.data)
       ).then(({body, status}) => {
         if (status >= 400) {
           this.errors = body.errors;
         } else {
-          this.mount.value = this.responseLens ?
-            R.view(this.responseLens, body) :
-            body;
+          const {
+            responseLens,
+            storeUpdater,
+            mount
+          } = this;
+
+          const item = responseLens ?
+                R.view(responseLens, body) :
+                body;
+
+          storeUpdater(mount, item);
         }
+
+        return {body, status};
       });
     }
+
+    return Promise.reject(this.errors);
   };
 
   addField(name, field) {

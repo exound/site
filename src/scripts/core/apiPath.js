@@ -8,5 +8,3 @@ export default function apiPath(path, queries = {}) {
 
   return queryStr ? `${baseUrl}${joint}${queryStr}` : baseUrl;
 };
-
-window.apiPath = apiPath;

@@ -1,9 +1,5 @@
-.mce-container {
+.mce-tinymce {
     border: none !important;
-}
-
-.mce-menu {
-    box-shadow: 0px 1px 1px #CCCCCC;
 }
 
 .mce-content-body {
@@ -13,7 +9,39 @@
 }
 
 .mce-toolbar-grp {
-    border-bottom: 1px solid #CCCCCC !important;
+    padding: 8px !important;
+    background-color: white !important;
+}
+
+.mce-toolbar-grp * {
+    background-color: white !important;
+}
+
+.mce-edit-area {
+    border: 0 !important;
+}
+
+.mce-edit-area iframe {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    padding: 0 16px !important;
+    background-color: white !important;
+}
+
+.mce-widget.mce-btn,
+.mce-widget.mce-btn:hover {
+    border-color: transparent !important;
+}
+
+.mce-widget.mce-btn i {
+    color: #666666 !important;
+}
+
+.mce-active button,
+.mce-active button * {
+    border-radius: 2px !important;
+    background-color: var(--exound-orange) !important;
 }
 
 .mce-content-body p,
@@ -46,4 +74,67 @@
 .mce-btn:hover,
 .mce-btn:focus {
     border-color: #E3E3E3E3 !important;
+}
+
+.mce-window {
+    border-radius: 2px;
+    border: 1px solid #888888 !important;
+    padding-bottom: -50px;
+}
+
+.mce-window * {
+    font-weight: 100 !important;
+}
+
+.mce-window .mce-title {
+    margin: 8px 0;
+}
+
+.mce-window .mce-close {
+    display: none;
+}
+
+.mce-window .mce-textbox {
+    border-width: 0 0 1px 0 !important;
+}
+
+.mce-window .mce-checkbox .mce-i-checkbox {
+    border-radius: 2px;
+    border-color: #2D8AC7;
+    color: white !important;
+    background-color: #2D8AC7;
+    font-weight: 100;
+}
+
+.mce-window .mce-tab {
+    line-height: 14px;
+    border: none;
+}
+
+.mce-window .mce-btn, .mce-window .mce-btn:hover {
+    border: none;
+    background-color: white;
+}
+
+.mce-window .mce-btn.mce-primary * {
+    color: #2D8AC7;
+}
+
+.mce-window .mce-tab.mce-active {
+    margin: 0;
+    box-shadow: 0 2px 0 black;
+}
+
+.mce-window .mce-window-head {
+    border-bottom: none;
+}
+
+.mce-window .mce-foot {
+    background-color: transparent;
+    position: absolute;
+    border-top: none;
+}
+
+.mce-window .mce-foot .mce-btn {
+    border-radius: 2px;
 }

@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from "react";
 import R from "ramda";
 import {Mount} from "lmount";
 import PortalTop from "./widgets/PortalTop";
-import ManageTop from "./widgets/ManageTop";
 import Bottom from "./widgets/Bottom";
 import store from "../core/store";
 
@@ -40,16 +39,6 @@ export default class App extends Component {
         <PortalTop categories={categories} mount={mount}/>
         {children}
         <Bottom />
-      </div>
-    );
-  }
-
-  manageLayout(children) {
-    return (
-      <div className="wrapper manage">
-        <ManageTop />
-
-        {children}
       </div>
     );
   }

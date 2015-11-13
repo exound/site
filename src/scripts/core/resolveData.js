@@ -15,15 +15,14 @@ const categories = apiPath("categories")
 const withUser = function(resolve) {
   if (authToken) {
     return R.merge(resolve, {user: apiPath("users/current")});
-  } else {
-    return resolve;
-  }
+  } 
+
+  return resolve;
 };
 
 function home() {
   return getData({
     staticProps: {
-      layout: "default",
       user
     },
     preHooks: [
@@ -32,8 +31,8 @@ function home() {
     resolve: {
       categories,
       advertisements,
-      topStories: apiPath("pushes/top"),
-      articles: apiPath("pushes/ordinary", {limit: 20})
+      promotions: apiPath("promotions", {limit: 6}),
+      articles: apiPath("articles/published", {limit: 20})
     }
   });
 }
@@ -43,7 +42,6 @@ home.pathPattern = /^\/$/;
 function reviews() {
   return getData({
     staticProps: {
-      layout: "default",
       user,
       title: "评测",
     },
@@ -64,7 +62,6 @@ reviews.pathPattern = /^\/reviews$/;
 function review(id) {
   return getData({
     staticProps: {
-      layout: "default",
       user,
     },
     preHooks: [
@@ -88,7 +85,6 @@ review.pathPattern = /^\/reviews\/([a-f0-9\-]+)$/;
 function category(name) {
   return getData({
     staticProps: {
-      layout: "default",
       title: name,
       name,
       user,
@@ -99,7 +95,7 @@ function category(name) {
     resolve: {
       categories,
       advertisements,
-      articles: apiPath("pushes/all", {category: name})
+      articles: apiPath("articles/published", {category: name})
     }
   });
 }
@@ -109,7 +105,6 @@ category.pathPattern = /^\/categories\/(.+)$/;
 function profile(nick) {
   return getData({
     staticProps: {
-      layout: "default",
       title: nick,
       nick,
       user,
@@ -120,7 +115,7 @@ function profile(nick) {
     resolve: {
       categories,
       advertisements,
-      articles: apiPath("articles", {column: nick})
+      articles: apiPath(`articles/author/${nick}`)
     }
   });
 }
@@ -130,7 +125,6 @@ profile.pathPattern = /^\/profile\/(.+)$/;
 function article(id) {
   return getData({
     staticProps: {
-      layout: "default",
       user,
     },
     preHooks: [
@@ -138,7 +132,9 @@ function article(id) {
     ],
     resolve: {
       categories,
-      article: apiPath(`articles/${id}`)
+      advertisements,
+      article: apiPath(`articles/${id}`),
+      comments: apiPath(`comments/for/${id}`)
     },
     postHooks: [
       (data) => {
@@ -157,17 +153,35 @@ function manageHome() {
 
 manageHome.pathPattern = /^\/manage$/;
 
-function manageMyArticles() {
+function manageArticles() {
   return getData({
     staticProps: {
-      layout: "manage",
       user,
-      title: "文章管理",
+      title: "管理文章",
     },
     preHooks: [
       withUser
     ],
     resolve: {
+      categories,
+      articles: apiPath("articles/published", {limit: 40})
+    }
+  });
+}
+
+manageArticles.pathPattern = /^\/manage\/articles$/;
+
+function manageMyArticles() {
+  return getData({
+    staticProps: {
+      user,
+      title: "我的文章",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
       articles: apiPath("articles/mine", {limit: 40})
     }
   });
@@ -175,23 +189,39 @@ function manageMyArticles() {
 
 manageMyArticles.pathPattern = /^\/manage\/articles\/mine$/;
 
+function managePromotions() {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理头条",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+      promotions: apiPath("promotions", {limit: 40})
+    }
+  });
+}
+
+managePromotions.pathPattern = /^\/manage\/promotions$/;
+
 function manageArticle(id) {
   return getData({
     staticProps: {
-      layout: "manage",
       user,
     },
     preHooks: [
       withUser
     ],
     resolve: {
-      pushes,
       categories,
       article: apiPath(`articles/${id}`)
     },
     postHooks: [
       (data) => {
-        data.title = `文章管理 - ${data.article.title}`;
+        data.title = `编辑 - ${data.article.title}`;
         return data;
       }
     ]
@@ -199,6 +229,65 @@ function manageArticle(id) {
 }
 
 manageArticle.pathPattern = /^\/manage\/articles\/([a-f0-9\-]+)$/;
+
+function managePromotion(id) {
+  return getData({
+    staticProps: {
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+      promotion: apiPath(`promotions/${id}`)
+    },
+    postHooks: [
+      (data) => {
+        data.title = `编辑 - ${data.promotion.title}`;
+        return data;
+      }
+    ]
+  });
+}
+
+managePromotion.pathPattern = /^\/manage\/promotions\/([a-f0-9\-]+)$/;
+
+function writeArticle() {
+  return getData({
+    staticProps: {
+      user,
+      title: "撰写文章",
+      article: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+    }
+  });
+}
+
+writeArticle.pathPattern = /^\/manage\/write\/article$/;
+
+function writePromotion() {
+  return getData({
+    staticProps: {
+      user,
+      title: "添加头条",
+      promotion: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+    }
+  });
+}
+
+writePromotion.pathPattern = /^\/manage\/write\/promotion$/;
 
 function signUp() {
   return Promise.resolve({
@@ -227,7 +316,9 @@ signOut.pathPattern = /^\/sign_out$/;
 const resolvers = [
   home, review, reviews, category,
   profile, article, signUp, signIn,
-  signOut, manageHome, manageMyArticles, manageArticle
+  signOut, manageHome, manageMyArticles, manageArticle,
+  manageArticles, writeArticle, writePromotion, managePromotions,
+  managePromotion
 ];
 
 function resolveData(location) {
@@ -242,9 +333,9 @@ function resolveData(location) {
   if (resolver) {
     return Promise.resolve(resolver(decodeURI(matcher(resolver)[1])))
       .then((data) => R.merge(data, {route: location.pathname}));
-  } else {
-    return Promise.resolve({route: location.pathname});
   }
+
+  return Promise.resolve({route: location.pathname});
 }
 
 export default resolveData;

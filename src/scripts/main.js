@@ -12,14 +12,12 @@ import routes from "./core/routes";
 import store from "./core/store";
 import history from "./core/history";
 import resolveData from "./core/resolveData";
-
-function createElement(Component, props) {
-  return <Component {...R.merge(props, {appState: store.stream$()})} />;
-}
+import createElement from "./core/createElement";
 
 class Bootstrap extends React.Component {
-  constructor(props) {
+  constructor(props = {appState: {}}) {
     super(props);
+
     history.listen(location => {
       resolveData(location).then(data => store.data = data);
     });
@@ -43,4 +41,4 @@ class Bootstrap extends React.Component {
   }
 }
 
-render(<Bootstrap appState={{}} />, document.querySelector("#app"));
+render(<Bootstrap />, document.querySelector("#app"));

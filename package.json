@@ -31,6 +31,7 @@
     "react-router": "~1.0.0",
     "react-tap-event-plugin": "^0.2.0",
     "react-addons-transition-group": "~0.14.0",
+    "react-addons-css-transition-group": "~0.14.0",
     "qrcode.react": "~0.5.1",
     "koa": "~1.0.0",
     "koa-static": "~1.4.9",

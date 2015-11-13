@@ -19,8 +19,6 @@ export default class Profile extends React.Component {
     return (
       <main className="profile-page">
         <section className="body">
-          <h1 className="profile-nick">{nick}</h1>
-
           <ArticlesList className="left"
                 Component={ArticleItem}
                 loadMoreConfig={loadMoreConfig}

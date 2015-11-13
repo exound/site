@@ -1,3 +1,4 @@
+import R from "ramda";
 import React from "react";
 import Promotions from "../widgets/Promotions";
 import ArticlesList from "../widgets/ArticlesList";
@@ -18,9 +19,12 @@ export default class Home extends React.Component {
       offset: 20
     };
 
+    const promotionsDisplay = !R.isEmpty(promotions) &&
+          <Promotions reviews={reviews} promotions={promotions} />;
+
     return (
       <main className="portal">
-        <Promotions reviews={reviews} promotions={promotions} />
+        {promotionsDisplay}
 
         <section className="body">
           <ArticlesList className="left"

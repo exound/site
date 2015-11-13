@@ -37,7 +37,7 @@
     "bluebird": "~2.9.34",
     "isomorphic-fetch": "~2.1.1",
     "react-toggle": "~2.0.1",
-    "react-select": "~1.0.0-beta5",
+    "react-selectize": "~0.3.7",
     "handlebars": "~4.0.2",
     "babel": "~5.8.0",
     "babel-runtime": "~5.8.0",

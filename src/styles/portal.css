@@ -433,9 +433,6 @@
 
 :--profile-nick,
 :--category-name {
-    position: absolute;
-    top: 24px;
-    left: 60px;
     color: var(--exound-orange);
 }
 

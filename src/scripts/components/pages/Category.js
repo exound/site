@@ -19,8 +19,6 @@ export default class Category extends React.Component {
     return (
       <main className="category-page">
         <section className="body">
-          <h1 className="category-name">{name}</h1>
-
           <ArticlesList className="left"
                         Component={ArticleItem}
                         loadMoreConfig={loadMoreConfig}

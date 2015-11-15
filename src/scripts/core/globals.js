@@ -6,12 +6,12 @@ const apiRoot = hasDom ?
       document.querySelector("meta[name=api-root]").content :
       global.apiRoot;
 
-const pageData = hasDom && window.pageData;
-
 export default {
   hasDom,
   apiRoot,
-  pageData,
+  get pageData() {
+    return hasDom && window.__data__;
+  },
   get authToken() {
     return hasDom && localStorage.getItem("authToken");
   }

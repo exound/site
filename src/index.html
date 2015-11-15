@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="/main.css">
     {{/unless}}
     <meta name="api-root" content="{{apiRoot}}">
-    {{#if appState}}
-    <script>window.__appState__ = {{{appState}}};</script>
+    {{#if data}}
+    <script>window.__data__ = {{{data}}};</script>
     {{/if}}
   </head>
   <body>

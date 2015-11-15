@@ -1,6 +1,9 @@
 const config = require("./base")
     , webpack = require("webpack")
-    , apiRoot = "http://127.0.0.1:3000"
+    , path = require("path")
+    , fs = require("fs")
+    , IS_LOCAL = fs.existsSync(path.join(__dirname, "..", "_local"))
+    , apiRoot = IS_LOCAL ? "http://127.0.0.1:3000" : "http://api.exound.com"
     , ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 config.devtool = "source-map";

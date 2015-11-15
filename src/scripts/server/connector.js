@@ -13,6 +13,7 @@ import {Data} from "lmount";
 import {plain as routes} from "../core/routes";
 import resolveData from "../core/resolveData";
 import store from "../core/store";
+import ServerRenderer from "./ServerRenderer";
 import createElement from "../core/createElement";
 import title from "../core/title";
 
@@ -64,11 +65,10 @@ connector.use(function *(next) {
     }
   }
 
-  const url = this.request.url;
+  const location = createLocation(this.request.url)
+      , {redirect, props} = yield this.match(location.pathname);
 
-  const location = createLocation(url);
-
-  const {redirect, props} = yield this.match(location);
+  if (!props) return yield next;
 
   if (redirect) {
     this.status = 301;
@@ -83,14 +83,12 @@ connector.use(function *(next) {
 
   store.data = data;
 
-  const app = renderToString(
-    <RoutingContext {...{createElement, ...props}} />
-  );
+  const app = ServerRenderer.run({data, renderProps: props});
 
   yield this.render({
     app,
     apiRoot,
-    appState: store.stream$(),
+    data: JSON.stringify(data),
     title: title(data.title)
   });
 

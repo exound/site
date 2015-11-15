@@ -2,7 +2,7 @@ import R from "ramda";
 
 import getData from "./getData";
 import apiPath from "./apiPath";
-import {authToken, pageData} from "./globals";
+import {hasDom, authToken, pageData} from "./globals";
 import user from "./guest";
 
 const advertisements = apiPath("advertisements", {
@@ -322,21 +322,22 @@ const resolvers = [
   managePromotion
 ];
 
-function resolveData(location) {
+export default function resolveData(location) {
   const path = location.pathname
       , matcher = resolver => resolver.pathPattern.exec(path)
       , resolver = R.find(matcher, resolvers);
 
-  if (typeof __appState__ !== "undefined") {
-    return Promise.resolve(__appState__);
+  if (pageData) {
+    return Promise.resolve(pageData).then((data) => {
+      delete window.__data__;
+      return data;
+    });
   }
 
   if (resolver) {
-    return Promise.resolve(resolver(decodeURI(matcher(resolver)[1])))
+    return Promise.resolve(resolver(matcher(resolver)[1]))
       .then((data) => R.merge(data, {route: location.pathname}));
   }
 
   return Promise.resolve({route: location.pathname});
-}
-
-export default resolveData;
+};

@@ -1,19 +1,17 @@
 import R from "ramda";
 import {Data, Mount} from "lmount";
 
-import user from "./guest";
-
 class Store {
   constructor(state = {}) {
-    this.state = Data.wrap(state);
+    this.__state__ = Data.wrap(state);
     this.dataMount = this.makeMount(["data"]);
     this.formsMount = this.makeMount(["forms"]);
     this.userMount = this.makeDataMount(["user"]);
-    this.stream$ = this.state.content$;
+    this.stream$ = this.__state__.content$;
   }
 
   makeMount(path) {
-    return Mount.on({path, data: this.state});
+    return Mount.on({path, data: this.__state__});
   }
 
   makeDataMount(path) {
@@ -24,8 +22,16 @@ class Store {
     return this.makeMount(R.concat(["forms"], path));
   }
 
+  get state() {
+    return R.keys(this.stream$()).length ? this.stream$() : {};
+  }
+
+  set state(state) {
+    return this.stream$(state);
+  }
+
   get data() {
-    return this.dataMount.value;
+    return this.dataMount.value && {};
   }
 
   set data(value) {
@@ -33,7 +39,7 @@ class Store {
   }
 
   get forms() {
-    return this.formsMount.value;
+    return this.formsMount.value && {};
   }
 
   set forms(value) {

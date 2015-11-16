@@ -8,6 +8,6 @@ export default class Server {
   }
 
   listen(port = 3000) {
-    this.connector.listen(port);
+    this.connector.listen(port, "0.0.0.0");
   }
 }

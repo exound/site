@@ -13,19 +13,28 @@
 
 .article-content iframe {
     border: none;
-    height: 480px;
+    height: 600px;
     width: 800px;
 }
 
-.article-content img {
-    max-width: 100%;
+.article-content p iframe,
+.article-content p img.mce-object-iframe {
+    height: 600px;
+    width: 800px;
+    margin: -16px -44px;
 }
 
-.article-content img[width] {
+.article-content img:note(.mce-object-iframe) {
     max-width: 100%;
+    height: auto;
 }
 
-.article-content p img:only-child {
+.article-content img:not(.mce-object-iframe)[width] {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-content p img:not(.mce-object-iframe):only-child {
     max-width: calc(100% + 88px);
     margin: -16px -44px;
 }

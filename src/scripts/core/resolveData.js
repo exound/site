@@ -211,6 +211,7 @@ function managePromotion(id) {
   return getData({
     staticProps: {
       user,
+      title: "管理分类"
     },
     preHooks: [
       withUser
@@ -218,17 +219,27 @@ function managePromotion(id) {
     resolve: {
       categories,
       promotion: apiPath(`promotions/${id}`)
-    },
-    postHooks: [
-      (data) => {
-        data.title = `编辑 - ${data.promotion.title}`;
-        return data;
-      }
-    ]
+    }
   });
 }
 
 managePromotion.pathPattern = /^\/manage\/promotions\/([a-f0-9\-]+)$/;
+
+function manageCategories() {
+  return getData({
+    staticProps: {
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories
+    }
+  });
+}
+
+manageCategories.pathPattern = /^\/manage\/categories$/;
 
 function writeArticle() {
   return getData({
@@ -295,6 +306,7 @@ const resolvers = [
   profile, article, signUp, signIn,
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
+  manageCategories
 ];
 
 export default function resolveData(location) {

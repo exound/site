@@ -53,10 +53,6 @@
     text-align: center;
 }
 
-.mce-content-body img {
-    max-width: 100%;
-}
-
 .mce-menu-item:hover,
 .mce-menu-item.mce-selected,
 .mce-menu-item:focus {

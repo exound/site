@@ -1,4 +1,5 @@
 import injectTapEventPlugin from "react-tap-event-plugin";
+import "babel/polyfill";
 
 injectTapEventPlugin();
 

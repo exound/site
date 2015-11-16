@@ -78,13 +78,16 @@ export default class PromotionForm extends React.Component {
 
     this.goBackLink = "/manage/promotions";
 
+    const removeButton = id &&
+          <Remove url={apiPath(`promotions/${id}`)}
+                  text="删 除"
+                  afterRemove={this.remove} />;
+
     const actions = (isAuthor || hasPrivilege) &&
           <div className="actions">
             <Button link={this.goBackLink} text="返 回" />
 
-            <Remove url={apiPath(`promotions/${id}`)}
-                    text="删 除"
-                    afterRemove={this.remove} />
+            {removeButton}
 
             <Button className={saving && "waiting"}
                     text="保 存"

@@ -41,6 +41,13 @@ export default class ReviewSidebar extends React.Component {
             {sellerItems}
           </div>;
 
+    const qrcodeDisplay = url &&
+          [
+            <QRCode value={url} />,
+            <div className="scan-text">或扫一扫直接购买</div>
+          ];
+          
+
     return (
       <aside className="review sidebar">
         <div className="chart">
@@ -51,8 +58,7 @@ export default class ReviewSidebar extends React.Component {
         <div className="sales">
           <h2>直接购买入口</h2>
           {sellersDisplay}
-          <QRCode value={url} />
-          <div className="scan-text">或扫一扫直接购买</div>
+          {qrcodeDisplay}
         </div>
       </aside>
     );

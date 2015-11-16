@@ -14,9 +14,11 @@ const feq = new Feq({
       const tokenInvalid = body.errors &&
             body.errors.auth_token === "invalid";
 
-      if (hasDom && tokenInvalid && status === 401) {
+      if (hasDom &&
+          !location.pathname.match(/^\/sign_/) &&
+          tokenInvalid && status === 401) {
         localStorage.removeItem("authToken");
-        window.location.replace("/");
+        location.replace("/");
       }
     }
   ]

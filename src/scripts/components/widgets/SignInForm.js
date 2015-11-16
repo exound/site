@@ -25,9 +25,11 @@ import bindForm from "../../decorators/bindForm";
 })
 export default class SignInForm extends React.Component {
   signIn = () => {
-    this.form.submit().then(({body}) => {
-      localStorage.setItem("authToken", body.auth_token);
-      this.history.pushState(null, "/");
+    this.form.submit().then(({body, status}) => {
+      if (status < 400) {
+        localStorage.setItem("authToken", body.auth_token);
+        this.history.pushState(null, "/");
+      }
     });
   };
 

@@ -2,7 +2,7 @@ import R from "ramda";
 
 import getData from "./getData";
 import apiPath from "./apiPath";
-import {hasDom, authToken, pageData} from "./globals";
+import {authToken, pageData} from "./globals";
 import user from "./guest";
 
 const advertisements = apiPath("advertisements", {
@@ -52,36 +52,12 @@ function reviews() {
     resolve: {
       categories,
       advertisements,
-      reviews: apiPath("reviews", {limit: 20})
+      articles: apiPath("articles/reviews", {limit: 20})
     }
   });
 }
 
 reviews.pathPattern = /^\/reviews$/;
-
-
-function review(id) {
-  return getData({
-    staticProps: {
-      user,
-    },
-    preHooks: [
-      withUser
-    ],
-    resolve: {
-      categories,
-      review: apiPath(`reviews/${id}`)
-    },
-    postHooks: [
-      (data) => {
-        data.title = data.review.title;
-        return data;
-      }
-    ]
-  });
-}
-
-review.pathPattern = /^\/reviews\/([a-f0-9\-]+)$/;
 
 function category(name) {
   return getData({
@@ -315,11 +291,10 @@ function signOut() {
 signOut.pathPattern = /^\/sign_out$/;
 
 const resolvers = [
-  home, review, reviews, category,
+  home, reviews, category, managePromotion,
   profile, article, signUp, signIn,
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
-  managePromotion
 ];
 
 export default function resolveData(location) {

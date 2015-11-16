@@ -24,7 +24,7 @@ export default class RichText extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.disabled) {
+    if (!this.props.disabled && typeof tinymce !== "undefined") {
       this.editor = new tinymce.Editor(
         this.id,
         this.config,

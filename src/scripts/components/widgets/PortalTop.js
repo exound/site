@@ -51,7 +51,7 @@ export default class PortalTop extends React.Component {
             {this.categoriesMenuItems}
           </Menu>
 
-          <MenuItem link="/categories/REVIEWS 评测">评 测</MenuItem>
+          <MenuItem link="/reviews">评 测</MenuItem>
           <MenuItem link="http://ask.exound.com">社 区</MenuItem>
         </Menu>
 

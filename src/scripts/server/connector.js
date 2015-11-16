@@ -79,11 +79,13 @@ connector.use(function *(next) {
 
   if (!resolver) return yield next;
 
-  const data = yield resolver
+  const isManagePath = !!location.pathname.match(/^\/manage/);
 
-  store.data = data;
+  const data = !isManagePath && (yield resolver);
 
-  const app = ServerRenderer.run({data, renderProps: props});
+  if (data) store.data = data;
+
+  const app = !isManagePath && ServerRenderer.run({data, renderProps: props});
 
   yield this.render({
     app,

@@ -3,6 +3,7 @@ import {Redirect, IndexRoute, Route} from "react-router";
 import {createRoutesFromReactChildren} from "react-router/lib/RouteUtils";
 import App from "../components/App";
 import Home from "../components/pages/Home";
+import Reviews from "../components/pages/Reviews";
 import Category from "../components/pages/Category";
 import Article from "../components/pages/Article";
 import Profile from "../components/pages/Profile";
@@ -22,6 +23,7 @@ const routes = (
     <Route path="categories/:name" component={Category} />
     <Route path="articles/:id" component={Article} />
     <Route path="profile/:id" component={Profile} />
+    <Route path="reviews" component={Reviews} />
     <Route path="manage" component={ManageArticles} />
     <Route path="manage/write/article" component={WriteArticle} />
     <Route path="manage/write/promotion" component={WritePromotion} />

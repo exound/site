@@ -1,4 +1,6 @@
 import React from "react";
+
+import {authToken} from "../../core/globals";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import List from "./List";
@@ -44,6 +46,9 @@ export default class PortalTop extends React.Component {
   }
 
   render() {
+    const askBase = "http://ask.exound.com"
+        , askLink = authToken ? `${askBase}?token=${authToken}` : askBase;
+
     return (
       <header className="top full-bg">
         <Menu wrapper="nav" className="left main">
@@ -52,7 +57,7 @@ export default class PortalTop extends React.Component {
           </Menu>
 
           <MenuItem link="/reviews">评 测</MenuItem>
-          <MenuItem link="http://ask.exound.com">社 区</MenuItem>
+          <MenuItem link={askLink}>社 区</MenuItem>
         </Menu>
 
         <h1 className="center">

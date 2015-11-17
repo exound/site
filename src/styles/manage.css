@@ -67,6 +67,16 @@
     overflow: hidden;
 }
 
+:--manage-article-item header h2 a {
+    display: block;
+    line-height: 33px;
+    width: 640px;
+    height: 33px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 :--manage-article-item header .publish {
     position: absolute;
     z-index: 1;

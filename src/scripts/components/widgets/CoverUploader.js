@@ -1,32 +1,27 @@
 import React from "react";
 
 import Button from "./Button";
-import feq from "../../core/feq";
+import HiddenFileField from "./HiddenFileField";
+import uploadFile from "../../core/uploadFile";
 import apiPath from "../../core/apiPath";
 
 export default class CoverUploader extends React.Component {
   showCoverInput = (event) => {
-    this.refs.coverInput.click();
+    this.refs.coverInput.select();
   };
 
   newCover = (event) => {
-    const file = this.refs.coverInput.files[0];
+    const file = this.refs.coverInput.file;
 
     if (file) {
-      this.upload(file);
+      uploadFile(file, {
+        article_id: this.props.articleId,
+        kind: "cover"
+      }).then(({body}) => {
+        this.props.mount.value = body.src;
+        this.refs.coverInput.clear();
+      });
     }
-  }
-
-  upload(file) {
-    const data = new FormData();
-
-    data.append("file", file);
-    data.append("article_id", this.props.articleId);
-    data.append("kind", "cover");
-
-    feq.post(apiPath("uploads"), data).then(({body}) => {
-      this.props.mount.value = body.src;
-    });
   }
 
   render() {
@@ -50,10 +45,7 @@ export default class CoverUploader extends React.Component {
         <Button onClick={this.showCoverInput}
                 text="封面图片" />
 
-        <input type="file"
-               onChange={this.newCover}
-               ref="coverInput"
-               style={{display: "none"}} />
+        <HiddenFileField onChange={this.newCover} ref="coverInput" />
       </div>
     );
   };

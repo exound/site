@@ -2,6 +2,9 @@ import R from "ramda";
 import React from "react";
 
 import bindField from "../../decorators/bindField";
+import uploadFile from "../../core/uploadFile";
+import randStr from "../../core/randStr";
+import HiddenFileField from "./HiddenFileField";
 
 @bindField({
   valueGetter() {
@@ -24,6 +27,8 @@ export default class RichText extends React.Component {
   }
 
   componentWillMount() {
+    this.id = randStr();
+
     if (!this.props.disabled && typeof tinymce !== "undefined") {
       this.editor = new tinymce.Editor(
         this.id,
@@ -74,7 +79,13 @@ export default class RichText extends React.Component {
           "undo", "redo", "styleselect", "bold italic",
           "alignleft aligncenter alignright alignjustify",
           "blockquote bullist numlist", "link unlink image media"
-        ].join(" ")
+        ].join(" "),
+        file_picker_callback: (callback, _, {filetype}) => {
+          if (filetype === "image") {
+            this.refs.fileInput.select();
+            this.imageDialogCallback = callback;
+          }
+        }
       };
     }
 
@@ -83,17 +94,18 @@ export default class RichText extends React.Component {
     );
   }
 
-  get id() {
-    if (!this.__id__) {
-      const id = parseInt(
-        ((Math.random() * 9 + 1)).toString().replace(".", "")
-      ).toString(16);
+  newUpload = () => {
+    const file = this.refs.fileInput.file;
 
-      this.__id__ = `editor-${id}`;
+    if (file) {
+      uploadFile(file, {
+        kind: "attachment"
+      }).then(({body}) => {
+        this.imageDialogCallback(`${body.src}?max=800`);
+        this.refs.fileInput.clear();
+      });
     }
-
-    return this.__id__;
-  }
+  };
 
   render() {
     const {
@@ -115,6 +127,7 @@ export default class RichText extends React.Component {
       <div className={`control ${className || ""} ${error ? "error" : ""}`}>
         {errorDisplay}
         <textarea id={this.id} defaultValue={content} />
+        <HiddenFileField ref="fileInput" onChange={this.newUpload} />
       </div>
     );
   }

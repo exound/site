@@ -734,6 +734,7 @@
     height: 240px;
     width: 345px;
     overflow: hidden;
+    background-color: RGBA(42, 42, 42, 0.8);
 }
 
 :--upper-reviews .more {
@@ -747,8 +748,8 @@
     bottom: 0;
 }
 
-:--upper-reviews .review {
-    background-color: RGBA(42, 42, 42, 0.96);
+:--upper-reviews .review:not(.active) {
+    background-color: RGBA(42, 42, 42, 0.8);
     padding: 13px;
     border-bottom: 1px solid #888888;
     box-sizing: border-box;
@@ -756,7 +757,6 @@
 }
 
 :--upper-reviews .review.active {
-    background-color: RGBA(42, 42, 42, 0.9);
     padding: 24px 13px;
     border-bottom: 0;
     transition: padding .4s;

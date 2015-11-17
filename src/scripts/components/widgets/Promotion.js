@@ -13,11 +13,7 @@ export default class Promotion extends React.Component {
     const className = `promotion item ${this.props.className}`;
 
     return (
-      <article className={className}>
-        <section className="content">
-          <h1 className="title">{title}</h1>
-        </section>
-      </article>
+      <div className={className} />
     );
   }
 };

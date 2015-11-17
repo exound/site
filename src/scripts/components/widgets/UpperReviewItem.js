@@ -9,6 +9,7 @@ export default class UpperReviewItem extends React.Component {
   };
 
   render() {
+
     const {
       review,
       index,
@@ -36,13 +37,19 @@ export default class UpperReviewItem extends React.Component {
           "review active" :
           "review";
 
+    const scoreDisplay = average &&
+          <span className="score">评分: {average}</span>;
+
+    const priceDisplay = price &&
+          <span className="price">价格: {price}</span>;
+          
     return (
       <div onMouseOver={this.hover} className={className}>
         <h2><Link to={`/articles/${id}`}>{title}</Link></h2>
 
         <div className="meta">
-          <span className="score">评分: {average}</span>
-          <span className="price">价格: {price}</span>
+          {scoreDisplay}
+          {priceDisplay}
         </div>
       </div>
     );

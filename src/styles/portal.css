@@ -775,6 +775,14 @@
     font-size: 16px;
 }
 
+:--upper-reviews .review h2 a {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 :--upper-reviews .review .meta {
     display: flex;
     justify-content: space-between;

@@ -1,3 +1,4 @@
+import R from "ramda";
 import React from "react";
 import QRCode from "qrcode.react";
 
@@ -50,7 +51,7 @@ export default class Article extends React.Component {
         , encodedUrl = encodeURI(currentUrl)
         , shareWeiboUrl = `http://service.weibo.com/share/share.php?title=${pageTitle}&url=${encodedUrl}&source=www.exound.com`;
 
-    const sidebar = review ?
+    const sidebar = (review && review_meta && !R.isEmpty(R.keys(review_meta))) ?
           <ReviewSidebar meta={review_meta} /> :
           <HomeSidebar advertisements={advertisements} />;
 

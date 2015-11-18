@@ -1,6 +1,7 @@
 import React from "react";
 
 import {fromNow} from "../../core/date";
+import buildUser from "../../core/user";
 import Link from "./Link";
 
 export default class Comment extends React.Component {
@@ -10,13 +11,14 @@ export default class Comment extends React.Component {
     } = this.props;
 
     const {
-      user,
       content,
       created_at
     } = comment;
 
+    const user = buildUser(comment.user);
+
     const style = {
-      backgroundImage: `url(${user.avatar})`
+      backgroundImage: `url(${user.avatar || "/images/guest_avatar.png"})`
     };
 
     return (

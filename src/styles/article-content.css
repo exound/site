@@ -40,7 +40,6 @@
 }
 
 .article-content > * {
-    padding-bottom: 20px;
     text-align: justify;
 }
 
@@ -51,8 +50,76 @@
 .article-content h4,
 .article-content blockquote,
 .article-content ul,
-.article-content ol {
-    padding: 16px 44px;
+.article-content ol,
+.article-content figure {
+    padding: 8px 44px;
+    margin: 0 auto;
+}
+
+.article-content li {
+    position: relative;
+    padding: 8px 0;
+}
+
+.article-content ul li:before {
+    content: "";
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    background-color: #E9B32D;
+    left: -20px;
+    top: 17px;
+}
+
+.article-content ul li:first-child:before {
+    top: 9px;
+}
+
+.article-content li:first-child {
+    padding: 0 0 8px 0;
+}
+
+.article-content li:last-child {
+    padding: 8px 0 0 0;
+}
+
+.article-content ul {
+    list-style: none;
+}
+
+.article-content ol li:before {
+    content: "";
+
+}
+
+.article-content blockquote {
+    position: relative;
+    color: #888888;
+    font-style: italic;
+}
+
+.article-content blockquote:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 6px;
+    margin: 8px 0 8px 0;
+    height: calc(100% - 16px);
+    background-color: #E9B32D;
+}
+
+.article-content blockquote > *:first-child {
+    padding: 0 0 8px 0;
+}
+
+.article-content blockquote > * {
+    padding: 8px 0;
+}
+
+.article-content blockquote > *:last-child {
+    padding: 8px 0 0 0;
 }
 
 .article-content a {

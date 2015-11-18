@@ -211,6 +211,10 @@
     border: 0;
 }
 
+:--session .btn {
+    margin-right: 20px;
+}
+
 @custom-selector :--cover-uploader main .cover-uploader; 
 
 :--cover-uploader {

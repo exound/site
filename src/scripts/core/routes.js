@@ -17,6 +17,7 @@ import WritePromotion from "../components/pages/WritePromotion";
 import SignUp from "../components/pages/SignUp";
 import SignIn from "../components/pages/SignIn";
 import SignOut from "../components/pages/SignOut";
+import SignUpped from "../components/pages/SignUpped";
 
 const routes = (
   <Route path="/" component={App}>
@@ -37,6 +38,7 @@ const routes = (
     <Route path="sign_up" component={SignUp} />
     <Route path="sign_in" component={SignIn} />
     <Route path="sign_out" component={SignOut} />
+    <Route path="sign_upped" component={SignUpped} />
   </Route>
 );
 

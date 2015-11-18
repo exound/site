@@ -20,7 +20,10 @@ export default class BrowserRenderer {
     this.history = history;
 
     this.history.listen(location => {
-      resolveData(location).then(data => store.data = data);
+      resolveData(location).then((data) => {
+        if (data.serverRender) delete window.__data__;
+        store.data = data;
+      });
     });
 
     flyd.on(this.onStoreUpdate, store.stream$);

@@ -71,7 +71,8 @@
   "scripts": {
     "dev:server": "node_modules/.bin/webpack-dev-server --config webpack/dev.js",
     "prod:build": "rm -rf dist && node_modules/.bin/webpack --optimize-minimize --progress --config webpack/prod.js",
-    "prod:start": "npm run prod:build && node_modules/.bin/pm2 start webpack/server.js",
+    "prod:start": "node_modules/.bin/pm2 start webpack/server.js",
+    "prod:restart": "node_modules/.bin/pm2 restart server",
     "prod:stop": "node_modules/.bin/pm2 stop server"
   }
 }

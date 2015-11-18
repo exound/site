@@ -40,6 +40,7 @@ export default class SignInForm extends React.Component {
         <Input placeholder="邮箱地址" type="email" form={this.form} name="email" />
         <Input placeholder="用户密码" type="password" form={this.form} name="password" />
         <Button onClick={this.signIn} text="登 录" />
+        <Button link="/" text="返 回" />
       </div>
     );
   }

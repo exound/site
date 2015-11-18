@@ -47,7 +47,8 @@ export default class PortalTop extends React.Component {
 
   render() {
     const askBase = "http://ask.exound.com"
-        , askLink = authToken ? `${askBase}?token=${authToken}` : askBase;
+        , askLink = (!this.user.guest && authToken) ?
+          `${askBase}?token=${authToken}` : askBase;
 
     return (
       <header className="top full-bg">

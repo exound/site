@@ -285,6 +285,14 @@ function signUp() {
 
 signUp.pathPattern = /^\/sign_up$/;
 
+function signUpped() {
+  return Promise.resolve({
+    layout: "session"
+  });
+}
+
+signUpped.pathPattern = /^\/sign_upped$/;
+
 function signIn() {
   return Promise.resolve({
     layout: "session"
@@ -306,7 +314,7 @@ const resolvers = [
   profile, article, signUp, signIn,
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
-  manageCategories
+  manageCategories, signUpped
 ];
 
 export default function resolveData(location) {
@@ -316,8 +324,7 @@ export default function resolveData(location) {
 
   if (pageData) {
     return Promise.resolve(pageData).then((data) => {
-      delete window.__data__;
-      return data;
+      return R.merge(data, {serverRender: true});
     });
   }
 

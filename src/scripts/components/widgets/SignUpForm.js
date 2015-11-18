@@ -41,8 +41,7 @@ import bindForm from "../../decorators/bindForm";
 export default class SignUpForm extends React.Component {
   signUp = () => {
     this.form.submit().then(({body}) => {
-      console.log(body);
-      this.history.pushState(null, "/");
+      this.history.pushState(null, "/sign_upped");
     });
   };
 
@@ -54,6 +53,7 @@ export default class SignUpForm extends React.Component {
         <Input placeholder="昵称(不能有空格)" type="text" form={this.form} name="nick" />
         <Input placeholder="用户密码" type="password" form={this.form} name="password" />
         <Button onClick={this.signUp} text="注 册" />
+        <Button link="/" text="返 回" />
       </div>
     );
   }

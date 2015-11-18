@@ -56,6 +56,13 @@
     margin: 0 auto;
 }
 
+.article-content p,
+.article-content blockquote,
+.article-content ul,
+.article-content ol {
+    line-height: 27px;
+}
+
 .article-content li {
     position: relative;
     padding: 8px 0;

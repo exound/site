@@ -44,7 +44,8 @@
     "babel": "~5.8.0",
     "babel-runtime": "~5.8.0",
     "open-sans-fontface": "~1.4.0",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "pm2": "~0.15.10"
   },
   "devDependencies": {
     "babel-core": "~5.8.0",
@@ -69,7 +70,8 @@
   },
   "scripts": {
     "dev:server": "node_modules/.bin/webpack-dev-server --config webpack/dev.js",
-    "prod": "node_modules/.bin/webpack --optimize-minimize --progress --config webpack/prod.js",
-    "prod:server": "rm -rf dist && npm run prod && node --harmony webpack/server.js"
+    "prod:build": "rm -rf dist && node_modules/.bin/webpack --optimize-minimize --progress --config webpack/prod.js",
+    "prod:start": "npm run prod:build && node_modules/.bin/pm2 start webpack/server.js",
+    "prod:stop": "node_modules/.bin/pm2 stop server"
   }
 }

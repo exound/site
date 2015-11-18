@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from "react";
 import R from "ramda";
-import {Mount} from "lmount";
 import PortalTop from "./widgets/PortalTop";
 import Bottom from "./widgets/Bottom";
 import store from "../core/store";
@@ -31,12 +30,14 @@ export default class App extends Component {
   }
 
   defaultLayout(children) {
-    const mount = store.makeDataMount(["user"])
-        , categories = this.props.appState.data.categories;
+    const {
+      user,
+      categories
+    } = this.props.appState.data;
 
     return (
       <div className="wrapper">
-        <PortalTop categories={categories} mount={mount}/>
+        <PortalTop categories={categories} user={user}/>
         {children}
         <Bottom />
       </div>

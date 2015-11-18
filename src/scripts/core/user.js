@@ -7,11 +7,13 @@ const avatar = hasDom ?
 class User {
   constructor(props) {
     for (const name in props) {
-      if (name === "avatar") continue;
+      if (name === "avatar") {
+        this.__avatar__ = props[name];
+        continue;
+      };
+
       this[name] = props[name];
     }
-
-    this.__avatar__ = props.avatar;
   }
 
   get avatar() {

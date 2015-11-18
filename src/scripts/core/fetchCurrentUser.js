@@ -5,7 +5,7 @@ import apiPath from "./apiPath";
 const userMount = store.makeDataMount(["user"]);
 
 export default function fetchCurrentUser(data) {
-  if (data.serverRender && data.user.guest) {
+  if (data.serverRender) {
     jsonFeq.get(apiPath("users/current")).then(({body, status}) => {
       if (status < 400) {
         userMount.value = body;

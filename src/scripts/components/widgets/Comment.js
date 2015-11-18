@@ -18,7 +18,7 @@ export default class Comment extends React.Component {
     const user = buildUser(comment.user);
 
     const style = {
-      backgroundImage: `url(${user.avatar || "/images/guest_avatar.png"})`
+      backgroundImage: `url(${user.avatar})`
     };
 
     return (

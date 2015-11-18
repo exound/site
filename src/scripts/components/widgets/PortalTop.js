@@ -1,6 +1,7 @@
 import React from "react";
 
 import {authToken} from "../../core/globals";
+import buildUser from "../../core/user";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import List from "./List";
@@ -8,7 +9,7 @@ import {Link} from "react-router";
 
 export default class PortalTop extends React.Component {
   get user() {
-    return this.props.mount.value;
+    return buildUser(this.props.user);
   }
 
   get categoriesMenuItems() {
@@ -47,7 +48,7 @@ export default class PortalTop extends React.Component {
 
   render() {
     const askBase = "http://ask.exound.com"
-        , askLink = (!this.user.guest && authToken) ?
+        , askLink = (!this.user.guest) ?
           `${askBase}?token=${authToken}` : askBase;
 
     return (

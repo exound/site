@@ -757,7 +757,7 @@
 }
 
 :--upper-reviews .review.active {
-    padding: 24px 13px;
+    padding: 40px 13px;
     border-bottom: 0;
     transition: padding .4s;
 }

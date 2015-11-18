@@ -11,6 +11,10 @@
     border: none;
 }
 
+.article-content figure iframe {
+    margin: 0 -44px;
+}
+
 .article-content iframe {
     border: none;
     height: 600px;
@@ -21,7 +25,6 @@
 .article-content p img.mce-object-iframe {
     height: 600px;
     width: 800px;
-    margin: 0 -44px;
 }
 
 .article-content img:note(.mce-object-iframe) {

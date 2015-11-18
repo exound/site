@@ -5,7 +5,10 @@ const avatar = hasDom ?
       "/images/guest_avatar.png";
       
 const guest = {
-  guest: true,
+  get guest() {
+    return !this.id;
+  },
+
   avatar
 };
 

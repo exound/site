@@ -70,7 +70,7 @@ export default class RichText extends React.Component {
       this.__config__ = {
         menubar: false,
         language_url: "http://cdn.bootcss.com/tinymce/4.2.0/langs/zh_CN.js",
-        content_css: ["/tinymce.css", "/article-content.css"],
+        content_css: [`/tinymce.css?${this.id}`, `/article-content.css?${this.id}`],
         height: 754,
         body_class: "article-content",
         statusbar: false,

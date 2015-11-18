@@ -14,8 +14,10 @@ const categories = apiPath("categories")
 
 const withUser = function(resolve) {
   if (authToken) {
-    return R.merge(resolve, {user: apiPath("users/current")});
-  } 
+    return R.merge(resolve, {
+      user: apiPath("users/current"),
+    });
+  }
 
   return resolve;
 };
@@ -323,9 +325,7 @@ export default function resolveData(location) {
       , resolver = R.find(matcher, resolvers);
 
   if (pageData) {
-    return Promise.resolve(pageData).then((data) => {
-      return R.merge(data, {serverRender: true});
-    });
+    return Promise.resolve(R.merge(pageData, {serverRender: true}));
   }
 
   if (resolver) {

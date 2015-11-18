@@ -8,6 +8,7 @@ import title from "./title";
 import routes from "./routes";
 import store from "./store";
 import resolveData from "./resolveData";
+import fetchCurrentUser from "./fetchCurrentUser";
 import createElement from "./createElement";
 
 export default class BrowserRenderer {
@@ -22,15 +23,18 @@ export default class BrowserRenderer {
     this.history.listen(location => {
       resolveData(location).then((data) => {
         if (data.serverRender) delete window.__data__;
+
         store.data = data;
-      });
+
+        return data;
+      }).then(fetchCurrentUser);
     });
 
     flyd.on(this.onStoreUpdate, store.stream$);
   }
 
   onStoreUpdate = (appState) => {
-    document.title = title(appState.data && appState.data.title);
+    document.title = decodeURI(title(appState.data && appState.data.title));
     this.run();
   };
 

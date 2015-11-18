@@ -74,9 +74,10 @@ export default class RichText extends React.Component {
         height: 754,
         body_class: "article-content",
         statusbar: false,
+        default_link_target: "_blank",
         plugins: "autolink link image lists print preview media",
         toolbar: [
-          "undo", "redo", "styleselect", "bold italic",
+          "undo", "redo", "styleselect", "bold italic", "removeformat",
           "alignleft aligncenter alignright alignjustify",
           "blockquote bullist numlist", "link unlink image media"
         ].join(" "),

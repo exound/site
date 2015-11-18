@@ -71,6 +71,10 @@
     top: 17px;
 }
 
+.article-content ul li:only-of-type {
+    padding: 0;
+}
+
 .article-content ul li:first-child:before {
     top: 9px;
 }

@@ -3,12 +3,7 @@ require("babel/register")({
 });
 
 const fs = require("fs")
-    , memwatch = require("memwatch-next")
     , path = require("path");
-
-memwatch.on("leak", function(info) {
- console.error('Memory leak detected: ', info);
-});
 
 const IS_LOCAL = fs.existsSync(path.join(__dirname, "..", "_local"));
 

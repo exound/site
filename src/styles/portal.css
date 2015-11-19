@@ -30,6 +30,14 @@
     position: relative;
 }
 
+:--top h1.center a {
+    color: transparent;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+    background-image: url(~!file!../images/logo.png);
+}
+
 :--top * {
     color: white;
     background-color: var(--exound-bg-black);
@@ -184,6 +192,7 @@
 }
 
 :--promotions .promotions {
+    display: block;
     width: 100%;
     height: 425px;
 }
@@ -220,60 +229,6 @@
     border-color: orange;
     background-color: orange;
     transition: all .8s;
-}
-
-@custom-selector :--promotion .wrapper main .top-promotions .promotions .promotion.item;
-
-:--promotion {
-    margin-top: 80px;
-    position: absolute;
-    top: 0;
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    width: 835px;
-    left: calc(50% - 600px);
-    height: 300px;
-    box-sizing: border-box;
-    transition: visibility 1s, opacity 1s;
-    text-align: justify;
-    padding: 12px;
-}
-
-:--promotion.active {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 1s;
-}
-
-:--promotion .content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 140px;
-}
-
-:--promotion .content {
-    transform: translateX(800px);
-    transition: transform 2s;
-}
-
-:--promotion.active .content {
-    transform: translateX(0);
-    transition: transform 1.6s;
-}
-
-:--promotion .title {
-    position: relative;
-    top: 80px;
-}
-
-:--promotion .title {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-:--promotion .title a {
-    color: white;
 }
 
 @custom-selector :--main-body .wrapper main .body;

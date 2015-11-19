@@ -91,17 +91,6 @@ export default class ManageArticleSidebar extends React.Component {
             {toggleReview}
           </div>;
           
-
-    const privileged = hasPrivilege &&
-          <div className="meta-controls">
-            <Select className="control"
-                    options={options}
-                    defaultValue={{value: category, label: category}}
-                    form={form}
-                    name="category"
-                    placeholder="选择分类" />
-          </div>;
-
     const reviewControl = review && isAuthor &&
           <ReviewControl name="review_meta"
                          form={form}
@@ -111,15 +100,16 @@ export default class ManageArticleSidebar extends React.Component {
       "/manage/articles/mine" :
       "/manage/articles";
 
+    const removeButton = id &&
+          <Remove url={apiPath(`articles/${id}`)}
+                  text="删 除"
+                  afterRemove={this.remove} />;
+
     const actions = (isAuthor || hasPrivilege) &&
           <div className="actions">
             <Button link={this.goBackLink}
                     text="返 回" />
-
-            <Remove url={apiPath(`articles/${id}`)}
-                    text="删 除"
-                    afterRemove={this.remove} />
-
+            {removeButton}
             <Button className={saving && "waiting"}
                     text="保 存"
                     onClick={this.save} />
@@ -128,7 +118,14 @@ export default class ManageArticleSidebar extends React.Component {
     return (
       <aside className="sidebar">
         {authored}
-        {privileged}
+        <div className="meta-controls">
+          <Select className="control"
+                  options={options}
+                  defaultValue={{value: category, label: category}}
+                  form={form}
+                  name="category"
+                  placeholder="选择分类" />
+        </div>
         {reviewControl}
         {actions}
       </aside>

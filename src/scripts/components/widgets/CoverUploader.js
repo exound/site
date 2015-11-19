@@ -34,8 +34,8 @@ export default class CoverUploader extends React.Component {
     if (cover) {
       const coverUrl = cover &&
             (cover.match(/\?/) ?
-            `${cover}&max=1920` :
-            `${cover}?max=1920`);
+            `${cover}&max=835` :
+            `${cover}?max=835`);
 
       style.backgroundImage = `url('${coverUrl}')`;
     }

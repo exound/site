@@ -65,6 +65,7 @@
     "cssnext-loader": "latest",
     "style-loader": "latest",
     "template-html-loader": "latest",
+    "memwatch-next": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest"
   },

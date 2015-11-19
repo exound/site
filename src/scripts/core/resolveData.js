@@ -186,6 +186,24 @@ function managePromotions() {
 
 managePromotions.pathPattern = /^\/manage\/promotions$/;
 
+function manageBriefings() {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理快讯",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+      briefings: apiPath("briefings", {limit: 40})
+    }
+  });
+}
+
+manageBriefings.pathPattern = /^\/manage\/briefings$/;
+
 function manageArticle(id) {
   return getData({
     staticProps: {
@@ -278,6 +296,24 @@ function writePromotion() {
 }
 
 writePromotion.pathPattern = /^\/manage\/write\/promotion$/;
+
+function writeBriefing() {
+  return getData({
+    staticProps: {
+      user,
+      title: "投递快讯",
+      briefing: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+    }
+  });
+}
+
+writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
 
 function signUp() {
   return Promise.resolve({

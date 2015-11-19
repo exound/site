@@ -2,7 +2,6 @@ import R from "ramda";
 import React from "react";
 
 import Link from "./Link";
-import Promotion from "./Promotion";
 import UpperReviews from "./UpperReviews";
 import hasTimers from "../../decorators/hasTimers";
 
@@ -83,12 +82,6 @@ export default class Promotions extends React.Component {
       reviews
     } = this.props;
 
-    const promotions = this.promotions.map((promotion, key) => {
-      const className = this.activeClass(key);
-
-      return promotion.title && <Promotion {...{key, promotion, className}} />;
-    });
-
     const style = {
       backgroundImage: `url(${this.current.image})`
     };
@@ -98,12 +91,7 @@ export default class Promotions extends React.Component {
 
     return (
       <div style={style} className="top-promotions upper">
-        <Link to={this.current.url}>
-          <div className="promotions">
-            {promotions}
-          </div>
-        </Link>
-
+        <Link className="promotions" to={this.current.url} />
         {this.dots}
         {upperReviews}
       </div>

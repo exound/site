@@ -35,10 +35,4 @@ config.module.loaders.push({
   loaders: ["style", "css", "cssnext"]
 });
 
-config.module.loaders.push({
-  test: /\.(png|jpg|jpeg|gif|bmp)$/,
-  exclude: /node_modules/,
-  loader: "file"
-});
-
 module.exports = config;

@@ -223,12 +223,22 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat no-repeat;
-    height: 425px;
+    height: 450px;
     margin-bottom: 20px;
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #CCCCCC;
+}
+
+:--cover-uploader .tip {
+    padding: 4px 8px;
+    margin-top: 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #AAAAAA;
+    background-color: #CCCCCC;
 }
 
 @custom-selector :--meta-controls main .meta-controls;

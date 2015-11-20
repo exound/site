@@ -176,7 +176,7 @@
 
 :--upper {
     width: 100%;
-    height: 425px;
+    height: 450px;
 }
 
 @custom-selector :--promotions .wrapper .top-promotions;
@@ -194,7 +194,7 @@
 :--promotions .promotions {
     display: block;
     width: 100%;
-    height: 425px;
+    height: 450px;
 }
 
 :--promotions .promotions * {
@@ -405,7 +405,7 @@
 
 :--article .cover {
     width: 835px;
-    height: 425px;
+    height: 450px;
     background-color: #CCCCCC;
 }
 
@@ -683,7 +683,7 @@
 :--upper-reviews {
     position: absolute;
     border-radius: 4px;
-    top: 146px;
+    top: 164px;
     right: 50%;
     transform: translateX(600px);
     height: 240px;

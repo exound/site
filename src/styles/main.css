@@ -35,6 +35,11 @@ a.btn {
     text-align: center;
 }
 
+.btn.disabled,
+.btn[disabled] {
+    background-color: #CCCCCC;
+}
+
 .react-toggle-thumb {
     box-shadow: none !important;
 }

@@ -10,12 +10,14 @@ export default class Button extends React.Component {
       type,
       link,
       onClick,
+      disabled
     } = this.props;
 
     const Component =  link ? Link : "button"
         , props = {
           onClick,
-          className: `btn ${className || ""}`
+          disabled,
+          className: `btn ${className || ""} ${disabled ? "disabled" : ""}`
         };
 
     if (link) props.to = link;

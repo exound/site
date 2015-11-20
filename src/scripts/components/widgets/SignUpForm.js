@@ -39,20 +39,37 @@ import bindForm from "../../decorators/bindForm";
   ]
 })
 export default class SignUpForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   signUp = () => {
-    this.form.submit().then(({body}) => {
-      this.history.pushState(null, "/sign_upped");
-    });
+    this.form.submit().then(({body, status}) => {
+      this.setState({requesting: true});
+
+      if (status < 400) {
+        this.history.pushState(null, "/sign_upped");
+      } else {
+        this.setState({requesting: false});
+      }
+    }).catch(() => this.setState({requesting: false}));
   };
 
   render() {
+    const {
+      requesting
+    } = this.state;
+
+    const text = requesting ? "注册中..." : "注 册";
+
     return (
       <div className="form">
         <h1>注 册</h1>
         <Input placeholder="邮箱地址" type="email" form={this.form} name="email" />
         <Input placeholder="昵称(不能有空格)" type="text" form={this.form} name="nick" />
         <Input placeholder="用户密码" type="password" form={this.form} name="password" />
-        <Button onClick={this.signUp} text="注 册" />
+        <Button disabled={requesting} onClick={this.signUp} text={text} />
         <Button link="/" text="返 回" />
       </div>
     );

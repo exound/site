@@ -45,6 +45,8 @@ export default class CoverUploader extends React.Component {
         <Button onClick={this.showCoverInput}
                 text="封面图片" />
 
+        <span className="tip">图片体积不要超过1mb</span>
+
         <HiddenFileField onChange={this.newCover} ref="coverInput" />
       </div>
     );

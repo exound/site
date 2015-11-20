@@ -16,34 +16,26 @@ import store from "../core/store";
 import ServerRenderer from "./ServerRenderer";
 import createElement from "../core/createElement";
 import title from "../core/title";
+import templateString from "raw!../../index.html";
 
 const connector = koa();
 
-connector.use(serve(path.join(__dirname, "..", "..", "..", "dist")));
+connector.use(serve(path.join("dist", "client")));
 
 connector.use(function *(next) {
   if (this.render) return yield next;
 
-  const templatePath = path.join(__dirname, "..", "..", "index.html");
   const cache = {};
-
-  function readFile() {
-    return function(callback) {
-      fs.readFile(templatePath, callback);
-    }
-  }
-
-  const source = (yield readFile(templatePath)).toString();
 
   this.renderTemplate = function (locals) {
     return function (callback) {
       if (!cache.template) {
-        cache.template = Handlebars.compile(source);
+        cache.template = Handlebars.compile(templateString);
       }
 
       callback(null, cache.template(locals));
-    }
-  }
+    };
+  };
 
   this.render = function* (locals) {
     this.type = "html";
@@ -62,7 +54,7 @@ connector.use(function *(next) {
           else resolve({redirect, props});
         });
       });
-    }
+    };
   }
 
   const location = createLocation(this.request.url)

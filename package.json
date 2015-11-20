@@ -20,7 +20,7 @@
     "co": "4.6.0",
     "sanitize-html": "~1.11.0",
     "flyd": "~0.1.15",
-    "lmount": "~0.0.2",
+    "lmount": "~0.0.3",
     "moment": "~2.10.6",
     "feq": "~0.0.1",
     "scroll-behavior": "~0.3.0",
@@ -54,6 +54,7 @@
     "consolidate": "latest",
     "css-loader": "latest",
     "url-loader": "latest",
+    "raw-loader": "latest",
     "json-loader": "latest",
     "null-loader": "latest",
     "postcss-loader": "latest",
@@ -65,15 +66,15 @@
     "cssnext-loader": "latest",
     "style-loader": "latest",
     "template-html-loader": "latest",
-    "memwatch-next": "latest",
+    "node-inspector": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest"
   },
   "scripts": {
     "dev:server": "node_modules/.bin/webpack-dev-server --config webpack/dev.js",
-    "prod:build": "rm -rf dist && node_modules/.bin/webpack --optimize-minimize --progress --config webpack/prod.js",
-    "prod:start": "node_modules/.bin/pm2 start webpack/server.js",
-    "prod:restart": "node_modules/.bin/pm2 restart server",
-    "prod:stop": "node_modules/.bin/pm2 stop server"
+    "prod:build": "rm -rf dist && node_modules/.bin/webpack --progress --config webpack/prod.js",
+    "prod:start": "node_modules/.bin/pm2 start dist/server/index.js --name \"exound\"",
+    "prod:restart": "node_modules/.bin/pm2 restart exound",
+    "prod:stop": "node_modules/.bin/pm2 stop exound"
   }
 }

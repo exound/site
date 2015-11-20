@@ -3,7 +3,7 @@ import {Data, Mount} from "lmount";
 
 class Store {
   constructor(state = {}) {
-    this.__state__ = Data.wrap(state);
+    this.__state__ = Data.wrap(state, {history: false});
     this.dataMount = this.makeMount(["data"]);
     this.formsMount = this.makeMount(["forms"]);
     this.userMount = this.makeDataMount(["user"]);

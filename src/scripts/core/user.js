@@ -1,8 +1,5 @@
 import {hasDom} from "./globals";
-
-const avatar = hasDom ?
-      require("../../images/guest_avatar.png") :
-      "/images/guest_avatar.png";
+import avatar from "url!../../images/guest_avatar.png";
 
 class User {
   constructor(props) {

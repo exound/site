@@ -29,13 +29,13 @@ export default class PortalTop extends React.Component {
       {link: "/sign_up", content: "注 册", icon: "user-plus"},
       {link: "/sign_in", content: "登 录", icon: "sign-in"}
     ] : [
-      {link: `/profile/${nick}`, content: nick},
-      {link: "/manage", content: "管 理"},
-      {link: "/sign_out", content: "登 出"}
+      {link: `/profile/${nick}`, content: nick, icon: "user"},
+      {link: "/manage", content: "管 理", icon: "cog"},
+      {link: "/sign_out", content: "登 出", icon: "sign-out"}
     ]).map(({link, content, icon}) => {
       return (
         <MenuItem key={content} link={link}>
-          {content}
+          <div>{content}</div>
           <i className={`fa fa-${icon}`} />
         </MenuItem>
       );

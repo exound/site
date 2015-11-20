@@ -47,7 +47,7 @@
     height: 64px;
 }
 
-:--top .menu .item > *:hover {
+:--top .menu .item:hover {
     color: var(--exound-orange);
 }
 
@@ -83,9 +83,6 @@
 
 @custom-selector :--sub-menu .wrapper header.top .menu.sub;
 
-:--sub-menu:hover {
-}
-
 :--sub-menu > ul {
     display: none;
     z-index: 12;
@@ -103,6 +100,10 @@
     line-height: 64px;
     padding: 0 16px 0 16px;
     border-left: 1px solid var(--exound-gray);
+}
+
+:--menu-li > .item a:hover {
+    color: var(--exound-orange);
 }
 
 :--menu-li:last-child {
@@ -144,24 +145,40 @@
 :--user-menu ul {
     flex-flow: column wrap;
     right: 0;
-    width: 120px;
 }
 
 :--user-menu ul > li {
     position: relative;
-    padding-left: 24px;
+    padding-right: 24px;
+    padding-left: 32px;
     line-height: 64px;
     border-bottom: 1px solid var(--exound-gray);
 }
 
 :--user-menu ul > li .item {
-    text-align: left;
+    text-align: right;
+}
+
+:--user-menu ul > li .item a {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+:--user-menu ul > li .item a:hover div {
+    color: var(--exound-orange);
+}
+
+:--user-menu ul > li .item a div {
+    width: auto;
+    white-space: nowrap;
 }
 
 :--user-menu ul > li i.fa {
-    position: absolute;
     line-height: 64px;
-    right: 16px;
+    width: 16px;
+    color: #888888;
+    margin-left: 24px;
 }
 
 @custom-selector :--main .wrapper > main;

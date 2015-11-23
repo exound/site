@@ -287,6 +287,24 @@ function managePromotion(id) {
 
 managePromotion.pathPattern = /^\/manage\/promotions\/([a-f0-9\-]+)$/;
 
+function manageBriefing(id) {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理快讯"
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      briefing: apiPath(`briefings/${id}`),
+      categories
+    }
+  });
+}
+
+manageBriefing.pathPattern = /^\/manage\/briefings\/([a-f0-9\-]+)$/;
+
 function manageCategories() {
   return getData({
     staticProps: {
@@ -413,7 +431,7 @@ const resolvers = [
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
-  briefings
+  briefings, manageBriefing
 ];
 
 export default function resolveData(location) {

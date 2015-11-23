@@ -9,7 +9,7 @@ export default class ManageSidebar extends React.Component {
       user
     } = this.props;
 
-    const privileged = R.contains(user.role, ["admin", "moderator"]) &&
+    const privileged = R.contains(user.role, ["admin", "editor"]) &&
           <div className="menu">
             <Link to="/manage/write/promotion">添加头条</Link>
             <Link to="/manage/articles">管理文章</Link>

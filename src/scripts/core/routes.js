@@ -13,6 +13,7 @@ import ManagePromotions from "../components/pages/ManagePromotions";
 import ManageBriefings from "../components/pages/ManageBriefings";
 import ManagePromotion from "../components/pages/ManagePromotion";
 import ManageArticle from "../components/pages/ManageArticle";
+import ManageBriefing from "../components/pages/ManageBriefing";
 import ManageCategories from "../components/pages/ManageCategories";
 import WriteArticle from "../components/pages/WriteArticle";
 import WritePromotion from "../components/pages/WritePromotion";
@@ -37,7 +38,8 @@ const routes = (
     <Route path="manage/articles/mine" component={ManageArticles} />
     <Route path="manage/briefings/mine" component={ManageBriefings} />
     <Route path="manage/articles/:id" component={ManageArticle} />
-    <Route path="manage/promotions/:id" component={ManagePromotions} />
+    <Route path="manage/promotions/:id" component={ManagePromotion} />
+    <Route path="manage/briefings/:id" component={ManageBriefing} />
     <Route path="manage/articles" component={ManageArticles} />
     <Route path="manage/promotions" component={ManagePromotions} />
     <Route path="manage/categories" component={ManageCategories} />

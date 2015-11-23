@@ -15,8 +15,9 @@ export default class HomeSidebar extends React.Component {
       return <Advertisement advertisement={advertisement} />;
     }, advertisements);
 
-    const briefingsDisplay = briefings && briefings.length &&
-          <SidebarBriefings briefings={briefings} />;
+    const briefingsDisplay = (briefings && briefings.length) ?
+          <SidebarBriefings briefings={briefings} /> :
+          null;
 
     return (
       <aside className="sidebar">

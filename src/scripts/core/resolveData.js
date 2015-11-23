@@ -425,6 +425,14 @@ function signOut() {
 
 signOut.pathPattern = /^\/sign_out$/;
 
+function notFound() {
+  return Promise.resolve({
+    layout: "session"
+  });
+}
+
+notFound.pathPattern = /\.*/;
+
 const resolvers = [
   home, reviews, category, managePromotion,
   profile, article, signUp, signIn,
@@ -437,7 +445,7 @@ const resolvers = [
 export default function resolveData(location) {
   const path = location.pathname
       , matcher = resolver => resolver.pathPattern.exec(path)
-      , resolver = R.find(matcher, resolvers);
+      , resolver = R.find(matcher, resolvers) || notFound;
 
   if (pageData) {
     return Promise.resolve(R.merge(pageData, {serverRender: true}));

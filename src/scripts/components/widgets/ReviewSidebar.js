@@ -3,17 +3,23 @@ import React from "react";
 import QRCode from "qrcode.react";
 
 import RadarChart from "./RadarChart";
+import SidebarBriefings from "./SidebarBriefings";
 import Link from "./Link";
 
 export default class ReviewSidebar extends React.Component {
   render() {
+    const {
+      briefings,
+      meta
+    } = this.props;
+
     const {
       price,
       scores,
       currency,
       url,
       sellers
-    } = this.props.meta;
+    } = meta;
 
     const chartData = [R.map(item => item.score, scores)];
 
@@ -47,6 +53,10 @@ export default class ReviewSidebar extends React.Component {
             <div className="scan-text">或扫一扫直接购买</div>
           ];
           
+    const briefingsDisplay = (briefings && briefings.length) ?
+          <SidebarBriefings briefings={briefings} /> :
+          null;
+
 
     return (
       <aside className="review sidebar">
@@ -60,6 +70,8 @@ export default class ReviewSidebar extends React.Component {
           {sellersDisplay}
           {qrcodeDisplay}
         </div>
+
+        {briefingsDisplay}
       </aside>
     );
   }

@@ -69,7 +69,7 @@ export default class ManageArticleSidebar extends React.Component {
       label: category
     }));
 
-    const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
+    const hasPrivilege = R.contains(user.role, ["admin", "editor"])
         , isAuthor = !article.user || user.id === article.user.id;
 
     const toggleReview = hasPrivilege &&

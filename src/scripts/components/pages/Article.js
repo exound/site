@@ -14,6 +14,7 @@ export default class Article extends React.Component {
     const {
       article,
       advertisements,
+      briefings,
       comments
     } = this.props.appState.data;
 
@@ -32,7 +33,7 @@ export default class Article extends React.Component {
       published_at,
       review_meta,
       review,
-      user
+      user,
     } = article;
 
     const coverUrl = cover &&
@@ -52,8 +53,8 @@ export default class Article extends React.Component {
         , shareWeiboUrl = `http://service.weibo.com/share/share.php?title=${pageTitle}&url=${encodedUrl}&source=www.exound.com`;
 
     const sidebar = (review && review_meta && !R.isEmpty(R.keys(review_meta))) ?
-          <ReviewSidebar meta={review_meta} /> :
-          <HomeSidebar advertisements={advertisements} />;
+          <ReviewSidebar briefings={briefings} meta={review_meta} /> :
+          <HomeSidebar briefings={briefings} advertisements={advertisements} />;
 
     return (
       <main className="article-page">

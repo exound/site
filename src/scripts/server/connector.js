@@ -82,7 +82,7 @@ connector.use(function *(next) {
   yield this.render({
     app,
     apiRoot,
-    data: JSON.stringify(data),
+    data: data ? JSON.stringify(data) : null,
     title: decodeURI(title(data.title))
   });
 

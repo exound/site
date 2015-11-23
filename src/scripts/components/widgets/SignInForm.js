@@ -35,7 +35,14 @@ export default class SignInForm extends React.Component {
     this.form.submit().then(({body, status}) => {
       if (status < 400) {
         localStorage.setItem("authToken", body.auth_token);
-        this.history.pushState(null, "/");
+
+        const previousPath = this.location.state &&
+              this.location.state.previousPath
+            , path =  previousPath ?
+              previousPath :
+              "/";
+        
+        this.goTo(path);
       } else {
         this.setState({requesting: false});
       }

@@ -31,7 +31,10 @@ export default function bindField({
     };
 
 
-    Class.prototype.componentWillReceiveProps = function(nextProps, nextContext) {
+    Class.prototype.componentWillReceiveProps = function(
+      nextProps,
+      nextContext
+    ) {
       buildField.bind(this)();
       willReceiveProps && willReceiveProps.bind(this)(nextProps, nextContext);
     };

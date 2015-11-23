@@ -3,7 +3,8 @@ import {PropTypes} from "react";
 
 export default function hasHistory(Class) {
   Class.contextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    location: PropTypes.object
   };
 
   
@@ -12,4 +13,14 @@ export default function hasHistory(Class) {
       return this.context.history;
     }
   });
+
+  Object.defineProperty(Class.prototype, "location", {
+    get() {
+      return this.context.location;
+    }
+  });
+
+  Class.prototype.goTo = function goTo(path) {
+    return this.history.pushState(null, path);
+  };
 };

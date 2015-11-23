@@ -34,7 +34,7 @@ export default class ManageArticleSidebar extends React.Component {
   };
 
   remove = () => {
-    this.history.pushState(null, this.goBackLink);
+    this.goTo(this.goBackLink);
   };
 
   reviewToggled = (event) => {

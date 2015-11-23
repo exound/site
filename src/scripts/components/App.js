@@ -10,7 +10,8 @@ export default class App extends Component {
   }
 
   static childContextTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    location: PropTypes.object
   };
 
   shouldComponentUpdate(nextProps) {

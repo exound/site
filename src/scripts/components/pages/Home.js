@@ -11,6 +11,7 @@ export default class Home extends React.Component {
       promotions,
       articles,
       advertisements,
+      briefings,
       reviews
     } = this.props.appState.data;
 
@@ -32,7 +33,8 @@ export default class Home extends React.Component {
                         loadMoreConfig={loadMoreConfig}
                         articles={articles} />
 
-          <HomeSidebar advertisements={advertisements} />
+          <HomeSidebar briefings={briefings}
+                       advertisements={advertisements} />
         </section>
       </main>
     );

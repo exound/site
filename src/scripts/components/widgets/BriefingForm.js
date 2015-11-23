@@ -24,11 +24,6 @@ import apiPath from "../../core/apiPath";
       name: "url",
       message: "请输入链接",
       checker: ({url}) => url && url.length
-    },
-    {
-      name: "image",
-      message: "请输入图片链接",
-      checker: ({image}) => image && image.length
     }
   ]
 })
@@ -53,7 +48,7 @@ export default class BriefingForm extends React.Component {
   };
 
   remove = () => {
-    this.history.pushState(null, this.goBackLink);
+    this.goTo(this.goBackLink);
   };
 
   render() {
@@ -75,7 +70,9 @@ export default class BriefingForm extends React.Component {
     const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
         , isAuthor = !mount.value.user || user.id === mount.value.user.id;
 
-    this.goBackLink = "/manage/briefings";
+    this.goBackLink = isAuthor ?
+      "/manage/briefings/mine" :
+      "/manage/briefings";
 
     const removeButton = id &&
           <Remove url={apiPath(`briefings/${id}`)}

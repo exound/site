@@ -8,7 +8,7 @@ import hasHistory from "../../decorators/hasHistory";
 export default class SignUpped extends React.Component {
   componentDidMount() {
     this.setTimeout(() => {
-      this.history.pushState(null, "/sign_in");
+      this.goTo("/sign_in");
     }, 1600);
   }
 

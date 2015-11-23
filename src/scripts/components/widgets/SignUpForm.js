@@ -49,7 +49,7 @@ export default class SignUpForm extends React.Component {
       this.setState({requesting: true});
 
       if (status < 400) {
-        this.history.pushState(null, "/sign_upped");
+        this.goTo("/sign_upped");
       } else {
         this.setState({requesting: false});
       }

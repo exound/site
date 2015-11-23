@@ -769,3 +769,62 @@
     height: 20px;
     transition: height .4s;
 }
+
+@custom-selector :--sidebar-briefings main aside.sidebar .briefings;
+
+:--sidebar-briefings header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 16px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+:--sidebar-briefings header .more {
+    color: var(--exound-gray);
+}
+
+:--sidebar-briefings ul li {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 8px 16px;
+}
+
+:--sidebar-briefings ul li:last-child {
+    border-bottom: none;
+}
+
+:--sidebar-briefings ul li .briefing .title a {
+    color: var(--exound-gray);
+}
+
+:--sidebar-briefings ul li .briefing .user {
+    color: var(--exound-orange);
+}
+
+:--sidebar-briefings ul li .briefing time {
+    color: #CCCCCC;
+}
+
+@custom-selector :--briefing main.briefings-page .left .briefing.item;
+
+:--briefing {
+    padding: 16px 32px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+:--briefing h1 {
+    margin-bottom: 16px;
+}
+
+:--briefing .title a {
+    color: var(--exound-gray);
+}
+
+:--briefing .user {
+    color: var(--exound-orange);
+}
+
+:--briefing time {
+    color: #CCCCCC;
+}

@@ -53,7 +53,7 @@ export default class PromotionForm extends React.Component {
   };
 
   remove = () => {
-    this.history.pushState(null, this.goBackLink);
+    this.goTo(this.goBackLink);
   };
 
   render() {

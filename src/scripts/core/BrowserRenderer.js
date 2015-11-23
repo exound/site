@@ -40,9 +40,8 @@ export default class BrowserRenderer {
 
   run() {
     const emptyState = R.keys(store.state).length
-        , props = {createElement, history: this.history, routes}
-        , component = emptyState ? <Router {...props} /> : <div />;
+        , props = {createElement, history: this.history, routes};
 
-    return render(component, document.querySelector("#app"));
+    return render(<Router {...props} />, document.querySelector("#app"));
   }
 };

@@ -9,7 +9,7 @@ export default class SignOut extends React.Component {
   componentDidMount() {
     this.setTimeout(() => {
       localStorage.removeItem("authToken");
-      this.history.pushState(null, "/");
+      this.goTo("/");
     }, 1600);
   }
 

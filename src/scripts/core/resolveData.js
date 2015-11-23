@@ -10,7 +10,8 @@ const advertisements = apiPath("advertisements", {
 });
 
 const categories = apiPath("categories")
-    , pushes = apiPath("pushes");
+    , pushes = apiPath("pushes")
+    , briefingsUrl = apiPath("briefings");
 
 const withUser = function(resolve) {
   if (authToken) {
@@ -33,6 +34,7 @@ function home() {
     resolve: {
       reviews: apiPath("articles/reviews", {limit: 3}),
       categories,
+      briefings: briefingsUrl,
       advertisements,
       promotions: apiPath("promotions", {limit: 6}),
       articles: apiPath("articles/published", {limit: 20})
@@ -52,6 +54,7 @@ function reviews() {
       withUser
     ],
     resolve: {
+      briefings: briefingsUrl,
       categories,
       advertisements,
       articles: apiPath("articles/reviews", {limit: 20})
@@ -60,6 +63,25 @@ function reviews() {
 }
 
 reviews.pathPattern = /^\/reviews$/;
+
+function briefings() {
+  return getData({
+    staticProps: {
+      user,
+      title: "快讯",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      briefings: briefingsUrl,
+      categories,
+      advertisements
+    }
+  });
+}
+
+briefings.pathPattern = /^\/briefings$/;
 
 function category(name) {
   return getData({
@@ -72,6 +94,7 @@ function category(name) {
       withUser
     ],
     resolve: {
+      briefings: briefingsUrl,
       categories,
       advertisements,
       articles: apiPath("articles/published", {category: name})
@@ -110,6 +133,7 @@ function article(id) {
       withUser
     ],
     resolve: {
+      briefings: briefingsUrl,
       categories,
       advertisements,
       article: apiPath(`articles/${id}`),
@@ -167,6 +191,24 @@ function manageMyArticles() {
 }
 
 manageMyArticles.pathPattern = /^\/manage\/articles\/mine$/;
+
+function manageMyBriefings() {
+  return getData({
+    staticProps: {
+      user,
+      title: "我的快讯",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+      briefings: apiPath("briefings/mine", {limit: 40})
+    }
+  });
+}
+
+manageMyBriefings.pathPattern = /^\/manage\/briefings\/mine$/;
 
 function managePromotions() {
   return getData({
@@ -315,6 +357,24 @@ function writeBriefing() {
 
 writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
 
+function writeBriefing() {
+  return getData({
+    staticProps: {
+      user,
+      title: "投递快讯",
+      briefing: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+    }
+  });
+}
+
+writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
+
 function signUp() {
   return Promise.resolve({
     layout: "session"
@@ -352,7 +412,8 @@ const resolvers = [
   profile, article, signUp, signIn,
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
-  manageCategories, signUpped
+  manageCategories, signUpped, writeBriefing, manageMyBriefings,
+  briefings
 ];
 
 export default function resolveData(location) {

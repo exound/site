@@ -15,8 +15,10 @@ export default function hasTimers(Class) {
   Class.prototype.componentWillMount = function() {
     willMount && willMount.bind(this)();
 
-    this.intervals = [];
-    this.timeouts = [];
+    if (hasDom) {
+      this.intervals = [];
+      this.timeouts = [];
+    }
   };
 
   Class.prototype.componentWillUnmount = function() {

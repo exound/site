@@ -43,7 +43,7 @@ export default class ArticleForm extends React.Component {
   }
 
   removed = () => {
-    this.history.pushState(null, "/manage/articles");
+    this.goTo("/manage/articles");
   };
 
   render() {

@@ -782,10 +782,12 @@
 }
 
 :--sidebar-briefings header .more {
+    font-size: 14px;
     color: var(--exound-gray);
 }
 
 :--sidebar-briefings ul li {
+    font-size: 14px;
     border-bottom: 1px solid #EEEEEE;
     padding: 8px 16px;
 }
@@ -795,14 +797,17 @@
 }
 
 :--sidebar-briefings ul li .briefing .title a {
+    text-align: justify;
     color: var(--exound-gray);
 }
 
 :--sidebar-briefings ul li .briefing .user {
+    font-size: 12px;
     color: var(--exound-orange);
 }
 
 :--sidebar-briefings ul li .briefing time {
+    font-size: 12px;
     color: #CCCCCC;
 }
 

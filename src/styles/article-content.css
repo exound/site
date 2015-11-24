@@ -22,10 +22,15 @@
 }
 
 .article-content p iframe,
-.article-content p img.mce-object-iframe {
+.mce-object-iframe {
     margin: 0 -44px;
     height: 600px;
     width: 800px;
+    border: none;
+}
+
+.mce-object-iframe iframe {
+    margin: 0 !important;
 }
 
 .article-content img:note(.mce-object-iframe) {

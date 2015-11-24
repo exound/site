@@ -28,18 +28,16 @@ export default class RichText extends React.Component {
 
   componentWillMount() {
     this.id = randStr();
+  }
 
+  componentDidMount() {
     if (!this.props.disabled && typeof tinymce !== "undefined") {
       this.editor = new tinymce.Editor(
         this.id,
         this.config,
         tinymce.EditorManager
       );
-    }
-  }
 
-  componentDidMount() {
-    if (this.editor) {
       const form = this.props.form
           , validate = form.validate.bind(form);
 

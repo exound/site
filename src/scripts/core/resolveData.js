@@ -32,7 +32,6 @@ function home() {
       withUser
     ],
     resolve: {
-      reviews: apiPath("articles/reviews", {limit: 3}),
       categories,
       briefings: briefingsUrl,
       advertisements,

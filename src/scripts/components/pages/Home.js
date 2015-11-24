@@ -11,8 +11,7 @@ export default class Home extends React.Component {
       promotions,
       articles,
       advertisements,
-      briefings,
-      reviews
+      briefings
     } = this.props.appState.data;
 
     const loadMoreConfig = {
@@ -21,7 +20,7 @@ export default class Home extends React.Component {
     };
 
     const promotionsDisplay = !R.isEmpty(promotions) &&
-          <Promotions reviews={reviews} promotions={promotions} />;
+          <Promotions promotions={promotions} />;
 
     return (
       <main className="portal">

@@ -78,22 +78,14 @@ export default class Promotions extends React.Component {
   };
 
   render() {
-    const {
-      reviews
-    } = this.props;
-
     const style = {
       backgroundImage: `url(${this.current.image})`
     };
-
-    const upperReviews = !R.isEmpty(reviews) &&
-          <UpperReviews reviews={reviews} />;
 
     return (
       <div style={style} className="top-promotions upper">
         <Link className="promotions" to={this.current.url} />
         {this.dots}
-        {upperReviews}
       </div>
     );
   }

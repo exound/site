@@ -67,7 +67,7 @@ export default class ReviewSidebar extends React.Component {
       <aside className="review sidebar">
         <div className="chart">
           {chart}
-          <div className="price">价格: {price}{currency}</div>
+          <div className="price">价格: {currency}{price}</div>
         </div>
 
         <div className="sales">

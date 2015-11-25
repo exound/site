@@ -18,7 +18,7 @@ const feq = new Feq({
           !location.pathname.match(/^\/sign_/) &&
           tokenInvalid && status === 401) {
         localStorage.removeItem("authToken");
-        location.replace("/sign_in");
+        location.replace("/");
       }
     }
   ]

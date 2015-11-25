@@ -26,7 +26,8 @@ export default class ReviewControl extends React.Component {
       id,
       price,
       currency,
-      url,
+      taobao_url,
+      weixin_url,
       sellers,
       scores
     } = this.props.meta || {};
@@ -48,9 +49,13 @@ export default class ReviewControl extends React.Component {
                defaultValue={currency}
                placeholder="货币单位" />
 
-        <Input ref="url"
-               defaultValue={url}
-               placeholder="网店地址" />
+        <Input ref="taobao_url"
+               defaultValue={taobao_url}
+               placeholder="淘宝地址" />
+
+        <Input ref="weixin_url"
+               defaultValue={weixin_url}
+               placeholder="微店地址" />
 
         <MapsField ref="sellers"
                    title="卖家"

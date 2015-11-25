@@ -682,17 +682,29 @@
     background-repeat: no-repeat no-repeat;
 }
 
-:--review-sidebar .sales canvas {
-    border-top: 1px solid #EEEEEE;
-    padding: 64px;
-    margin: 20px 44px 40px 44px;
+:--review-sidebar .sales .qrlink {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
 }
 
-:--review-sidebar .sales .scan-text {
-    width: 100%;
-    position: absolute;
-    bottom: 50px;
+:--review-sidebar .sales .qrlink .desc {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+:--review-sidebar .sales .qrcodes {
+    border-top: 1px solid #EEEEEE;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 25px;
+    padding: 25px 0;
     text-align: center;
+}
+
+:--review-sidebar .sales .qrcodes .qrlink:only-of-type {
+    margin: 0 auto;
 }
 
 @custom-selector :--upper-reviews .wrapper .upper .reviews;

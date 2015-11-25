@@ -1,7 +1,7 @@
 import R from "ramda";
 import React from "react";
-import QRCode from "qrcode.react";
 
+import QRLink from "./QRLink";
 import RadarChart from "./RadarChart";
 import SidebarBriefings from "./SidebarBriefings";
 import Link from "./Link";
@@ -17,7 +17,8 @@ export default class ReviewSidebar extends React.Component {
       price,
       scores,
       currency,
-      url,
+      taobao_url,
+      weixin_url,
       sellers
     } = meta;
 
@@ -47,16 +48,21 @@ export default class ReviewSidebar extends React.Component {
             {sellerItems}
           </div>;
 
-    const qrcodeDisplay = url &&
-          [
-            <QRCode value={url} />,
-            <div className="scan-text">或扫一扫直接购买</div>
-          ];
+    const weiboQRLink = weixin_url &&
+          <QRLink text="微信扫码购买" url={weixin_url} color="#5AB845" />;
+
+    const taobaoQRLink = taobao_url &&
+          <QRLink text="淘宝扫码购买" url={taobao_url} color="#EE6A48" />;
+
+    const qrcodeDisplay = (weixin_url || taobao_url) &&
+          <div className="qrcodes">
+            {taobaoQRLink}
+            {weiboQRLink}
+          </div>;
           
     const briefingsDisplay = (briefings && briefings.length) ?
           <SidebarBriefings briefings={briefings} /> :
           null;
-
 
     return (
       <aside className="review sidebar">

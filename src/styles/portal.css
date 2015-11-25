@@ -640,7 +640,9 @@
 }
 
 :--review-sidebar .sales {
-    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
 :--review-sidebar .sales .sellers {
@@ -660,8 +662,10 @@
 }
 
 :--review-sidebar .sales h2 {
-    padding: 16px;
-    border-bottom: 1px solid #EEEEEE;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: 400;
+    color: #AAAAAA;
 }
 
 :--review-sidebar .sales .seller .badge {
@@ -693,6 +697,10 @@
     margin: 0 25px;
     padding: 32px 0;
     text-align: center;
+}
+
+:--review-sidebar .sales .qrcodes:only-child {
+    border: none;
 }
 
 :--review-sidebar .sales .qrcodes .qrlink:only-of-type {

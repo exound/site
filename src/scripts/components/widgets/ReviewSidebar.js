@@ -44,6 +44,7 @@ export default class ReviewSidebar extends React.Component {
 
     const sellersDisplay = !R.isEmpty(R.keys(sellers)) &&
           <div className="sellers"> 
+            <h2>已上架至店铺:</h2>
             {sellerItems}
           </div>;
 
@@ -63,6 +64,12 @@ export default class ReviewSidebar extends React.Component {
           <SidebarBriefings briefings={briefings} /> :
           null;
 
+    const salesDisplay = (sellersDisplay || qrcodeDisplay) &&
+          <div className="sales">
+            {sellersDisplay}
+            {qrcodeDisplay}
+          </div>;
+
     return (
       <aside className="review sidebar">
         <div className="chart">
@@ -70,11 +77,7 @@ export default class ReviewSidebar extends React.Component {
           <div className="price">价格: {currency}{price}</div>
         </div>
 
-        <div className="sales">
-          <h2>已上架至店铺</h2>
-          {sellersDisplay}
-          {qrcodeDisplay}
-        </div>
+        {salesDisplay}
 
         {briefingsDisplay}
       </aside>

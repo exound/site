@@ -58,17 +58,18 @@ export default class PortalTop extends React.Component {
             {this.categoriesMenuItems}
           </Menu>
 
+          <MenuItem link="/reviews">评 测</MenuItem>
+
           <Menu className="sub item full-bg" content="百 科">
             <MenuItem link="https://exound.taobao.com/p/buy_mic.htm">
-              话筒 
+              MICROPHONE 话筒
             </MenuItem>
 
             <MenuItem link="https://exound.taobao.com/p/software.htm">
-              软件资源
+              SOFTWARE 软件资源
             </MenuItem>
           </Menu>
 
-          <MenuItem link="/reviews">评 测</MenuItem>
           <MenuItem link={askLink}>社 区</MenuItem>
         </Menu>
 

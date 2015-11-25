@@ -650,7 +650,7 @@
 }
 
 :--review-sidebar .sales .seller {
-    padding: 0 25px 25px 25px;
+    padding: 0 37.5px 25px 37.5px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -665,7 +665,7 @@
 }
 
 :--review-sidebar .sales .seller .badge {
-    height: 65.5px;
+    height: 60px;
     display: block;
     box-sizing: border-box;
     background-color: #CCCCCC;

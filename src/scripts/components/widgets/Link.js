@@ -14,14 +14,15 @@ export default class Link extends React.Component {
     const {
       to,
       className,
+      style,
       children
     } = this.props;
 
     return this.isExternal ?
-      <a target="_blank" className={className} href={to}>
+      <a target="_blank" style={style} className={className} href={to}>
         {children}
       </a> :
-      <L className={className} activeClassName="active" to={to}>
+      <L className={className} style={style} activeClassName="active" to={to}>
         {children}
       </L>;
   }

@@ -348,17 +348,15 @@
     font-size: 16px;
 }
 
-:--review-control .map header .logo {
+:--review-control .map .badge {
     box-sizing: border-box;
-    border: 1px solid #CCCCCC;
-    display: inline-block;
-    margin-right: 8px;
+    margin-bottom: 8px;
     background-color: #CCCCCC;
     background-size: contain;
     background-repeat: no-repeat no-repeat;
-    border-radius: 16px;
-    height: 32px;
-    width: 32px;
+    background-position: center;
+    height: 62px;
+    width: 281px;
 }
 
 :--review-control .map input {

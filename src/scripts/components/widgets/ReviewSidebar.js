@@ -37,8 +37,7 @@ export default class ReviewSidebar extends React.Component {
 
       return (
         <div key={seller} className="seller">
-          <div className="logo" style={style} />
-          <Link to={info.url} className="name">{seller}</Link>
+          <Link to={info.url} style={style} className="badge" />
         </div>
       );
     }, R.keys(sellers));
@@ -72,7 +71,7 @@ export default class ReviewSidebar extends React.Component {
         </div>
 
         <div className="sales">
-          <h2>直接购买入口</h2>
+          <h2>已上架至店铺</h2>
           {sellersDisplay}
           {qrcodeDisplay}
         </div>

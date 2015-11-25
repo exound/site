@@ -645,14 +645,18 @@
 
 :--review-sidebar .sales .sellers {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
 }
 
 :--review-sidebar .sales .seller {
+    padding: 0 25px 25px 25px;
     text-align: center;
     box-sizing: border-box;
-    width: 115px;
-    padding: 25px;
+}
+
+:--review-sidebar .sales .seller:first-child {
+    padding-top: 25px;
 }
 
 :--review-sidebar .sales h2 {
@@ -660,24 +664,12 @@
     border-bottom: 1px solid #EEEEEE;
 }
 
-:--review-sidebar .sales .seller .name {
-    position: relative;
-    top: 8px;
-    color: var(--exound-black);
-    font-weight: 600;
-}
-
-:--review-sidebar .sales .seller .name:hover {
-    color: var(--exound-orange);
-}
-
-:--review-sidebar .sales .seller .logo {
+:--review-sidebar .sales .seller .badge {
+    height: 65.5px;
+    display: block;
     box-sizing: border-box;
-    height: 64px;
-    width: 64px;
     background-color: #CCCCCC;
     background-size: contain;
-    border-radius: 32px;
     background-position: center;
     background-repeat: no-repeat no-repeat;
 }
@@ -699,7 +691,7 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     margin: 0 25px;
-    padding: 25px 0;
+    padding: 32px 0;
     text-align: center;
 }
 

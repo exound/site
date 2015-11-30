@@ -15,6 +15,7 @@ import ManagePromotion from "../components/pages/ManagePromotion";
 import ManageArticle from "../components/pages/ManageArticle";
 import ManageBriefing from "../components/pages/ManageBriefing";
 import ManageCategories from "../components/pages/ManageCategories";
+import ManageProfile from "../components/pages/ManageProfile";
 import WriteArticle from "../components/pages/WriteArticle";
 import WritePromotion from "../components/pages/WritePromotion";
 import WriteBriefing from "../components/pages/WriteBriefing";
@@ -44,6 +45,7 @@ const routes = (
     <Route path="manage/articles" component={ManageArticles} />
     <Route path="manage/promotions" component={ManagePromotions} />
     <Route path="manage/categories" component={ManageCategories} />
+    <Route path="manage/profile" component={ManageProfile} />
     <Route path="sign_up" component={SignUp} />
     <Route path="sign_in" component={SignIn} />
     <Route path="sign_out" component={SignOut} />

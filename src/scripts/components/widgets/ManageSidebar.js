@@ -32,6 +32,7 @@ export default class ManageSidebar extends React.Component {
           {articleRelated}
           <Link to="/manage/write/briefing">投递快讯</Link>
           <Link to="/manage/briefings/mine">我的快讯</Link>
+          <Link to="/manage/profile">个人信息</Link>
         </div>
 
         {privileged}

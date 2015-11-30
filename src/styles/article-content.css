@@ -17,14 +17,16 @@
 
 .article-content iframe {
     border: none;
-    height: 600px;
+    height: 500px;
     width: 800px;
 }
 
 .article-content p iframe,
+.article-content p object,
+.mce-object,
 .mce-object-iframe {
     margin: 0 -44px;
-    height: 600px;
+    height: 500px;
     width: 800px;
     border: none;
 }
@@ -33,17 +35,17 @@
     margin: 0 !important;
 }
 
-.article-content img:note(.mce-object-iframe) {
+.article-content img:note(.mce-object) {
     max-width: 100%;
     height: auto;
 }
 
-.article-content img:not(.mce-object-iframe)[width] {
+.article-content img:not(.mce-object)[width] {
     max-width: 100%;
     height: auto;
 }
 
-.article-content p img:not(.mce-object-iframe):only-child {
+.article-content p img:not(.mce-object):only-child {
     max-width: calc(100% + 88px);
     margin: 0 -44px;
 }

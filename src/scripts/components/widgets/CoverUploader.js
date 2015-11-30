@@ -4,7 +4,24 @@ import Button from "./Button";
 import HiddenFileField from "./HiddenFileField";
 import uploadFile from "../../core/uploadFile";
 import apiPath from "../../core/apiPath";
+import bindForm from "../../decorators/bindForm";
 
+@bindForm({
+  name: "cover",
+  dataPath: ["article", "cover"],
+  constraints: [
+    {
+      name: "title",
+      message: "标题不能超过64个字",
+      checker: ({title}) => title ? title.length <= 64 : true
+    },
+    {
+      name: "url",
+      message: "请输入链接",
+      checker: ({url}) => url && url.length
+    }
+  ]
+})
 export default class CoverUploader extends React.Component {
   showCoverInput = (event) => {
     this.refs.coverInput.select();

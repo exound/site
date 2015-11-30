@@ -15,14 +15,11 @@ export default class ManageBriefing extends React.Component {
       id
     } = briefing;
 
-    const mount = store.makeDataMount(["briefing"]);
-
     return (
       <main className="manage">
         <BriefingForm action={apiPath(`briefings/${id}`)}
-                       user={user}
-                       mount={mount}
-                       method={"put"} />
+                      user={user}
+                      method={"put"} />
       </main>
     );
   }

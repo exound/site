@@ -27,11 +27,9 @@ export default class RichText extends React.Component {
   }
 
   componentWillMount() {
-    this.id = randStr();
-  }
-
-  componentDidMount() {
     if (!this.props.disabled && typeof tinymce !== "undefined") {
+      this.id = randStr();
+
       this.editor = new tinymce.Editor(
         this.id,
         this.config,
@@ -45,16 +43,37 @@ export default class RichText extends React.Component {
         (event) => this.editor.on(event, validate),
         ["nodeChange", "input", "undo", "redo"]
       );
-
-      this.editor.render();
     }
   }
+
+  componentDidMount() {
+    if (this.editor) this.editor.render();
+
+    window.addEventListener("scroll", this.onWindowScroll);
+  }
+
+  onWindowScroll = () => {
+    const editorContainer = tinymce
+          .activeEditor
+          .getContainer()
+        , toolbar = editorContainer
+          .querySelector(".mce-toolbar-grp")
+        , rect = editorContainer.getBoundingClientRect();
+
+    if (rect.top < 0) {
+      toolbar.style.position = "fixed";
+    } else {
+      toolbar.style.position = "absolute";
+    }
+  };
 
   componentWillUnmount() {
     if (this.editor) {
       this.editor.off();
       this.editor.destroy();
     }
+
+    window.removeEventListener("scroll", this.onWindowScroll);
   }
 
   get value() {
@@ -69,16 +88,17 @@ export default class RichText extends React.Component {
         menubar: false,
         language_url: "http://cdn.bootcss.com/tinymce/4.2.0/langs/zh_CN.js",
         content_css: ["/tinymce.css", "/article-content.css"],
-        height: 754,
         body_class: "article-content",
         statusbar: false,
         default_link_target: "_blank",
-        plugins: "autolink link image lists print preview media",
+        plugins: "autolink link image lists print preview media autoresize",
         toolbar: [
           "undo", "redo", "styleselect", "bold italic", "removeformat",
           "alignleft aligncenter alignright alignjustify",
           "blockquote bullist numlist", "link unlink image media"
         ].join(" "),
+        autoresize_min_height: 754,
+        autoresize_bottom_margin: 0,
         file_picker_callback: (callback, _, {filetype}) => {
           if (filetype === "image") {
             this.refs.fileInput.select();

@@ -39,7 +39,7 @@ export default class ArticleForm extends React.Component {
   }
 
   get article() {
-    return this.props.mount.value;
+    return this.form.mount.value;
   }
 
   removed = () => {
@@ -49,7 +49,6 @@ export default class ArticleForm extends React.Component {
   render() {
     const {
       categories,
-      mount,
       user
     } = this.props;
 
@@ -59,11 +58,11 @@ export default class ArticleForm extends React.Component {
       content,
       category,
       cover,
-    } = mount.value;
+    } = this.article;
 
     const coverMount = store.makeDataMount(["article", "cover"]);
 
-    const canEdit = !mount.value.user || user.id === mount.value.user.id;
+    const canEdit = !this.article.user || user.id === this.article.user.id;
 
     const coverUploader = id &&
           <CoverUploader articleId={id}
@@ -90,7 +89,7 @@ export default class ArticleForm extends React.Component {
 
         <ManageArticleSidebar form={this.form}
                               categories={categories}
-                              article={mount.value}
+                              article={this.article}
                               user={user} />
       </section>
     );

@@ -267,6 +267,10 @@
     height: auto;
 }
 
+:--main-left .advertisement {
+    margin-top: 20px;
+}
+
 @custom-selector :--articles .wrapper main .articles;
 
 :--articles .article {

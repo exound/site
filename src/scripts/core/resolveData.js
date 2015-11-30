@@ -134,7 +134,9 @@ function article(id) {
     resolve: {
       briefings: briefingsUrl,
       categories,
-      advertisements,
+      advertisements: apiPath("advertisements", {
+        position: ["position1", "position2", "position3"]
+      }),
       article: apiPath(`articles/${id}`),
       comments: apiPath(`comments/for/${id}`)
     },
@@ -392,6 +394,23 @@ function writeBriefing() {
 
 writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
 
+function profile() {
+  return getData({
+    staticProps: {
+      user,
+      title: "个人信息"
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories
+    }
+  });
+}
+
+profile.pathPattern = /^\/manage\/profile$/;
+
 function signUp() {
   return Promise.resolve({
     layout: "session"
@@ -438,7 +457,7 @@ const resolvers = [
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
-  briefings, manageBriefing
+  briefings, manageBriefing, profile
 ];
 
 export default function resolveData(location) {

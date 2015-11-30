@@ -33,6 +33,10 @@ export default class BriefingForm extends React.Component {
     this.state = {};
   }
 
+  get briefing() {
+    return this.form.mount.value;
+  }
+
   save = () => {
     const form = this.form;
 
@@ -53,7 +57,6 @@ export default class BriefingForm extends React.Component {
 
   render() {
     const {
-      mount,
       user
     } = this.props;
 
@@ -61,14 +64,14 @@ export default class BriefingForm extends React.Component {
       id,
       title,
       url
-    } = mount.value;
+    } = this.briefing;
 
     const {
       saving
     } = this.state;
 
     const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
-        , isAuthor = !mount.value.user || user.id === mount.value.user.id;
+        , isAuthor = !this.briefing.user || user.id === this.briefing.user.id;
 
     this.goBackLink = isAuthor ?
       "/manage/briefings/mine" :

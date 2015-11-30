@@ -38,6 +38,10 @@ export default class PromotionForm extends React.Component {
     this.state = {};
   }
 
+  get promotion() {
+    return this.form.mount.value;
+  }
+
   save = () => {
     const form = this.form;
 
@@ -58,7 +62,6 @@ export default class PromotionForm extends React.Component {
 
   render() {
     const {
-      mount,
       user
     } = this.props;
 
@@ -67,14 +70,14 @@ export default class PromotionForm extends React.Component {
       title,
       url,
       image
-    } = mount.value;
+    } = this.promotion;
 
     const {
       saving
     } = this.state;
 
     const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
-        , isAuthor = !mount.value.user || user.id === mount.value.user.id;
+        , isAuthor = !this.promotion.user || user.id === this.promotion.user.id;
 
     this.goBackLink = "/manage/promotions";
 

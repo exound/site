@@ -2,6 +2,7 @@ import R from "ramda";
 import React from "react";
 import QRCode from "qrcode.react";
 
+import Advertisement from "../widgets/Advertisement";
 import Link from "../widgets/Link";
 import HomeSidebar from "../widgets/HomeSidebar";
 import ReviewSidebar from "../widgets/ReviewSidebar";
@@ -97,6 +98,8 @@ export default class Article extends React.Component {
             <div className="copyright-claim">
               <span>* 叉烧网版权所有，未经授权不得以任何形式使用。</span>
             </div>
+
+            <Advertisement advertisement={advertisements.position3} />
 
             <CommentBox commentableId={id}
                         commentableType="Article"

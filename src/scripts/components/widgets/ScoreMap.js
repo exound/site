@@ -5,9 +5,9 @@ import Input from "./Input";
 
 export default class ScoreMap extends React.Component {
   get value() {
-    return R.map(
-      ref => ref.value,
-      this.refs
+    return R.merge(
+      {key: this.props.name},
+      R.map(ref => ref.value, this.refs)
     );
   }
 

@@ -40,6 +40,11 @@ a.btn {
     background-color: #CCCCCC;
 }
 
+.advertisement a {
+    line-height: 0;
+    display: block;
+}
+
 .react-toggle-thumb {
     box-shadow: none !important;
 }

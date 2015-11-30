@@ -10,9 +10,9 @@ export default class SellerMap extends React.Component {
   }
 
   get value() {
-    return R.map(
-      ref => ref.value,
-      this.refs
+    return R.merge(
+      {key: this.props.name},
+      R.map(ref => ref.value, this.refs)
     );
   }
 

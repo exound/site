@@ -69,6 +69,8 @@ export default class ArticleForm extends React.Component {
                          cover={cover}
                          mount={coverMount} />;
 
+    window.form = this.form;
+
     return (
       <section className="body">
         <section className="left">

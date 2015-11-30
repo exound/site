@@ -394,7 +394,7 @@ function writeBriefing() {
 
 writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
 
-function profile() {
+function manageProfile() {
   return getData({
     staticProps: {
       user,
@@ -409,7 +409,7 @@ function profile() {
   });
 }
 
-profile.pathPattern = /^\/manage\/profile$/;
+manageProfile.pathPattern = /^\/manage\/profile$/;
 
 function signUp() {
   return Promise.resolve({

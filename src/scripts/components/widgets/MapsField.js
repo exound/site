@@ -6,24 +6,25 @@ import Button from "./Button";
 export default class MapsField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {maps: props.maps || {}};
+    this.state = {maps: props.maps || []};
   }
 
   get value() {
     return R.map(
-      ref => ref.value,
-      this.refs
+      key => this.refs[key].value,
+      R.map(({key}) => key, this.state.maps)
     );
   }
 
   addMap = () => {
-    const name = this.state.name;
+    const {name, maps} = this.state,
+          index = R.findIndex(R.propEq("key", name))(maps);
 
-    if (name && name.length && !this.state.maps[name]) {
-      const mapLens = R.lensProp(name);
+    if (name && name.length && index < 0) {
+      const newMaps = R.concat(R.clone(maps), [{key: name}]);
 
       this.setState({
-        maps: R.set(mapLens, {}, this.state.maps),
+        maps: newMaps,
         name: ""
       });
     }
@@ -34,11 +35,10 @@ export default class MapsField extends React.Component {
   };
 
   removeMap = (name) => {
-    const maps = R.clone(this.state.maps);
+    const maps = R.clone(this.state.maps)
+        , index = R.findIndex(R.propEq("key", name))(maps);
 
-    delete maps[name];
-
-    this.setState({maps});
+    this.setState({maps: R.remove(index, 1, maps)});
   };
 
   render() {
@@ -51,15 +51,15 @@ export default class MapsField extends React.Component {
       maps
     } = this.state;
 
-    const items = R.map((name) => {
-      const info = maps[name];
+    const items = R.map((info) => {
+      const {key} = info;
 
       return <Component removeMap={this.removeMap}
-                        ref={name}
-                        key={name}
-                        name={name}
+                        ref={key}
+                        key={key}
+                        name={key}
                         info={info} />;
-    }, R.keys(maps));
+    }, maps);
 
     return (
       <div className="maps control">

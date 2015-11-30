@@ -267,8 +267,8 @@
     height: auto;
 }
 
-:--main-left .advertisement {
-    margin-top: 20px;
+:--main-left .advertisement img {
+    width: 835px;
 }
 
 @custom-selector :--articles .wrapper main .articles;
@@ -359,11 +359,6 @@
 
 :--portal-sidebar > *:first-child {
     margin-top: 0;
-}
-
-:--portal-sidebar .advertisement a {
-    line-height: 0;
-    display: block;
 }
 
 :--portal-sidebar .advertisement img {
@@ -534,7 +529,6 @@
 @custom-selector :--comment .wrapper main .article.left .comment;
 
 :--comment-box {
-    margin-top: 20px;
     box-sizing: border-box;
     padding: 40px;
     width: 100%;

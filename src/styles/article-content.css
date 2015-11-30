@@ -35,19 +35,12 @@
     margin: 0 !important;
 }
 
-.article-content img:note(.mce-object) {
-    max-width: 100%;
-    height: auto;
-}
-
+.article-content img:not(.mce-object),
+.article-content p img:not(.mce-object):only-child,
 .article-content img:not(.mce-object)[width] {
-    max-width: 100%;
-    height: auto;
-}
-
-.article-content p img:not(.mce-object):only-child {
     max-width: calc(100% + 88px);
     margin: 0 -44px;
+    height: auto;
 }
 
 .article-content > * {

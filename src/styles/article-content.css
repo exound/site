@@ -1,4 +1,15 @@
 .article-content {
+    font-family:
+    "PingFang SC",
+    "Lantinghei SC",
+    "Microsoft Yahei",
+    "Hiragino Sans GB",
+    "Microsoft Sans Serif",
+    "WenQuanYi Micro Hei",
+    sans-serif;
+}
+
+.article-content {
     font-size: 18px;
 }
 
@@ -47,6 +58,11 @@
     text-align: justify;
 }
 
+.article-content h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
 .article-content p,
 .article-content h1,
 .article-content h2,
@@ -58,6 +74,12 @@
 .article-content figure {
     padding: 8px 44px;
     margin: 0 auto;
+}
+
+.article-content p:after {
+    content: " ";
+    display: block;
+    clear: both;
 }
 
 .article-content p,

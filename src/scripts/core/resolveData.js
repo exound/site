@@ -457,7 +457,7 @@ const resolvers = [
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
-  briefings, manageBriefing, profile
+  briefings, manageBriefing, manageProfile
 ];
 
 export default function resolveData(location) {

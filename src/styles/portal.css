@@ -293,7 +293,7 @@
 
 :--articles .article .content {
     width: 400px;
-    height: 180px;
+    height: 161px;
     overflow: hidden;
 }
 
@@ -302,7 +302,7 @@
 }
 
 :--articles .article .publish {
-    margin: 16px 0;
+    margin: 18px 0;
 }
 
 :--articles .article .publish time {

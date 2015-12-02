@@ -3,6 +3,7 @@ import React from "react";
 import QRCode from "qrcode.react";
 
 import Advertisement from "../widgets/Advertisement";
+import Imager from "../widgets/Imager";
 import Link from "../widgets/Link";
 import HomeSidebar from "../widgets/HomeSidebar";
 import ReviewSidebar from "../widgets/ReviewSidebar";
@@ -37,17 +38,8 @@ export default class Article extends React.Component {
       user,
     } = article;
 
-    const coverUrl = cover &&
-          (cover.match(/\?/) ?
-          `${cover}&max=835` :
-          `${cover}?max=835`);
-
-    const coverStyle = {
-      backgroundImage: `url('${coverUrl}')`
-    };
-
-    const coverDisplay = coverUrl &&
-          <div className="cover" style={coverStyle} />;
+    const coverDisplay = cover &&
+          <Imager max={835} url={cover} className="cover" />;
 
     const currentUrl = `http://www.exound.com${this.props.location.pathname}`
         , encodedUrl = encodeURI(currentUrl)

@@ -4,7 +4,7 @@ import {Link} from "react-router";
 
 import RichText from "./RichText";
 import Input from "./Input";
-import store from "../../core/store";
+import apiPath from "../../core/apiPath";
 import jsonFeq from "../../core/jsonFeq";
 import CoverUploader from "./CoverUploader";
 import ManageArticleSidebar from "./ManageArticleSidebar";
@@ -60,16 +60,13 @@ export default class ArticleForm extends React.Component {
       cover,
     } = this.article;
 
-    const coverMount = store.makeDataMount(["article", "cover"]);
-
     const canEdit = !this.article.user || user.id === this.article.user.id;
 
     const coverUploader = id &&
           <CoverUploader articleId={id}
-                         cover={cover}
-                         mount={coverMount} />;
-
-    window.form = this.form;
+                         action={apiPath("uploads")}
+                         method="post"
+                         cover={cover} />;
 
     return (
       <section className="body">

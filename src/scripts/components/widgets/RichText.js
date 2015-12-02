@@ -113,15 +113,12 @@ export default class RichText extends React.Component {
     );
   }
 
-  newUpload = () => {
-    const file = this.refs.fileInput.file;
-
+  newUpload = (file) => {
     if (file) {
       uploadFile(file, {
         kind: "attachment"
       }).then(({body}) => {
         this.imageDialogCallback(`${body.src}?max=800`);
-        this.refs.fileInput.clear();
       });
     }
   };

@@ -5,6 +5,7 @@ import QRLink from "./QRLink";
 import RadarChart from "./RadarChart";
 import SidebarBriefings from "./SidebarBriefings";
 import Link from "./Link";
+import Imager from "./Imager";
 
 export default class ReviewSidebar extends React.Component {
   render() {
@@ -33,14 +34,13 @@ export default class ReviewSidebar extends React.Component {
                       width={345} />;
 
     const sellerItems = R.map((seller) => {
-      const info = sellers[seller]
-           , style = {};
-
-      if (info.logo && info.logo.length) style.backgroundImage = `url(${info.logo})`;
+      const info = sellers[seller];
 
       return (
         <div key={seller} className="seller">
-          <Link to={info.url} style={style} className="badge" />
+          <Imager url={info.logo}>
+            <Link to={info.url} className="badge" />
+          </Imager>
         </div>
       );
     }, R.keys(sellers));

@@ -1,4 +1,6 @@
 import React from "react";
+
+import Imager from "./Imager";
 import {Link} from "react-router";
 import {plaintext} from "../../core/sanitize";
 import {slashFormat} from "../../core/date";
@@ -15,21 +17,12 @@ export default class ArticleItem extends React.Component {
       user
     } = this.props.article;
 
-    const coverUrl = cover &&
-          (cover.match(/\?/) ?
-          `${cover}&max=500` :
-          `${cover}?max=500`);
-
-    const articleClassName = coverUrl ?
+    const articleClassName = cover ?
           "article item" :
           "article item nocover";
 
-    const coverStyle = {
-      backgroundImage: `url('${coverUrl}')`
-    };
-
-    const coverDisplay = coverUrl &&
-          <div className="cover" style={coverStyle} />;
+    const coverDisplay = cover &&
+          <Imager max={500} url={cover} className="cover" />;
 
     return (
       <article className={articleClassName}>

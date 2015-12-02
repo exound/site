@@ -2,70 +2,50 @@ import React from "react";
 
 import Button from "./Button";
 import HiddenFileField from "./HiddenFileField";
+import HiddenField from "./HiddenField";
 import uploadFile from "../../core/uploadFile";
 import apiPath from "../../core/apiPath";
 import bindForm from "../../decorators/bindForm";
+import Imager from "./Imager";
 
 @bindForm({
   name: "cover",
   dataPath: ["article", "cover"],
-  constraints: [
-    {
-      name: "title",
-      message: "标题不能超过64个字",
-      checker: ({title}) => title ? title.length <= 64 : true
-    },
-    {
-      name: "url",
-      message: "请输入链接",
-      checker: ({url}) => url && url.length
-    }
-  ]
+  responsePath: ["src"]
 })
 export default class CoverUploader extends React.Component {
   showCoverInput = (event) => {
     this.refs.coverInput.select();
   };
 
-  newCover = (event) => {
-    const file = this.refs.coverInput.file;
-
-    if (file) {
-      uploadFile(file, {
-        article_id: this.props.articleId,
-        kind: "cover"
-      }).then(({body}) => {
-        this.props.mount.value = body.src;
-        this.refs.coverInput.clear();
-      });
-    }
-  }
-
   render() {
     const {
-      cover
+      cover,
+      articleId
     } = this.props;
 
-    const style = {};
-
-    if (cover) {
-      const coverUrl = cover &&
-            (cover.match(/\?/) ?
-            `${cover}&max=835` :
-            `${cover}?max=835`);
-
-      style.backgroundImage = `url('${coverUrl}')`;
-    }
-
     return (
-      <div style={style} className="cover-uploader">
-        <Button onClick={this.showCoverInput}
-                text="封面图片" />
+      <Imager max={835} url={cover}>
+        <div className="cover-uploader">
+          <Button onClick={this.showCoverInput}
+                  text="封面图片" />
 
-        <span className="tip">图片体积不要超过1mb</span>
+          <span className="tip">图片体积不要超过1mb</span>
 
-        <HiddenFileField onChange={this.newCover} ref="coverInput" />
-      </div>
+          <HiddenField form={this.form}
+                       name="article_id"
+                       value={articleId} />
+
+          <HiddenField form={this.form}
+                       name="kind"
+                       value="cover" />
+
+          <HiddenFileField form={this.form}
+                           name="file"
+                           onChange={this.form.submit}
+                           ref="coverInput" />
+        </div>
+      </Imager>
     );
   };
 };

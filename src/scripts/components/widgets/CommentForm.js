@@ -4,6 +4,7 @@ import bindForm from "../../decorators/bindForm";
 import SimpleText from "./SimpleText";
 import HiddenField from "./HiddenField";
 import Button from "./Button";
+import Imager from "./Imager";
 import {prepend as storeUpdater} from "../../core/storeUpdaters";
 
 @bindForm({
@@ -36,13 +37,9 @@ export default class CommentForm extends React.Component {
       commentableType
     } = this.props;
 
-    const style = {
-      backgroundImage: `url(${user.avatar})`
-    };
-
     return (
       <div className="comment form">
-        <div className="avatar" style={style} />
+        <Imager className="avatar" url={user.avatar} />
 
         <div className="right">
           <HiddenField form={this.form}

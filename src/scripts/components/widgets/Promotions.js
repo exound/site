@@ -4,6 +4,7 @@ import React from "react";
 import Link from "./Link";
 import UpperReviews from "./UpperReviews";
 import hasTimers from "../../decorators/hasTimers";
+import Imager from "./Imager";
 
 @hasTimers
 export default class Promotions extends React.Component {
@@ -78,15 +79,13 @@ export default class Promotions extends React.Component {
   };
 
   render() {
-    const style = {
-      backgroundImage: `url(${this.current.image})`
-    };
-
     return (
-      <div style={style} className="top-promotions upper">
-        <Link className="promotions" to={this.current.url} />
-        {this.dots}
-      </div>
+      <Imager url={this.current.image}>
+        <div className="top-promotions upper">
+          <Link className="promotions" to={this.current.url} />
+          {this.dots}
+        </div>
+      </Imager>
     );
   }
 }

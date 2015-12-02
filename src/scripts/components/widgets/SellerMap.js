@@ -2,6 +2,7 @@ import R from "ramda";
 import React from "react";
 
 import Input from "./Input";
+import Imager from "./Imager";
 
 export default class SellerMap extends React.Component {
   constructor(props) {
@@ -40,10 +41,6 @@ export default class SellerMap extends React.Component {
       url,
     } = info;
 
-    const style = {};
-
-    if (this.state.logo) style.backgroundImage = `url(${this.state.logo})`;
-
     return (
       <div className="seller map">
         <header>
@@ -52,7 +49,7 @@ export default class SellerMap extends React.Component {
         </header>
 
         <Input ref="bid" type="number" defaultValue={bid} placeholder="竞价" />
-        <div className="badge" style={style} /> 
+        <Imager url={this.state.logo} className="badge" /> 
         <Input ref="logo" defaultValue={logo} onChange={this.logo} placeholder="logo" />
         <Input ref="url" defaultValue={url} placeholder="链接" />
       </div>

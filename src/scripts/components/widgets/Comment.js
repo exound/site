@@ -3,6 +3,7 @@ import React from "react";
 import {fromNow} from "../../core/date";
 import buildUser from "../../core/user";
 import Link from "./Link";
+import Imager from "./Imager";
 
 export default class Comment extends React.Component {
   render() {
@@ -17,13 +18,9 @@ export default class Comment extends React.Component {
 
     const user = buildUser(comment.user);
 
-    const style = {
-      backgroundImage: `url(${user.avatar})`
-    };
-
     return (
       <div className="comment">
-        <div className="avatar" style={style} />
+        <Imager className="avatar" url={user.avatar} />
 
         <div className="right">
           <Link to={`/profile/${user.nick}`} className="user">{user.nick}</Link>

@@ -11,13 +11,13 @@ export default function bindForm({
         , didMount = Class.prototype.componentDidMount
         , WillUnmount = Class.prototype.componentWillUnmount;
 
-    function buildForm() {
-      const actionGetter = () => this.props.action;
-      const methodGetter = () => this.props.method;
+    function buildForm(context) {
+      const actionGetter = () => context.props.action;
+      const methodGetter = () => context.props.method;
 
       const mount = store.makeFormsMount([name]);
 
-      mount.value = this.form = new Form(
+      mount.value = context.form = new Form(
         dataPath,
         actionGetter,
         methodGetter,
@@ -30,7 +30,7 @@ export default function bindForm({
     Class.prototype.componentWillMount = function() {
       willMount && willMount.bind(this)();
 
-      buildForm.bind(this)();
+      buildForm(this);
     };
 
     Class.prototype.componentDidMount = function() {

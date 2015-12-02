@@ -1,6 +1,7 @@
 import R from "ramda";
 
 import jsonFeq from "./jsonFeq";
+import feq from "./feq";
 import store from "./store";
 import Validator from "./Validator";
 
@@ -61,8 +62,22 @@ export default class Form {
 
   submit = () => {
     if (this.validate()) {
-      return jsonFeq[this.method()](
-        this.action(), JSON.stringify(this.data)
+      const data = this.multipart ?
+            (() => {
+              const data = new FormData();
+
+              for (const key in this.data) {
+                data.append(key, this.data[key]);
+              }
+
+              return data;
+            })():
+            JSON.stringify(this.data);
+
+      const request = () => this.multipart ? feq: jsonFeq;
+
+      return request()[this.method()](
+        this.action(), data
       ).then(({body, status}) => {
         if (status >= 400) {
           this.errors = body.errors;

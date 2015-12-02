@@ -1,7 +1,14 @@
 import React from "react";
 
 import randStr from "../../core/randStr";
+import bindField from "../../decorators/bindField";
 
+@bindField({
+  isFileField: true,
+  valueGetter() {
+    return this.file;
+  }
+})
 export default class HiddenFileField extends React.Component {
   get file() {
     return this.refs.input.files[0];
@@ -11,8 +18,11 @@ export default class HiddenFileField extends React.Component {
     this.refs.input.click();
   }
 
-  clear() {
-    this.setState({key: randStr()});
+  change = () => {
+    const {onChange} = this.props;
+
+    return typeof onChange === "function" &&
+      onChange(this.file);
   }
 
   render() {
@@ -22,8 +32,7 @@ export default class HiddenFileField extends React.Component {
 
     return (
       <input type="file"
-             onChange={onChange}
-             key={this.state ? this.state.key : randStr()}
+             onChange={this.change}
              ref="input"
              style={{display: "none"}} />
     );

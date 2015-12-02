@@ -1,5 +1,6 @@
 import R from "ramda";
 import React from "react";
+import classNames from "classnames";
 
 import Link from "./Link";
 
@@ -20,7 +21,7 @@ export default class UpperReviewItem extends React.Component {
       cover
     } = review;
 
-    const className = active ? "review active" : "review";
+    const className = classNames("review", {active});
 
     return (
       <div onMouseOver={this.hover} className={className}>

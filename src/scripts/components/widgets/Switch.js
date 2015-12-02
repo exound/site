@@ -1,5 +1,6 @@
 import React from "react";
 import Toggle from "react-toggle";
+import classNames from "classnames";
 
 import bindField from "../../decorators/bindField";
 
@@ -33,7 +34,7 @@ export default class Switch extends React.Component {
     } = this.props;
 
     return (
-      <label className={`switch ${className || ""}`}>
+      <label className={classNames("switch", className)}>
         <span>{label}</span>
 
         <Toggle defaultChecked={defaultChecked}

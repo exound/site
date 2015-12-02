@@ -1,5 +1,6 @@
 import React from "react";
 import {SimpleSelect as Sel} from "react-selectize";
+import classNames from "classnames";
 
 import bindField from "../../decorators/bindField";
 
@@ -28,7 +29,7 @@ export default class Select extends React.Component {
     } = this.props;
 
     return (
-      <label className={`switch ${className || ""}`}>
+      <label className={classNames("switch", className)}>
         <Sel placeholder={placeholder}
              options={options}
              ref="select"

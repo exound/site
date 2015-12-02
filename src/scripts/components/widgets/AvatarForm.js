@@ -1,5 +1,6 @@
 import React from "react";
 
+import Imager from "./Imager";
 import bindForm from "../../decorators/bindForm";
 
 @bindForm({

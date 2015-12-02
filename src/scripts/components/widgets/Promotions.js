@@ -1,5 +1,6 @@
 import R from "ramda";
 import React from "react";
+import classNames from "classnames";
 
 import Link from "./Link";
 import UpperReviews from "./UpperReviews";
@@ -19,16 +20,12 @@ export default class Promotions extends React.Component {
     this.setInterval(this.loop, 1000);
   }
 
-  activeClass(cursor) {
-    return this.cursor === cursor ? "active" : "";
-  }
-
   get dots() {
     return (
       <div className="dots">
         {R.take(5, this.props.promotions).map((_, key) => {
           const onClick = () => this.cursor = key
-              , className = this.activeClass(key);
+              , className = classNames({active: this.cursor === key});
 
           return <button {...{className, onClick, key}}></button>;
         })}

@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import Link from "./Link";
 
@@ -17,7 +18,7 @@ export default class Button extends React.Component {
         , props = {
           onClick,
           disabled,
-          className: `btn ${className || ""} ${disabled ? "disabled" : ""}`
+          className: classNames("btn", className, {disabled})
         };
 
     if (link) props.to = link;

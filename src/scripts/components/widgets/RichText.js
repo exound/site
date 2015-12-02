@@ -1,5 +1,6 @@
 import R from "ramda";
 import React from "react";
+import classNames from "classnames";
 
 import bindField from "../../decorators/bindField";
 import uploadFile from "../../core/uploadFile";
@@ -140,7 +141,7 @@ export default class RichText extends React.Component {
       <div className="control readonly article-content"
            dangerouslySetInnerHTML={{__html: content}} />
     ) : (
-      <div className={`control ${className || ""} ${error ? "error" : ""}`}>
+      <div className={classNames("control", className, {error})}>
         {errorDisplay}
         <textarea id={this.id} defaultValue={content} />
         <HiddenFileField ref="fileInput" onChange={this.newUpload} />

@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import bindField from "../../decorators/bindField";
 
@@ -48,7 +49,7 @@ export default class Input extends React.Component {
     const errorDisplay = error && <span className="msg">{error}</span>;
 
     return (
-      <div className={`input control ${className || ""} ${error ? "error" : ""}`}>
+      <div className={classNames("input control", className, {error})}>
         {errorDisplay}
         <input ref="input"
                disabled={disabled}

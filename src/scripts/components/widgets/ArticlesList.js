@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import articlesMount from "../../core/articlesMount";
 import LoadMore from "./LoadMore";
@@ -23,7 +24,7 @@ export default class ArticlesList extends React.Component {
     });
 
     return (
-      <div className={`articles ${this.props.className || ""}`}>
+      <div className={classNames("articles", this.props.className)}>
         {articleItems}
 
         <LoadMore url={url}

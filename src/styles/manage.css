@@ -138,9 +138,6 @@
 @custom-selector :--session main.session;
 @custom-selector :--manage-form main.manage .body .form;
 
-:--manage-form {
-}
-
 :--session .input, :--session .input input,
 :--manage-form .input, :--manage-form .input input {
     width: 100%;
@@ -183,18 +180,19 @@
     content: "";
     display: block;
     position: absolute;
-    transform: rotate(60deg);
-    top: -160px;
-    right: -800px;
-    height: 400px;
-    width: 400px;
+    transform: skewX(20deg);
+    right: -400px;
+    top: 0;
+    padding-right: 20px;
+    height: 49px;
+    width: 320px;
     background-color: var(--exound-orange);
     animation: slide-right 1s;
 }
 
 :--session .control.error:after,
 :--manage-form .control.error:after {
-    right: -160px;
+    right: -20px;
     z-index: 0;
     animation: slide-left 1s;
 }
@@ -373,4 +371,61 @@
     position: absolute;
     top: 0;
     right: 0;
+}
+
+@custom-selector :--ctrl-grp main .body .left .control-group;
+
+:--ctrl-grp .field {
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: white;
+}
+
+:--ctrl-grp .field .input {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+:--ctrl-grp .field .input:first-child {
+    margin-bottom: 16px;
+}
+
+:--ctrl-grp h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+:--ctrl-grp .actions {
+    background-color: #F8F8F8;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 16px;
+}
+
+/* :--ctrl-grp .actions .btn { */
+/*     padding: 16px 24px; */
+/* } */
+
+@custom-selector :--avatar-uploader main .left .avatar-uploader;
+
+:--avatar-uploader .avatar {
+    height: 120px;
+    width: 120px;
+    background-position: center;
+    background-size: cover;
+}
+
+:--avatar-uploader .field {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+:--avatar-uploader .desc {
+    margin-left: 16px;
+    color: #888888;
+}
+
+:--avatar-uploader .desc p {
+    padding: 7px;
 }

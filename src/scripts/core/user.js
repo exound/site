@@ -2,7 +2,7 @@ import {hasDom} from "./globals";
 import avatar from "url!../../images/guest_avatar.png";
 
 class User {
-  constructor(props) {
+  constructor(props = {}) {
     for (const name in props) {
       if (name === "avatar") {
         this.__avatar__ = props[name];
@@ -23,5 +23,5 @@ class User {
 }
 
 export default function user(props) {
-  return new User(props || {});
+  return new User(props);
 };

@@ -15,18 +15,17 @@ export default class Form {
     constraints = []
   ) {
     this.fields = {};
-    this.mount = store.makeDataMount(dataPath);
     this.action = action;
     this.method = method;
     this.storeUpdater = storeUpdater;
     this.constraints = constraints;
 
-    if (responsePath) {
-      this.responseLens = R.lens(
-        R.path(responsePath),
-        R.assocPath(responsePath)
-      );
-    }
+    if (dataPath) this.mount = store.makeDataMount(dataPath);
+
+    if (responsePath) this.responseLens = R.lens(
+      R.path(responsePath),
+      R.assocPath(responsePath)
+    );
   }
 
   get errors() {
@@ -92,7 +91,7 @@ export default class Form {
                 R.view(responseLens, body) :
                 body;
 
-          storeUpdater(mount, item);
+          if (mount) storeUpdater(mount, item);
         }
 
         return {body, status};

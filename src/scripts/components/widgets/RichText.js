@@ -109,9 +109,7 @@ export default class RichText extends React.Component {
       };
     }
 
-    return R.merge(
-      this.props.config || {}, this.__config__
-    );
+    return R.merge(this.props.config, this.__config__);
   }
 
   newUpload = (file) => {

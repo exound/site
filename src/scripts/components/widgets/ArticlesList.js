@@ -1,3 +1,4 @@
+import R from "ramda";
 import React from "react";
 import classNames from "classnames";
 
@@ -10,14 +11,16 @@ export default class ArticlesList extends React.Component {
       Component,
       articles,
       loadMoreConfig
-    } = this.props;
+    } = R.merge({
+      loadMoreConfig: {}
+    }, this.props);
 
     const {
       url,
       limit,
       offset,
       text
-    } = loadMoreConfig || {};
+    } = loadMoreConfig;
 
     const articleItems = articles.map(article => {
       return <Component key={article.id} article={article} />;

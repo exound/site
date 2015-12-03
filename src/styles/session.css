@@ -12,6 +12,7 @@
     width: 400px;
 }
 
+.control-group h1,
 :--session-form h1 {
     border-left: 8px solid #19DB7F;
     font-weight: 100;
@@ -23,6 +24,8 @@
     overflow: hidden;
 }
 
+.control-group h1:before,
+.control-group h1:after,
 :--session-form h1:before,
 :--session-form h1:after {
     content: " ";
@@ -37,6 +40,7 @@
     background-color: #CCCCCC;
 }
 
+.control-group h1:after,
 :--session-form h1:after {
     left: 0;
     z-index: -2;

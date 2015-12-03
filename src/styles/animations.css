@@ -1,10 +1,10 @@
 @keyframes slide-left {
     0% {right: -800px;}
-    100% {right: -160px;}
+    100% {right: -20px;}
 }
 
 @keyframes slide-right {
-    0% {right: -160px;}
+    0% {right: -20px;}
     100% {right: -800px;}
 }
 

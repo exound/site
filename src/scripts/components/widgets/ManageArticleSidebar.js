@@ -15,8 +15,8 @@ import store from "../../core/store";
 @hasHistory
 export default class ManageArticleSidebar extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {review: (this.props.article || {}).review};
+    super(R.merge({article: {}}, props));
+    this.state = {review: this.props.article.review};
   }
 
   save = () => {
@@ -54,7 +54,7 @@ export default class ManageArticleSidebar extends React.Component {
       published_at,
       category,
       review_meta,
-    } = article || {};
+    } = article;
 
     const {
       saving

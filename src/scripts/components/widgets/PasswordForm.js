@@ -22,8 +22,6 @@ import bindForm from "../../decorators/bindForm";
 })
 export default class PasswordForm extends React.Component {
   render() {
-    window.form = this.form;
-
     return (
       <div className="control-group form">
         <h1>用户密码</h1>

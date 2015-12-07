@@ -7,7 +7,6 @@ import BriefingForm from "../widgets/BriefingForm";
 export default class WriteBriefing extends React.Component {
   render() {
     const {
-      categories,
       user,
       briefing
     } = this.props.appState.data;
@@ -15,8 +14,6 @@ export default class WriteBriefing extends React.Component {
     const {
       id
     } = briefing;
-
-    const mount = store.makeDataMount(["briefing"]);
 
     const action = !id ?
           apiPath("briefings") :
@@ -28,7 +25,6 @@ export default class WriteBriefing extends React.Component {
       <main className="manage">
         <BriefingForm action={action}
                       user={user}
-                      mount={mount}
                       method={method} />
       </main>
     );

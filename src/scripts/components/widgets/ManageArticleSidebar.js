@@ -64,9 +64,8 @@ export default class ManageArticleSidebar extends React.Component {
 
     const published = !!published_at;
 
-    const options = categories.map(category => ({
-      value: category,
-      label: category
+    const options = categories.map(({name}) => ({
+      value: name, label: name
     }));
 
     const hasPrivilege = R.contains(user.role, ["admin", "editor"])

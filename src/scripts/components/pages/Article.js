@@ -5,7 +5,7 @@ import QRCode from "qrcode.react";
 import Advertisement from "../widgets/Advertisement";
 import Imager from "../widgets/Imager";
 import Link from "../widgets/Link";
-import HomeSidebar from "../widgets/HomeSidebar";
+import ArticleSidebar from "../widgets/ArticleSidebar";
 import ReviewSidebar from "../widgets/ReviewSidebar";
 import CommentBox from "../widgets/CommentBox";
 import {slashFormat} from "../../core/date";
@@ -47,7 +47,7 @@ export default class Article extends React.Component {
 
     const sidebar = (review && review_meta && !R.isEmpty(R.keys(review_meta))) ?
           <ReviewSidebar briefings={briefings} meta={review_meta} /> :
-          <HomeSidebar briefings={briefings} advertisements={advertisements} />;
+          <ArticleSidebar briefings={briefings} advertisements={advertisements} />;
 
     return (
       <main className="article-page">

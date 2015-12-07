@@ -27,15 +27,27 @@
 @custom-selector :--manage-sidebar main.manage aside.sidebar;
 
 :--manage-sidebar .menu > a {
+    color: #888888;
     font-size: 18px;
     display: block;
-    padding: 20px;
-    border-bottom: 1px solid #EEEEEE;
+    padding: 16px;
 }
 
 :--manage-sidebar .menu > a.active {
+    position: relative;
     color: white;
     background-color: var(--exound-orange);
+}
+
+:--manage-sidebar .menu > a.active:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0;
+    top: 0;
+    right: -44px;
+    border: 28.5px solid transparent;
+    border-left: 16px solid var(--exound-orange);
 }
 
 @custom-selector :--manage-article-item main.manage .articles .article;
@@ -403,10 +415,6 @@
     padding: 16px;
 }
 
-/* :--ctrl-grp .actions .btn { */
-/*     padding: 16px 24px; */
-/* } */
-
 @custom-selector :--avatar-uploader main .left .avatar-uploader;
 
 :--avatar-uploader .avatar {
@@ -428,4 +436,47 @@
 
 :--avatar-uploader .desc p {
     padding: 7px;
+}
+
+@custom-selector :--categories-list main .left .categories-list;
+
+:--categories-list.control-group .field {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 0;
+    padding-right: 0;
+}
+
+:--categories-list .field .category {
+    color: #CCCCCC;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: #EEEEEE;
+    padding: 8px 0 8px 16px;
+    border-radius: 2px;
+    margin-right: 16px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+:--categories-list .field .category .articles-count {
+    color: white;
+    background-color: #2DD982;
+    padding: 0 8px;
+    margin: 0 8px;
+    border-radius: 2px;
+}
+
+:--categories-list .field .category .remove {
+    box-sizing: border-box;
+    margin: -8px 0;
+    padding: 8px 12px;
+    color: #EEEEEE;
+    font-size: 16px;
+    background-color: #CCCCCC;
+    border: none;
+}
+
+:--categories-list .field .category:last-child {
+    margin-right: 0;
 }

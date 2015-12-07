@@ -7,7 +7,6 @@ import PromotionForm from "../widgets/PromotionForm";
 export default class WritePromotion extends React.Component {
   render() {
     const {
-      categories,
       user,
       promotion
     } = this.props.appState.data;
@@ -15,8 +14,6 @@ export default class WritePromotion extends React.Component {
     const {
       id
     } = promotion;
-
-    const mount = store.makeDataMount(["promotion"]);
 
     const action = !id ?
           apiPath("promotions") :
@@ -28,7 +25,6 @@ export default class WritePromotion extends React.Component {
       <main className="manage">
         <PromotionForm action={action}
                        user={user}
-                       mount={mount}
                        method={method} />
       </main>
     );

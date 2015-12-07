@@ -10,6 +10,7 @@ const advertisements = apiPath("advertisements", {
 });
 
 const categories = apiPath("categories")
+    , deviceTypes = apiPath("device_types")
     , pushes = apiPath("pushes")
     , briefingsUrl = apiPath("briefings");
 
@@ -135,7 +136,7 @@ function article(id) {
       briefings: briefingsUrl,
       categories,
       advertisements: apiPath("advertisements", {
-        position: ["position1", "position2", "position3"]
+        position: ["position3", "position4"]
       }),
       article: apiPath(`articles/${id}`),
       comments: apiPath(`comments/for/${id}`)
@@ -310,6 +311,7 @@ function manageCategories() {
   return getData({
     staticProps: {
       user,
+      title: "管理分类"
     },
     preHooks: [
       withUser

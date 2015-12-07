@@ -13,7 +13,7 @@ export default class PortalTop extends React.Component {
   }
 
   get categoriesMenuItems() {
-    return this.props.categories.map(name => {
+    return this.props.categories.map(({name}) => {
       return (
         <MenuItem key={name} link={`/categories/${name}`}>
           {name}

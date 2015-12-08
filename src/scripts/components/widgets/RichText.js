@@ -57,14 +57,17 @@ export default class RichText extends React.Component {
     const editorContainer = tinymce
           .activeEditor
           .getContainer()
+          .parentElement
         , toolbar = editorContainer
           .querySelector(".mce-toolbar-grp")
         , rect = editorContainer.getBoundingClientRect();
 
     if (rect.top < 0) {
       toolbar.style.position = "fixed";
+      toolbar.style.top = "0px";
     } else {
       toolbar.style.position = "absolute";
+      toolbar.style.top = "-48px";
     }
   };
 

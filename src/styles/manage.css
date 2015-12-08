@@ -451,6 +451,7 @@
     color: #CCCCCC;
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
     background-color: #EEEEEE;
     padding: 8px 0 8px 16px;
     border-radius: 2px;
@@ -462,15 +463,15 @@
 :--categories-list .field .category .articles-count {
     color: white;
     background-color: #2DD982;
-    padding: 0 8px;
+    padding: 2px 8px;
     margin: 0 8px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 :--categories-list .field .category .remove {
     box-sizing: border-box;
     margin: -8px 0;
-    padding: 8px 12px;
+    padding: 10px 14px;
     color: #EEEEEE;
     font-size: 16px;
     background-color: #CCCCCC;

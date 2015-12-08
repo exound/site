@@ -3,10 +3,6 @@
     border: none !important;
 }
 
-.mce-tinymce:first-child {
-    padding-top: 48px !important;
-}
-
 .mce-content-body {
     margin: 16px 0 0 0;
     text-align: justify;
@@ -17,7 +13,7 @@
     position: absolute;
     z-index: 2;
     width: 819px !important;
-    top: 0;
+    top: -48px;
     padding: 8px !important;
     background-color: white !important;
 }
@@ -28,6 +24,7 @@
 
 .mce-edit-area {
     border: 0 !important;
+    margin-top: 48px !important;
     padding-bottom: 16px !important;
 }
 

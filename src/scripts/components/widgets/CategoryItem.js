@@ -6,6 +6,7 @@ import apiPath from "../../core/apiPath";
 import Input from "./Input";
 import Remove from "./RemoveButton";
 import bindForm from "../../decorators/bindForm";
+import {findDOMNode} from "react-dom";
 
 @bindForm({
   name: "categories",
@@ -26,7 +27,9 @@ export default class CategoryItem extends React.Component {
     });
   };
 
-  cancel = () => {
+  cancel = ({currentTarget}) => {
+    if (findDOMNode(this) === currentTarget) return;
+
     if (this.state.edit) this.setState({
       edit: false
     });

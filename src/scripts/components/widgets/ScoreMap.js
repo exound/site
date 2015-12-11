@@ -11,25 +11,18 @@ export default class ScoreMap extends React.Component {
     );
   }
 
-  remove = () => {
-    const removeMap = this.props.removeMap;
-
-    if (removeMap) {
-      removeMap(this.props.name);
-    }
-  }
-
   render() {
     const {
       name,
-      info
+      info,
+      removeMap
     } = this.props;
 
     return (
       <div className="score map">
         <header>
           <div className="name">{name}</div>
-          <button onClick={this.remove}><i className="fa fa-times-circle" /></button>
+          <button onClick={removeMap}><i className="fa fa-times-circle" /></button>
         </header>
 
         <Input ref="score" type="number" defaultValue={info.score} placeholder="分数" />

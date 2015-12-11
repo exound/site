@@ -21,18 +21,11 @@ export default class SellerMap extends React.Component {
     this.setState({logo: this.refs.logo.value});
   };
 
-  remove = () => {
-    const removeMap = this.props.removeMap;
-
-    if (removeMap) {
-      removeMap(this.props.name);
-    }
-  }
-
   render() {
     const {
       name,
-      info
+      info,
+      removeMap
     } = this.props;
 
     const {
@@ -45,7 +38,7 @@ export default class SellerMap extends React.Component {
       <div className="seller map">
         <header>
           <div className="name">{name}</div>
-          <button onClick={this.remove}><i className="fa fa-times-circle" /></button>
+          <button onClick={removeMap}><i className="fa fa-times-circle" /></button>
         </header>
 
         <Input ref="bid" type="number" defaultValue={bid} placeholder="竞价" />

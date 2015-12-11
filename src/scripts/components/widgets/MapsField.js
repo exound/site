@@ -54,7 +54,7 @@ export default class MapsField extends React.Component {
     const items = R.map((info) => {
       const {key} = info;
 
-      return <Component removeMap={this.removeMap}
+      return <Component removeMap={this.removeMap.bind(this, key)}
                         ref={key}
                         key={key}
                         name={key}

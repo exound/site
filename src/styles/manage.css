@@ -460,6 +460,12 @@
     overflow: hidden;
 }
 
+:--categories-list .field .category.edit {
+    padding: 7px 0 7px 15px;
+    border: 1px solid #2DD982;
+    background-color: white;
+}
+
 :--categories-list .field .category .articles-count {
     color: white;
     background-color: #2DD982;
@@ -468,7 +474,17 @@
     border-radius: 4px;
 }
 
-:--categories-list .field .category .remove {
+:--categories-list .field .category .name.input.control {
+    margin: 0;
+}
+
+:--categories-list .field .category .name.input.control input {
+    border: 0;
+    color: #CCCCCC;
+    font-size: 16px;
+}
+
+:--categories-list .field .category button {
     box-sizing: border-box;
     margin: -8px 0;
     padding: 10px 14px;
@@ -478,6 +494,28 @@
     border: none;
 }
 
+:--categories-list .field .category button.save {
+    color: white;
+    background-color: #2DD982;
+}
+
 :--categories-list .field .category:last-child {
     margin-right: 0;
+}
+
+:--categories-list .actions {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+:--categories-list .actions .input {
+    margin-right: 16px;
+}
+
+:--categories-list .actions .input input {
+    color: #888888;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 36px;
+    padding: 0 8px;
 }

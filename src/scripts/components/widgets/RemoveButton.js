@@ -13,18 +13,19 @@ export default class RemoveButton extends React.Component {
 
     if (beforeRemove) beforeRemove();
 
-    if (afterRemove) feq.delete(url)
-      .then(afterRemove);
+    feq.delete(url).then(afterRemove ? afterRemove : () => {}); 
   };
 
   render() {
     const {
       text,
-      message
+      message,
+      className
     } = this.props;
 
     return (
       <Confirm text={text || "删 除"}
+               className={className}
                onConfirm={this.onConfirm}
                message={message} />
     );

@@ -1,9 +1,11 @@
 import React from "react";
 
+import apiPath from "../../core/apiPath";
 import Button from "./Button";
 import Input from "./Input";
 import CategoryItem from "./CategoryItem";
 import bindForm from "../../decorators/bindForm";
+import NewCategoryForm from "./NewCategoryForm";
 
 export default class CategoriesList extends React.Component {
   render() {
@@ -12,7 +14,12 @@ export default class CategoriesList extends React.Component {
     } = this.props;
 
     const categoryItems = categories.map(category => {
-      return <CategoryItem key={category.id} category={category} />;
+      const id = category.id;
+
+      return <CategoryItem method="put"
+                           action={apiPath(`categories/${id}`)}
+                           key={id}
+                           category={category} />;
     });
 
     return (
@@ -23,9 +30,8 @@ export default class CategoriesList extends React.Component {
           {categoryItems}
         </div>
 
-        <div className="actions">
-          <Button text="添加分类" />
-        </div>
+        <NewCategoryForm action={apiPath(`categories`)}
+                         method="post" />
       </div>
     );
   }

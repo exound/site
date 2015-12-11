@@ -23,6 +23,10 @@ export default class Input extends React.Component {
     this.state = {};
   }
 
+  focus() {
+    this.refs.input.focus();
+  }
+
   get value() {
     const input = this.refs.input
         , result = input && input.value;

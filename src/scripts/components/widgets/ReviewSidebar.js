@@ -22,8 +22,8 @@ export default class ReviewSidebar extends React.Component {
       weixin_url,
       sellers
     } = R.merge(meta, {
-      scores: [],
-      sellers: []
+      scores: meta.scores || [],
+      sellers: meta.sellers || []
     });
 
     const chartData = [R.reduce((data, {key, score}) => {

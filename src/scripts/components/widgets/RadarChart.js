@@ -95,7 +95,7 @@ export default class RadarChart extends React.Component {
     const score = (R.compose(
       R.reduce(R.add, 0),
       R.values,
-    )(this.props.data[0]) / this.labels.length).toPrecision(3);
+    )(this.props.data[0]) / this.labels.length).toPrecision(2);
 
     return (
       <svg style={{backgroundColor: "#2A2A2A"}}

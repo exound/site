@@ -32,6 +32,7 @@ export default class Article extends React.Component {
       cover,
       content,
       category,
+      device_type,
       published_at,
       review_meta,
       review,
@@ -49,13 +50,15 @@ export default class Article extends React.Component {
           <ReviewSidebar briefings={briefings} meta={review_meta} /> :
           <ArticleSidebar briefings={briefings} advertisements={advertisements} />;
 
+    const taxonomy = review ? device_type : category;
+
     return (
       <main className="article-page">
         <section className="body">
           <article className="article left">
             {coverDisplay}
             <header>
-              <div className="category">{category}</div>
+              <div className="category">{taxonomy}</div>
 
               <h1>{title}</h1>
 

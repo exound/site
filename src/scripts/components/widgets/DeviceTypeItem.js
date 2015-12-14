@@ -9,11 +9,11 @@ import bindForm from "../../decorators/bindForm";
 import {findDOMNode} from "react-dom";
 
 @bindForm({
-  name: "categories",
-  dataPath: ["categories"],
-  responsePath: ["categories"]
+  name: "deviceTypes",
+  dataPath: ["deviceTypes"],
+  responsePath: ["device_types"]
 })
-export default class CategoryItem extends React.Component {
+export default class DeviceTypeItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -58,7 +58,7 @@ export default class CategoryItem extends React.Component {
       id,
       name,
       articles_count,
-    } = R.merge({}, this.props.category);
+    } = R.merge({}, this.props.deviceType);
 
     const {
       edit
@@ -70,8 +70,8 @@ export default class CategoryItem extends React.Component {
           <button onClick={this.save} className="save">
             <i className="fa fa-floppy-o" />
           </button> :
-          <Remove url={apiPath(`categories/${id}`)}
-                  message={"确定要删除分类?"}
+          <Remove url={apiPath(`device_types/${id}`)}
+                  message={"确定要删除设备类型?"}
                   afterRemove={this.remove}
                   text={<i className="fa fa-trash" />} />;
 

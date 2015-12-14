@@ -29,6 +29,7 @@ const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="categories/:name" component={Category} />
+    <Route path="device_types/:name" component={Category} />
     <Route path="articles/:id" component={Article} />
     <Route path="profile/:id" component={Profile} />
     <Route path="reviews" component={Reviews} />

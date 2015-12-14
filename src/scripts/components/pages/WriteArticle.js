@@ -8,6 +8,7 @@ export default class WriteArticle extends React.Component {
   render() {
     const {
       categories,
+      deviceTypes,
       user,
       article
     } = this.props.appState.data;
@@ -28,6 +29,7 @@ export default class WriteArticle extends React.Component {
       <main className="manage">
         <ArticleForm action={action}
                      categories={categories}
+                     deviceTypes={deviceTypes}
                      user={user}
                      mount={articleMount}
                      method={method} />

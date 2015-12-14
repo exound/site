@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import {authToken} from "../../core/globals";
 import buildUser from "../../core/user";
@@ -16,6 +17,16 @@ export default class PortalTop extends React.Component {
     return this.props.categories.map(({name}) => {
       return (
         <MenuItem key={name} link={`/categories/${name}`}>
+          {name}
+        </MenuItem>
+      );
+    });
+  }
+
+  get deviceTypesMenuItems() {
+    return this.props.deviceTypes.map(({name}) => {
+      return (
+        <MenuItem key={name} link={`/device_types/${name}`}>
           {name}
         </MenuItem>
       );
@@ -51,6 +62,12 @@ export default class PortalTop extends React.Component {
         , askLink = (!this.user.guest) ?
           `${askBase}?token=${authToken}` : askBase;
 
+    const reviewsClassNames = classNames("sub item", {
+      "full-bg": !!this.props.deviceTypes.length
+    });
+
+    const reviewsLink = <Link to="/reviews">评 测</Link>;
+
     return (
       <header className="top full-bg">
         <Menu wrapper="nav" className="left main">
@@ -58,7 +75,9 @@ export default class PortalTop extends React.Component {
             {this.categoriesMenuItems}
           </Menu>
 
-          <MenuItem link="/reviews">评 测</MenuItem>
+          <Menu className={reviewsClassNames} content={reviewsLink}>
+            {this.deviceTypesMenuItems}
+          </Menu>
 
           <Menu className="sub item full-bg" content="百 科">
             <MenuItem link="https://exound.taobao.com/p/buy_mic.htm">

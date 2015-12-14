@@ -46,13 +46,15 @@ export default class ManageArticleSidebar extends React.Component {
       user,
       form,
       article,
-      categories
+      categories,
+      deviceTypes
     } = this.props;
 
     const {
       id,
       published_at,
       category,
+      device_type,
       review_meta,
     } = article;
 
@@ -64,9 +66,19 @@ export default class ManageArticleSidebar extends React.Component {
 
     const published = !!published_at;
 
-    const options = categories.map(({name}) => ({
+    const options = review ? deviceTypes.map(({name}) => ({
+      value: name, label: name
+    })) : categories.map(({name}) => ({
       value: name, label: name
     }));
+
+    const selectName = review ? "device_type" : "category";
+
+    const defaultOption = review ?
+          {value: device_type, label: device_type}:
+          {value: category, label: category};
+
+    const type = review ? "设备类型" : "分类";
 
     const hasPrivilege = R.contains(user.role, ["admin", "editor"])
         , isAuthor = !article.user || user.id === article.user.id;
@@ -120,10 +132,10 @@ export default class ManageArticleSidebar extends React.Component {
         <div className="meta-controls">
           <Select className="control"
                   options={options}
-                  defaultValue={{value: category, label: category}}
+                  defaultValue={defaultOption}
                   form={form}
-                  name="category"
-                  placeholder="选择分类" />
+                  name={selectName}
+                  placeholder={`选择${type}`} />
         </div>
         {reviewControl}
         {actions}

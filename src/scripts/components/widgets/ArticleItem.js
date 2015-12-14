@@ -12,6 +12,8 @@ export default class ArticleItem extends React.Component {
       title,
       cover,
       category,
+      device_type,
+      review,
       content,
       published_at,
       user
@@ -23,6 +25,12 @@ export default class ArticleItem extends React.Component {
 
     const coverDisplay = cover &&
           <Imager max={500} url={cover} className="cover" />;
+
+    const taxonomy = review ? device_type : category;
+
+    const taxonomyUrl = review ?
+          `/device_types/${device_type}` :
+          `/categories/${category}`;
 
     return (
       <article className={articleClassName}>
@@ -48,7 +56,7 @@ export default class ArticleItem extends React.Component {
 
         <section className="misc">
           <span className="category fa fa-gg-circle">
-            <Link to={`/categories/${category}`}>{category}</Link>
+            <Link to={taxonomyUrl}>{taxonomy}</Link>
           </span>
         </section>
 

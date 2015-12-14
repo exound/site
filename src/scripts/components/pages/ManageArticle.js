@@ -8,6 +8,7 @@ export default class ManageArticle extends React.Component {
     const {
       article,
       categories,
+      deviceTypes,
       user
     } = this.props.appState.data;
 
@@ -20,6 +21,7 @@ export default class ManageArticle extends React.Component {
       <main className="manage">
         <ArticleForm action={apiPath(`articles/${id}`)}
                      categories={categories}
+                     deviceTypes={deviceTypes}
                      user={user}
                      method="put" />
       </main>

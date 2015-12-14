@@ -49,6 +49,7 @@ export default class ArticleForm extends React.Component {
   render() {
     const {
       categories,
+      deviceTypes,
       user
     } = this.props;
 
@@ -88,6 +89,7 @@ export default class ArticleForm extends React.Component {
 
         <ManageArticleSidebar form={this.form}
                               categories={categories}
+                              deviceTypes={deviceTypes}
                               article={this.article}
                               user={user} />
       </section>

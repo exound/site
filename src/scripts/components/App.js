@@ -33,12 +33,16 @@ export default class App extends Component {
   defaultLayout(children) {
     const {
       user,
-      categories
+      categories,
+      deviceTypes
     } = this.props.appState.data;
 
     return (
       <div className="wrapper">
-        <PortalTop categories={categories} user={user}/>
+        <PortalTop deviceTypes={deviceTypes}
+                   categories={categories}
+                   user={user}/>
+
         {children}
         <Bottom />
       </div>

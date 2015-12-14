@@ -33,6 +33,7 @@ function home() {
       withUser
     ],
     resolve: {
+      deviceTypes,
       categories,
       briefings: briefingsUrl,
       advertisements,
@@ -56,6 +57,7 @@ function reviews() {
     resolve: {
       briefings: briefingsUrl,
       categories,
+      deviceTypes,
       advertisements,
       articles: apiPath("articles/reviews", {limit: 20})
     }
@@ -76,6 +78,7 @@ function briefings() {
     resolve: {
       briefings: briefingsUrl,
       categories,
+      deviceTypes,
       advertisements
     }
   });
@@ -96,6 +99,7 @@ function category(name) {
     resolve: {
       briefings: briefingsUrl,
       categories,
+      deviceTypes,
       advertisements,
       articles: apiPath("articles/published", {category: name})
     }
@@ -103,6 +107,28 @@ function category(name) {
 }
 
 category.pathPattern = /^\/categories\/(.+)$/;
+
+function deviceType(name) {
+  return getData({
+    staticProps: {
+      title: name,
+      name,
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      briefings: briefingsUrl,
+      categories,
+      deviceTypes,
+      advertisements,
+      articles: apiPath("articles/published", {device_type: name})
+    }
+  });
+}
+
+deviceType.pathPattern = /^\/device_types\/(.+)$/;
 
 function profile(nick) {
   return getData({
@@ -116,6 +142,7 @@ function profile(nick) {
     ],
     resolve: {
       categories,
+      deviceTypes,
       advertisements,
       articles: apiPath(`articles/author/${nick}`)
     }
@@ -135,6 +162,7 @@ function article(id) {
     resolve: {
       briefings: briefingsUrl,
       categories,
+      deviceTypes,
       advertisements: apiPath("advertisements", {
         position: ["position3", "position4"]
       }),
@@ -169,6 +197,7 @@ function manageArticles() {
     ],
     resolve: {
       categories,
+      deviceTypes,
       articles: apiPath("articles/published", {limit: 40})
     }
   });
@@ -187,6 +216,7 @@ function manageMyArticles() {
     ],
     resolve: {
       categories,
+      deviceTypes,
       articles: apiPath("articles/mine", {limit: 40})
     }
   });
@@ -205,6 +235,7 @@ function manageMyBriefings() {
     ],
     resolve: {
       categories,
+      deviceTypes,
       briefings: apiPath("briefings/mine", {limit: 40})
     }
   });
@@ -223,6 +254,7 @@ function managePromotions() {
     ],
     resolve: {
       categories,
+      deviceTypes,
       promotions: apiPath("promotions", {limit: 40})
     }
   });
@@ -241,6 +273,7 @@ function manageBriefings() {
     ],
     resolve: {
       categories,
+      deviceTypes,
       briefings: apiPath("briefings", {limit: 40})
     }
   });
@@ -258,6 +291,7 @@ function manageArticle(id) {
     ],
     resolve: {
       categories,
+      deviceTypes,
       article: apiPath(`articles/${id}`)
     },
     postHooks: [
@@ -282,6 +316,7 @@ function managePromotion(id) {
     ],
     resolve: {
       categories,
+      deviceTypes,
       promotion: apiPath(`promotions/${id}`)
     }
   });
@@ -300,7 +335,8 @@ function manageBriefing(id) {
     ],
     resolve: {
       briefing: apiPath(`briefings/${id}`),
-      categories
+      categories,
+      deviceTypes
     }
   });
 }
@@ -317,6 +353,7 @@ function manageCategories() {
       withUser
     ],
     resolve: {
+      deviceTypes,
       categories
     }
   });
@@ -336,6 +373,7 @@ function writeArticle() {
     ],
     resolve: {
       categories,
+      deviceTypes
     }
   });
 }
@@ -354,6 +392,7 @@ function writePromotion() {
     ],
     resolve: {
       categories,
+      deviceTypes
     }
   });
 }
@@ -372,6 +411,7 @@ function writeBriefing() {
     ],
     resolve: {
       categories,
+      deviceTypes
     }
   });
 }
@@ -390,6 +430,7 @@ function writeBriefing() {
     ],
     resolve: {
       categories,
+      deviceTypes
     }
   });
 }
@@ -406,7 +447,8 @@ function manageProfile() {
       withUser
     ],
     resolve: {
-      categories
+      categories,
+      deviceTypes
     }
   });
 }
@@ -459,7 +501,7 @@ const resolvers = [
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
-  briefings, manageBriefing, manageProfile
+  briefings, manageBriefing, manageProfile, deviceType
 ];
 
 export default function resolveData(location) {

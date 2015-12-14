@@ -21,7 +21,10 @@ export default class ReviewSidebar extends React.Component {
       taobao_url,
       weixin_url,
       sellers
-    } = meta;
+    } = R.merge(meta, {
+      scores: [],
+      sellers: []
+    });
 
     const chartData = [R.reduce((data, {key, score}) => {
       data[key] = score;

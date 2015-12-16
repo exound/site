@@ -124,7 +124,9 @@ function deviceType(name) {
       briefings: briefingsUrl,
       categories,
       deviceTypes,
-      advertisements,
+      advertisements: apiPath("advertisements", {
+        position: ["position5"]
+      }),
       articles: apiPath("articles/published", {device_type: name})
     }
   });

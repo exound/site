@@ -11,9 +11,9 @@ export default class HomeSidebar extends React.Component {
       briefings
     } = this.props;
 
-    const advertisementItems = R.mapObj(advertisement => {
+    const advertisementItems = R.map(advertisement => {
       return <Advertisement advertisement={advertisement} />;
-    }, advertisements);
+    }, R.values(advertisements));
 
     const briefingsDisplay = (briefings && briefings.length) ?
           <SidebarBriefings briefings={briefings} /> :
@@ -21,8 +21,7 @@ export default class HomeSidebar extends React.Component {
 
     return (
       <aside className="sidebar">
-        {advertisementItems.position1}
-        {advertisementItems.position2}
+        {advertisementItems}
         {briefingsDisplay}
       </aside>
     );

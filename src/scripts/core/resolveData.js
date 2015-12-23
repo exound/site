@@ -58,7 +58,9 @@ function reviews() {
       briefings: briefingsUrl,
       categories,
       deviceTypes,
-      advertisements,
+      advertisements: apiPath("advertisements", {
+        position: ["position5"]
+      }),
       articles: apiPath("articles/reviews", {limit: 20})
     }
   });
@@ -285,6 +287,25 @@ function manageBriefings() {
 
 manageBriefings.pathPattern = /^\/manage\/briefings$/;
 
+function manageLinks() {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理页底链接",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      categories,
+      deviceTypes,
+      links: apiPath("links", {limit: 40})
+    }
+  });
+}
+
+manageLinks.pathPattern = /^\/manage\/links$/;
+
 function manageArticle(id) {
   return getData({
     staticProps: {
@@ -346,6 +367,25 @@ function manageBriefing(id) {
 }
 
 manageBriefing.pathPattern = /^\/manage\/briefings\/([a-f0-9\-]+)$/;
+
+function manageLink(id) {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理页底链接"
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      link: apiPath(`links/${id}`),
+      categories,
+      deviceTypes
+    }
+  });
+}
+
+manageLink.pathPattern = /^\/manage\/links\/([a-f0-9\-]+)$/;
 
 function manageCategories() {
   return getData({
@@ -422,12 +462,12 @@ function writeBriefing() {
 
 writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
 
-function writeBriefing() {
+function writeLink() {
   return getData({
     staticProps: {
       user,
-      title: "投递快讯",
-      briefing: {}
+      title: "添加页底链接",
+      link: {}
     },
     preHooks: [
       withUser
@@ -439,7 +479,7 @@ function writeBriefing() {
   });
 }
 
-writeBriefing.pathPattern = /^\/manage\/write\/briefing$/;
+writeLink.pathPattern = /^\/manage\/write\/link$/;
 
 function manageProfile() {
   return getData({
@@ -505,7 +545,8 @@ const resolvers = [
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
-  briefings, manageBriefing, manageProfile, deviceType
+  briefings, manageBriefing, manageProfile, deviceType,
+  writeLink, manageLinks, manageLink
 ];
 
 export default function resolveData(location) {

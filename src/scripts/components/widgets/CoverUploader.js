@@ -21,8 +21,10 @@ export default class CoverUploader extends React.Component {
   render() {
     const {
       cover,
-      articleId
+      coverable
     } = this.props;
+
+    window.form = this.form;
 
     return (
       <Imager max={835} url={cover}>
@@ -33,8 +35,8 @@ export default class CoverUploader extends React.Component {
           <span className="tip">图片体积不要超过1mb</span>
 
           <HiddenField form={this.form}
-                       name="article_id"
-                       value={articleId} />
+                       name="coverable"
+                       value={coverable} />
 
           <HiddenField form={this.form}
                        name="kind"

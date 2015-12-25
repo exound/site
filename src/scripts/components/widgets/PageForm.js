@@ -7,14 +7,14 @@ import Input from "./Input";
 import apiPath from "../../core/apiPath";
 import jsonFeq from "../../core/jsonFeq";
 import CoverUploader from "./CoverUploader";
-import ManageArticleSidebar from "./ManageArticleSidebar";
+import ManagePageSidebar from "./ManagePageSidebar";
 import hasHistory from "../../decorators/hasHistory";
 import bindForm from "../../decorators/bindForm";
 
 @hasHistory
 @bindForm({
-  name: "article",
-  dataPath: ["article"],
+  name: "page",
+  dataPath: ["page"],
   constraints: [
     {
       name: "title",
@@ -33,17 +33,17 @@ import bindForm from "../../decorators/bindForm";
     }
   ]
 })
-export default class ArticleForm extends React.Component {
+export default class PageForm extends React.Component {
   componentWillMount() {
     this.state = {progressDisplay: "none"};
   }
 
-  get article() {
+  get page() {
     return this.form.mount.value;
   }
 
   removed = () => {
-    this.goTo("/manage/articles");
+    this.goTo("/manage/pages");
   };
 
   render() {
@@ -56,13 +56,12 @@ export default class ArticleForm extends React.Component {
     const {
       id,
       title,
+      name,
       content,
-      category,
       cover,
-    } = this.article;
+    } = this.page;
 
-    const canEdit = !this.article.user || user.id === this.article.user.id;
-    const coverable = {type: "Article", id};
+    const coverable = {type: "Page", id};
 
     const coverUploader = id &&
           <CoverUploader coverable={coverable}
@@ -76,23 +75,24 @@ export default class ArticleForm extends React.Component {
           {coverUploader}
           <div className="form"> 
             <Input form={this.form}
-                   disabled={!canEdit}
                    defaultValue={title}
                    placeholder="标题"
                    name="title" />
 
+            <Input form={this.form}
+                   defaultValue={name}
+                   placeholder="名称"
+                   name="name" />
+
             <RichText content={content}
-                      disabled={!canEdit}
                       form={this.form}
                       name="content" />
           </div>
         </section>
 
-        <ManageArticleSidebar form={this.form}
-                              categories={categories}
-                              deviceTypes={deviceTypes}
-                              article={this.article}
-                              user={user} />
+        <ManagePageSidebar form={this.form}
+                           page={this.page}
+                           user={user} />
       </section>
     );
   }

@@ -385,18 +385,74 @@
 @custom-selector :--bottom .wrapper footer.bottom;
 
 :--bottom {
+    box-sizing: border-box;
+    padding: 60px 0;
     position: relative;
     margin-left: 50%;
     left: -600px;
-    height: 100px;
-    line-height: 80px;
     width: 1200px;
     background-color: var(--exound-bg-black);
     color: white;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+:--bottom * {
+    color: #AAAAAA;
+}
+
+:--bottom > * {
+    margin-right: 100px;
+}
+
+:--bottom > *:last-child {
+    margin-right: 0;
+} 
+
+:--bottom .copyright > * {
+    margin-bottom: 8px;
+}
+
+:--bottom .copyright > *:last-child {
+    margin-bottom: 0;
+}
+
+:--bottom .title {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+}
+
+:--bottom .title * {
+    color: white;
+}
+
+:--bottom .title .logo-zh {
+    color: transparent;
+    margin-right: 8px;
+    width: 64px;
+    height: 32px;
+    background-repeat: no-repeat no-repeat;
+    background-size: contain;
+    background-image: url(~!file!../images/logo_zh.png);
+}
+
+:--bottom .queue {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+:--bottom .queue > * {
+    margin-bottom: 8px;
+}
+
+:--bottom .queue > *:last-child {
+    margin-bottom: 0;
 }
 
 :--bottom.full-bg:before {
-    height: 100px;
+    margin-top: -60px;
+    height: 100%;
 }
 
 @custom-selector :--category-name .wrapper main.category-page h1.category-name;

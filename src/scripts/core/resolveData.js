@@ -24,6 +24,8 @@ const withUser = function(resolve) {
   return resolve;
 };
 
+const links = apiPath("links");
+
 function home() {
   return getData({
     staticProps: {
@@ -33,6 +35,7 @@ function home() {
       withUser
     ],
     resolve: {
+      links,
       deviceTypes,
       categories,
       briefings: briefingsUrl,
@@ -55,6 +58,7 @@ function reviews() {
       withUser
     ],
     resolve: {
+      links,
       briefings: briefingsUrl,
       categories,
       deviceTypes,
@@ -78,6 +82,7 @@ function briefings() {
       withUser
     ],
     resolve: {
+      links,
       briefings: briefingsUrl,
       categories,
       deviceTypes,
@@ -99,6 +104,7 @@ function category(name) {
       withUser
     ],
     resolve: {
+      links,
       briefings: briefingsUrl,
       categories,
       deviceTypes,
@@ -123,6 +129,7 @@ function deviceType(name) {
       withUser
     ],
     resolve: {
+      links,
       briefings: briefingsUrl,
       categories,
       deviceTypes,
@@ -147,6 +154,7 @@ function profile(nick) {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       advertisements,
@@ -166,6 +174,7 @@ function article(id) {
       withUser
     ],
     resolve: {
+      links,
       briefings: briefingsUrl,
       categories,
       deviceTypes,
@@ -186,6 +195,35 @@ function article(id) {
 
 article.pathPattern = /^\/articles\/([a-f0-9\-]+)$/;
 
+function page(name) {
+  return getData({
+    staticProps: {
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      briefings: briefingsUrl,
+      categories,
+      deviceTypes,
+      advertisements: apiPath("advertisements", {
+        position: ["position3", "position4"]
+      }),
+      page: apiPath(`pages/named/${name}`)
+    },
+    postHooks: [
+      (data) => {
+        data.title = data.page.title;
+        return data;
+      }
+    ]
+  });
+}
+
+page.pathPattern = /^\/pages\/(\w+)$/;
+
 function manageHome() {
   return manageMyArticles();
 }
@@ -202,6 +240,7 @@ function manageArticles() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       articles: apiPath("articles/published", {limit: 40})
@@ -221,6 +260,7 @@ function manageMyArticles() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       articles: apiPath("articles/mine", {limit: 40})
@@ -240,6 +280,7 @@ function manageMyBriefings() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       briefings: apiPath("briefings/mine", {limit: 40})
@@ -259,6 +300,7 @@ function managePromotions() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       promotions: apiPath("promotions", {limit: 40})
@@ -278,6 +320,7 @@ function manageBriefings() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       briefings: apiPath("briefings", {limit: 40})
@@ -306,6 +349,26 @@ function manageLinks() {
 
 manageLinks.pathPattern = /^\/manage\/links$/;
 
+function managePages() {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理页面",
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      categories,
+      deviceTypes,
+      pages: apiPath("pages", {limit: 40}),
+    }
+  });
+}
+
+managePages.pathPattern = /^\/manage\/pages$/;
+
 function manageArticle(id) {
   return getData({
     staticProps: {
@@ -315,6 +378,7 @@ function manageArticle(id) {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       article: apiPath(`articles/${id}`)
@@ -330,6 +394,31 @@ function manageArticle(id) {
 
 manageArticle.pathPattern = /^\/manage\/articles\/([a-f0-9\-]+)$/;
 
+function managePage(id) {
+  return getData({
+    staticProps: {
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      categories,
+      deviceTypes,
+      page: apiPath(`pages/${id}`)
+    },
+    postHooks: [
+      (data) => {
+        data.title = `编辑 - ${data.page.title}`;
+        return data;
+      }
+    ]
+  });
+}
+
+managePage.pathPattern = /^\/manage\/pages\/([a-f0-9\-]+)$/;
+
 function managePromotion(id) {
   return getData({
     staticProps: {
@@ -340,6 +429,7 @@ function managePromotion(id) {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes,
       promotion: apiPath(`promotions/${id}`)
@@ -359,6 +449,7 @@ function manageBriefing(id) {
       withUser
     ],
     resolve: {
+      links,
       briefing: apiPath(`briefings/${id}`),
       categories,
       deviceTypes
@@ -378,6 +469,7 @@ function manageLink(id) {
       withUser
     ],
     resolve: {
+      links,
       link: apiPath(`links/${id}`),
       categories,
       deviceTypes
@@ -397,6 +489,7 @@ function manageCategories() {
       withUser
     ],
     resolve: {
+      links,
       deviceTypes,
       categories
     }
@@ -416,6 +509,7 @@ function writeArticle() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes
     }
@@ -423,6 +517,26 @@ function writeArticle() {
 }
 
 writeArticle.pathPattern = /^\/manage\/write\/article$/;
+
+function writePage() {
+  return getData({
+    staticProps: {
+      user,
+      title: "添加页面",
+      page: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      categories,
+      deviceTypes
+    }
+  });
+}
+
+writePage.pathPattern = /^\/manage\/write\/page$/;
 
 function writePromotion() {
   return getData({
@@ -435,6 +549,7 @@ function writePromotion() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes
     }
@@ -454,6 +569,7 @@ function writeBriefing() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes
     }
@@ -473,6 +589,7 @@ function writeLink() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes
     }
@@ -491,6 +608,7 @@ function manageProfile() {
       withUser
     ],
     resolve: {
+      links,
       categories,
       deviceTypes
     }
@@ -546,7 +664,8 @@ const resolvers = [
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
   briefings, manageBriefing, manageProfile, deviceType,
-  writeLink, manageLinks, manageLink
+  writeLink, manageLinks, manageLink, writePage,
+  managePages, managePage, page
 ];
 
 export default function resolveData(location) {

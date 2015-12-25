@@ -34,7 +34,8 @@ export default class App extends Component {
     const {
       user,
       categories,
-      deviceTypes
+      deviceTypes,
+      links
     } = this.props.appState.data;
 
     return (
@@ -44,7 +45,8 @@ export default class App extends Component {
                    user={user}/>
 
         {children}
-        <Bottom />
+
+        <Bottom links={links} />
       </div>
     );
   }

@@ -66,7 +66,15 @@ export default class Form {
               const data = new FormData();
 
               for (const key in this.data) {
-                data.append(key, this.data[key]);
+                const item = this.data[key];
+
+                if (item.constructor !== File &&
+                    typeof item === "object") {
+                  data.append(key, JSON.stringify(item));
+                  continue;
+                }
+
+                data.append(key,  item);
               }
 
               return data;

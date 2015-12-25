@@ -12,7 +12,7 @@ export default class HomeSidebar extends React.Component {
     } = this.props;
 
     const advertisementItems = R.map(advertisement => {
-      return <Advertisement advertisement={advertisement} />;
+      return <Advertisement key={advertisement.id} advertisement={advertisement} />;
     }, R.values(advertisements));
 
     const briefingsDisplay = (briefings && briefings.length) ?

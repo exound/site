@@ -14,7 +14,7 @@ export default class HiddenField extends React.Component {
 
     return this.props.type === "number" ?
       parseFloat(result) :
-      result;
+      JSON.parse(result);
   }
 
   render() {
@@ -22,6 +22,6 @@ export default class HiddenField extends React.Component {
       value
     } = this.props;
 
-    return <input ref="hidden" type="hidden" defaultValue={value} />;
+    return <input ref="hidden" type="hidden" defaultValue={JSON.stringify(value)} />;
   }
 };

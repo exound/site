@@ -33,8 +33,6 @@ export default class Page extends React.Component {
       created_at
     } = page;
 
-    console.log(page);
-
     const coverDisplay = cover &&
           <Imager max={835} url={cover} className="cover" />;
 

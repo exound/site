@@ -40,7 +40,7 @@ function home() {
       categories,
       briefings: briefingsUrl,
       advertisements,
-      promotions: apiPath("promotions", {limit: 6}),
+      promotions: apiPath("promotions", {limit: 5}),
       articles: apiPath("articles/published", {limit: 20})
     }
   });

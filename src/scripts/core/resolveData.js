@@ -39,7 +39,9 @@ function home() {
       deviceTypes,
       categories,
       briefings: briefingsUrl,
-      advertisements,
+      advertisements: apiPath("advertisements", {
+        position: ["position1", "position2", "position6"]
+      }),
       promotions: apiPath("promotions", {limit: 5}),
       articles: apiPath("articles/published", {limit: 20})
     }

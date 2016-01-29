@@ -10,7 +10,8 @@ export default class ArticlesList extends React.Component {
     const {
       Component,
       articles,
-      loadMoreConfig
+      loadMoreConfig,
+      extra
     } = R.merge({
       loadMoreConfig: {}
     }, this.props);
@@ -29,6 +30,8 @@ export default class ArticlesList extends React.Component {
     return (
       <div className={classNames("articles", this.props.className)}>
         {articleItems}
+
+        {extra}
 
         <LoadMore url={url}
                   mount={articlesMount}

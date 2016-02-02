@@ -6,7 +6,6 @@ import buildUser from "../../core/user";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import List from "./List";
-import Searcher from "./Searcher";
 import {Link} from "react-router";
 import hasHistory from "../../decorators/hasHistory";
 import {findDOMNode} from "react-dom";

@@ -95,6 +95,30 @@ function briefings() {
 
 briefings.pathPattern = /^\/briefings$/;
 
+function search(q) {
+  return getData({
+    staticProps: {
+      title: `搜索：${q}`,
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      briefings: briefingsUrl,
+      categories,
+      deviceTypes,
+      advertisements: apiPath("advertisements", {
+        position: ["position5"]
+      }),
+      articles: apiPath("articles/search", {q: q})
+    }
+  });
+}
+
+search.pathPattern = /^\/search\/(.+)\?{0,}/;
+
 function category(name) {
   return getData({
     staticProps: {
@@ -667,7 +691,7 @@ const resolvers = [
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
   briefings, manageBriefing, manageProfile, deviceType,
   writeLink, manageLinks, manageLink, writePage,
-  managePages, managePage, page
+  managePages, managePage, page, search
 ];
 
 export default function resolveData(location) {

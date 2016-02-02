@@ -124,30 +124,72 @@
     margin-left: 16px;
 }
 
-@custom-selector :--user-menu .wrapper header.top > .user.menu;
+@custom-selector :--right-menu .wrapper header.top > .right.menu;
 
-:--user-menu {
+:--right-menu {
     border-left: 1px solid var(--exound-gray);
     border-right: 1px solid var(--exound-gray);
 }
 
-:--user-menu .content {
+:--right-menu .user {
+    border-left: 1px solid var(--exound-gray);
+}
+
+:--right-menu .search span {
+    width: 512px;
+    margin-left: -30px;
+    margin-right: -22px;
+}
+
+:--right-menu .search span * {
+    font-size: 24px;
+}
+
+:--right-menu .search span div {
+    width: 521px;
+}
+
+:--right-menu .search span button {
+    width: 64px;
+    border: 0;
+}
+
+:--right-menu .search input {
+    color: #888888;
+    padding: 0 16px;
+    width: calc(100% - 32px);
+    background-color: white;
+    border: 0;
+    height: 60px;
+    line-height: 60px;
+}
+
+:--right-menu .content {
     padding: 16px;
 }
 
-:--user-menu .content .avatar {
+:--right-menu .content i.fa {
+    line-height: 32px;
+    font-size: 32px;
+    margin: 0;
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+
+:--right-menu .content .avatar {
     border-radius: 16px;
     display: block;
     height: 32px;
     width: 32px;
 }
 
-:--user-menu ul {
+:--right-menu .sub > ul {
     flex-flow: column wrap;
     right: 0;
 }
 
-:--user-menu ul > li {
+:--right-menu .sub > ul > li {
     position: relative;
     padding-right: 24px;
     padding-left: 32px;
@@ -155,26 +197,27 @@
     border-bottom: 1px solid var(--exound-gray);
 }
 
-:--user-menu ul > li .item {
+:--right-menu ul > li .item {
     text-align: right;
 }
 
-:--user-menu ul > li .item a {
+:--right-menu ul > li .item span,
+:--right-menu ul > li .item a {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
 }
 
-:--user-menu ul > li .item a:hover div {
+:--right-menu ul > li .item a:hover div {
     color: var(--exound-orange);
 }
 
-:--user-menu ul > li .item a div {
+:--right-menu ul > li .item a div {
     width: auto;
     white-space: nowrap;
 }
 
-:--user-menu ul > li i.fa {
+:--right-menu ul > li i.fa {
     line-height: 64px;
     width: 16px;
     color: #888888;

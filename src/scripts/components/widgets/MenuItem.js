@@ -6,10 +6,10 @@ export default class MenuItem extends React.Component {
   render() {
     const {link, children} = this.props;
 
-    return (
-      <div className="item">
-        <Link to={link}>{children}</Link>
-      </div>
-    );
+    const childEls = link ?
+          <Link to={link}>{children}</Link> :
+          <span>{children}</span>;
+
+    return <div className="item">{childEls}</div>;
   }
 }

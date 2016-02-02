@@ -6,9 +6,18 @@ import buildUser from "../../core/user";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import List from "./List";
+import Searcher from "./Searcher";
 import {Link} from "react-router";
+import hasHistory from "../../decorators/hasHistory";
+import {findDOMNode} from "react-dom";
 
+@hasHistory
 export default class PortalTop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {search: null};
+  }
+
   get user() {
     return buildUser(this.props.user);
   }
@@ -57,6 +66,13 @@ export default class PortalTop extends React.Component {
     return <img className="avatar" src={this.user.avatar} />;
   }
 
+  search = () => {
+    const q = this.refs.searchInput.value;
+    findDOMNode(this.refs.searchInput).value = "";
+
+    this.goTo(`/search/${q}`);
+  };
+
   render() {
     const askBase = "http://ask.exound.com"
         , askLink = (!this.user.guest) ?
@@ -96,8 +112,17 @@ export default class PortalTop extends React.Component {
           <Link to="/">叉烧 Beta</Link>
         </h1>
 
-        <Menu className="sub right user" content={this.avatar}>
-          {this.userMenuItems}
+        <Menu className="right">
+          <Menu className="sub item search" content={<i className="fa fa-search" />}>
+            <MenuItem className="searcher">
+              <div><input ref="searchInput" type="text" /></div>
+              <button ref="searchButton" onClick={this.search}>搜</button>
+            </MenuItem>
+          </Menu>
+
+          <Menu className="user sub item" content={this.avatar}>
+            {this.userMenuItems}
+          </Menu>
         </Menu>
       </header>
     );

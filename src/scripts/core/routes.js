@@ -6,6 +6,7 @@ import Home from "../components/pages/Home";
 import Reviews from "../components/pages/Reviews";
 import Briefings from "../components/pages/Briefings";
 import Category from "../components/pages/Category";
+import Search from "../components/pages/Search";
 import Article from "../components/pages/Article";
 import Page from "../components/pages/Page";
 import Profile from "../components/pages/Profile";
@@ -35,6 +36,7 @@ import NotFound from "../components/pages/NotFound";
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
+    <Route path="search/:q" component={Search} />
     <Route path="categories/:name" component={Category} />
     <Route path="device_types/:name" component={Category} />
     <Route path="articles/:id" component={Article} />

@@ -21,8 +21,9 @@ export default class HomeSidebar extends React.Component {
 
     return (
       <aside className="sidebar">
-        {advertisementItems}
+        {advertisementItems[0]}
         {briefingsDisplay}
+        {advertisementItems[1]}
       </aside>
     );
   }

@@ -11,7 +11,8 @@ export default class ManageArticleItem extends React.Component {
       user,
       category,
       push,
-      published_at
+      published_at,
+      type
     } = this.props.article;
 
     const publish = published_at ?
@@ -20,6 +21,9 @@ export default class ManageArticleItem extends React.Component {
 
     const categoryDisplay = category &&
           <Link className="category" to={`/categories/${category}`}>{category}</Link>;
+
+    const community = type === "discussion" &&
+          <Link to="/community">社区</Link>;
 
     return (
       <div className="article">
@@ -34,6 +38,7 @@ export default class ManageArticleItem extends React.Component {
 
         <section className="misc">
           <Link to={`/profile/${user.nick}`}>{user.nick}</Link>
+          {community}
           {categoryDisplay}
         </section>
       </div>

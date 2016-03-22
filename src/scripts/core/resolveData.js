@@ -119,6 +119,33 @@ function search(q) {
 
 search.pathPattern = /^\/search\/(.+)\?{0,}/;
 
+function community() {
+  const name = "社区";
+
+  return getData({
+    staticProps: {
+      title: name,
+      name,
+      user,
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      briefings: briefingsUrl,
+      categories,
+      deviceTypes,
+      advertisements: apiPath("advertisements", {
+        position: ["position5"]
+      }),
+      articles: apiPath("articles/discussions")
+    }
+  });
+}
+
+community.pathPattern = /^\/community$/;
+
 function category(name) {
   return getData({
     staticProps: {
@@ -544,6 +571,26 @@ function writeArticle() {
 
 writeArticle.pathPattern = /^\/manage\/write\/article$/;
 
+function writeDiscussion() {
+  return getData({
+    staticProps: {
+      user,
+      title: "发起讨论",
+      article: {type: "discussion"}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      categories,
+      deviceTypes
+    }
+  });
+}
+
+writeDiscussion.pathPattern = /^\/manage\/write\/discussion$/;
+
 function writePage() {
   return getData({
     staticProps: {
@@ -691,7 +738,7 @@ const resolvers = [
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
   briefings, manageBriefing, manageProfile, deviceType,
   writeLink, manageLinks, manageLink, writePage,
-  managePages, managePage, page, search
+  managePages, managePage, page, search, writeDiscussion, community
 ];
 
 export default function resolveData(location) {

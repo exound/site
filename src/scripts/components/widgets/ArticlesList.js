@@ -9,6 +9,7 @@ export default class ArticlesList extends React.Component {
   render() {
     const {
       Component,
+      ComponentFactory,
       articles,
       loadMoreConfig,
       extra
@@ -24,7 +25,9 @@ export default class ArticlesList extends React.Component {
     } = loadMoreConfig;
 
     const articleItems = articles.map(article => {
-      return <Component key={article.id} article={article} />;
+      const ArticleComponent = Component || ComponentFactory(article);
+
+      return <ArticleComponent key={article.id} article={article} />;
     });
 
     return (

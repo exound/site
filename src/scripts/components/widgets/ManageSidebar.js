@@ -33,6 +33,7 @@ export default class ManageSidebar extends React.Component {
     return (
       <aside className="sidebar">
         <div className="menu">
+          <Link key="write_article" to="/manage/write/discussion">发起讨论</Link>
           {articleRelated}
           <Link to="/manage/write/briefing">投递快讯</Link>
           <Link to="/manage/briefings/mine">我的快讯</Link>

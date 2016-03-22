@@ -316,9 +316,46 @@
 
 @custom-selector :--articles .wrapper main .articles;
 
-:--articles .article {
+:--articles .article,
+:--articles .discussion {
     position: relative;
     box-sizing: border-box;
+    padding: 20px 60px;
+}
+
+:--articles .discussion {
+    border-top: 4px solid #EFF0F4;
+    border-bottom: 4px solid #EFF0F4;
+}
+
+:--articles .discussion .content {
+    margin-bottom: 16px;
+}
+
+:--articles .discussion a {
+    color: inherit;
+}
+
+:--articles .discussion .category:before {
+    font-size: 16px;
+    font-weight: 100;
+    color: var(--exound-orange);
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+:--articles .discussion .category {
+    font-size: 16px;
+    font-weight: 800;
+    bottom: 40px;
+    margin-right: 32px;
+}
+
+:--articles .discussion .category a {
+    color: var(--exound-black);
+}
+
+:--articles .article {
     padding: 40px 60px;
     height: 300px;
     border-top: 1px solid #DDDDDD;

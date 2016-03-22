@@ -49,6 +49,7 @@ export default class PortalTop extends React.Component {
       {link: "/sign_in", content: "登 录", icon: "sign-in"}
     ] : [
       {link: `/profile/${nick}`, content: nick, icon: "user"},
+      {link: "/manage/write/discussion", content: "发 帖", icon: "comments-o"},
       {link: "/manage", content: "管 理", icon: "cog"},
       {link: "/sign_out", content: "登 出", icon: "sign-out"}
     ]).map(({link, content, icon}) => {
@@ -73,10 +74,6 @@ export default class PortalTop extends React.Component {
   };
 
   render() {
-    const askBase = "http://ask.exound.com"
-        , askLink = (!this.user.guest) ?
-          `${askBase}?token=${authToken}` : askBase;
-
     const reviewsClassNames = classNames("sub item", {
       "full-bg": !!this.props.deviceTypes.length
     });
@@ -104,7 +101,7 @@ export default class PortalTop extends React.Component {
             </MenuItem>
           </Menu>
 
-          <MenuItem link={askLink}>社 区</MenuItem>
+          <MenuItem link="/community">社 区</MenuItem>
         </Menu>
 
         <h1 className="center">

@@ -7,6 +7,7 @@ import Imager from "../widgets/Imager";
 import Link from "../widgets/Link";
 import ArticleSidebar from "../widgets/ArticleSidebar";
 import ReviewSidebar from "../widgets/ReviewSidebar";
+import DiscussionSidebar from "../widgets/DiscussionSidebar";
 import CommentBox from "../widgets/CommentBox";
 import {slashFormat} from "../../core/date";
 import titleFn from "../../core/title";
@@ -37,6 +38,7 @@ export default class Article extends React.Component {
       review_meta,
       review,
       user,
+      type
     } = article;
 
     const coverDisplay = cover &&
@@ -46,11 +48,24 @@ export default class Article extends React.Component {
         , encodedUrl = encodeURI(currentUrl)
         , shareWeiboUrl = `http://service.weibo.com/share/share.php?title=${pageTitle}&url=${encodedUrl}&source=www.exound.com`;
 
-    const sidebar = (review && review_meta && !R.isEmpty(R.keys(review_meta))) ?
-          <ReviewSidebar briefings={briefings} meta={review_meta} /> :
-          <ArticleSidebar briefings={briefings} advertisements={advertisements} />;
+    let sidebar;
+
+    if (type === "article") {
+      sidebar = <ArticleSidebar briefings={briefings} advertisements={advertisements} />;
+    } else if (type === "review") {
+      sidebar = <ReviewSidebar briefings={briefings} meta={review_meta} />;
+    } else if (type === "discussion") {
+      sidebar = <DiscussionSidebar briefings={briefings} advertisements={advertisements} />;
+    };
 
     const taxonomy = review ? device_type : category;
+
+    const articleAdvertisement = type === "discussion" ?
+          advertisements.position7 :
+          advertisements.position3;
+
+    const articleAdvertisementComponent = articleAdvertisement &&
+          <Advertisement advertisement={articleAdvertisement} />;
 
     return (
       <main className="article-page">
@@ -94,7 +109,7 @@ export default class Article extends React.Component {
               <span>* 叉烧网版权所有，未经授权不得以任何形式使用。</span>
             </div>
 
-            <Advertisement advertisement={advertisements.position3} />
+            {articleAdvertisementComponent}
 
             <CommentBox commentableId={id}
                         commentableType="Article"

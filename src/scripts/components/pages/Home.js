@@ -4,9 +4,15 @@ import Promotions from "../widgets/Promotions";
 import ArticlesList from "../widgets/ArticlesList";
 import HomeSidebar from "../widgets/HomeSidebar";
 import ArticleItem from "../widgets/ArticleItem";
+import DiscussionItem from "../widgets/DiscussionItem";
 import Advertisement from "../widgets/Advertisement";
 
 export default class Home extends React.Component {
+  articleComponentFactory = (obj) => {
+    if (obj.type === "discussion") return DiscussionItem;
+    return ArticleItem;
+  };
+
   render() {
     const {
       promotions,
@@ -34,7 +40,7 @@ export default class Home extends React.Component {
 
         <section className="body">
           <ArticlesList className="left"
-                        Component={ArticleItem}
+                        ComponentFactory={this.articleComponentFactory}
                         extra={advertisement}
                         loadMoreConfig={loadMoreConfig}
                         articles={articles} />

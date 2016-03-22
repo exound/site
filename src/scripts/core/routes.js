@@ -5,6 +5,7 @@ import App from "../components/App";
 import Home from "../components/pages/Home";
 import Reviews from "../components/pages/Reviews";
 import Briefings from "../components/pages/Briefings";
+import Community from "../components/pages/Community";
 import Category from "../components/pages/Category";
 import Search from "../components/pages/Search";
 import Article from "../components/pages/Article";
@@ -23,6 +24,7 @@ import ManageCategories from "../components/pages/ManageCategories";
 import ManageProfile from "../components/pages/ManageProfile";
 import ManageLink from "../components/pages/ManageLink";
 import WriteArticle from "../components/pages/WriteArticle";
+import WriteDiscussion from "../components/pages/WriteDiscussion";
 import WritePage from "../components/pages/WritePage";
 import WritePromotion from "../components/pages/WritePromotion";
 import WriteBriefing from "../components/pages/WriteBriefing";
@@ -36,6 +38,8 @@ import NotFound from "../components/pages/NotFound";
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
+    <Route path="community" component={Community} />
+    <Route path="categories/:name" component={Category} />
     <Route path="search/:q" component={Search} />
     <Route path="categories/:name" component={Category} />
     <Route path="device_types/:name" component={Category} />
@@ -46,6 +50,7 @@ const routes = (
     <Route path="briefings" component={Briefings} />
     <Route path="manage" component={ManageArticles} />
     <Route path="manage/write/article" component={WriteArticle} />
+    <Route path="manage/write/discussion" component={WriteDiscussion} />
     <Route path="manage/write/page" component={WritePage} />
     <Route path="manage/write/promotion" component={WritePromotion} />
     <Route path="manage/write/briefing" component={WriteBriefing} />

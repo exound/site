@@ -67,6 +67,11 @@ export default class Article extends React.Component {
     const articleAdvertisementComponent = articleAdvertisement &&
           <Advertisement advertisement={articleAdvertisement} />;
 
+    const copyRight = type !== "discussion" &&
+          <div className="copyright-claim">
+            <span>* 叉烧网版权所有，未经授权不得以任何形式使用。</span>
+          </div>;
+
     return (
       <main className="article-page">
         <section className="body">
@@ -105,10 +110,7 @@ export default class Article extends React.Component {
             <section className="article-content"
                      dangerouslySetInnerHTML={{__html: content}} />
 
-            <div className="copyright-claim">
-              <span>* 叉烧网版权所有，未经授权不得以任何形式使用。</span>
-            </div>
-
+            {copyRight}
             {articleAdvertisementComponent}
 
             <CommentBox commentableId={id}

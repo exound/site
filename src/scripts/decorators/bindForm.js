@@ -4,7 +4,7 @@ import Form from "../core/Form";
 import {modify} from "../core/storeUpdaters";
 
 export default function bindForm({
-  name, dataPath, responsePath, storeUpdater = modify, constraints
+  name, nameFactory, dataPath, responsePath, storeUpdater = modify, constraints
 }) {
   return function(Class) {
     const willMount = Class.prototype.componentWillMount
@@ -15,7 +15,7 @@ export default function bindForm({
       const actionGetter = () => context.props.action;
       const methodGetter = () => context.props.method;
 
-      const mount = store.makeFormsMount([name]);
+      const mount = store.makeFormsMount([name || nameFactory(context.props)]);
 
       mount.value = context.form = new Form(
         dataPath,

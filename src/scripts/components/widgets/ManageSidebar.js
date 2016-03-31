@@ -14,6 +14,7 @@ export default class ManageSidebar extends React.Component {
             <Link to="/manage/write/promotion">添加头条</Link>
             <Link to="/manage/write/page">添加页面</Link>
             <Link to="/manage/write/link">添加页底链接</Link>
+            <Link to="/manage/staffs">管理成员</Link>
             <Link to="/manage/articles">管理文章</Link>
             <Link to="/manage/promotions">管理头条</Link>
             <Link to="/manage/categories">管理分类</Link>
@@ -25,14 +26,14 @@ export default class ManageSidebar extends React.Component {
 
     const articleRelated = R.contains(user.role, [
       "author", "editor", "admin"
-    ]) && <Link key="write_article" to="/manage/write/article">撰写文章</Link>;
+    ]) && <Link to="/manage/write/article">撰写文章</Link>;
 
     return (
       <aside className="sidebar">
         <div className="menu">
-          <Link key="write_article" to="/manage/write/discussion">发起讨论</Link>
-      <Link key="my_article" to="/manage/articles/mine">我的文章</Link>
           {articleRelated}
+          <Link to="/manage/write/discussion">发起讨论</Link>
+          <Link key="my_article" to="/manage/articles/mine">我的文章</Link>
           <Link to="/manage/write/briefing">投递快讯</Link>
           <Link to="/manage/briefings/mine">我的快讯</Link>
           <Link to="/manage/profile">个人信息</Link>

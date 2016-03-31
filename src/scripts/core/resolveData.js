@@ -50,6 +50,28 @@ function home() {
 
 home.pathPattern = /^\/$/;
 
+function staffs() {
+  return getData({
+    staticProps: {
+      user,
+      title: "团队成员",
+      advertisements: {}
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      briefings: briefingsUrl,
+      categories,
+      deviceTypes,
+      staffs: apiPath("staffs")
+    }
+  });
+}
+
+staffs.pathPattern = /^\/staffs$/;
+
 function reviews() {
   return getData({
     staticProps: {
@@ -282,6 +304,26 @@ function manageHome() {
 }
 
 manageHome.pathPattern = /^\/manage$/;
+
+function manageStaffs() {
+  return getData({
+    staticProps: {
+      user,
+      title: "管理成员"
+    },
+    preHooks: [
+      withUser
+    ],
+    resolve: {
+      links,
+      categories,
+      deviceTypes,
+      staffs: apiPath("staffs")
+    }
+  });
+}
+
+manageStaffs.pathPattern = /^\/manage\/staffs$/;
 
 function manageArticles() {
   return getData({
@@ -732,12 +774,12 @@ notFound.pathPattern = /\.*/;
 
 const resolvers = [
   home, reviews, category, managePromotion,
-  profile, article, signUp, signIn,
+  profile, article, signUp, signIn, staffs,
   signOut, manageHome, manageMyArticles, manageArticle,
   manageArticles, writeArticle, writePromotion, managePromotions,
   manageCategories, signUpped, writeBriefing, manageMyBriefings,
   briefings, manageBriefing, manageProfile, deviceType,
-  writeLink, manageLinks, manageLink, writePage,
+  writeLink, manageLinks, manageLink, writePage, manageStaffs,
   managePages, managePage, page, search, writeDiscussion, community
 ];
 

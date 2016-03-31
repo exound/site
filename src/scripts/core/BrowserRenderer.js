@@ -10,6 +10,8 @@ import store from "./store";
 import resolveData from "./resolveData";
 import fetchCurrentUser from "./fetchCurrentUser";
 import createElement from "./createElement";
+import track from "./track";
+import {gaTrackId} from "./globals";
 
 export default class BrowserRenderer {
   static run({data, history}) {
@@ -27,7 +29,22 @@ export default class BrowserRenderer {
         store.data = data;
 
         return data;
-      }).then(fetchCurrentUser);
+      }).then(fetchCurrentUser).then((data) => {
+        track("create", {
+          trackingId: gaTrackId,
+          cookieDomain: "auto",
+          userId: (data.user && data.user.nick) || "guest"
+        });
+
+        const url = window.location.href;
+
+        track("send", {
+          hitType: "pageview",
+          location: url,
+          page: data.route,
+          title: title(data.title)
+        });
+      });
     });
 
     flyd.on(this.onStoreUpdate, store.stream$);

@@ -979,3 +979,62 @@
 :--briefing time {
     color: #CCCCCC;
 }
+
+@custom-selector :--staffs main.staffs-page .left;
+
+:--staffs {
+    box-sizing: border-box;
+    padding: 36px 40px;
+}
+
+:--staffs h1 {
+    font-size: 24px;
+    margin-bottom: 36px;
+}
+
+:--staffs .staffs.grid {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+:--staffs .staffs.grid .cell {
+    width: 242px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #DDDDDD;
+    padding-bottom: 24px;
+}
+
+:--staffs .staffs.grid .cell .portrait {
+    height: 194px;
+    margin-bottom: 8px;
+    background-color: #DDDDDD;
+    background-size: cover;
+}
+
+:--staffs .staffs.grid .cell:nth-child(3n) {
+    margin-right: 0;
+}
+
+:--staffs .staffs.grid .cell h2 {
+    font-size: 18px;
+}
+
+:--staffs .staffs.grid .cell h3 {
+    color: #888888;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+:--staffs .staffs.grid .cell h3,
+:--staffs .staffs.grid .cell p {
+    font-weight: normal;
+}
+
+:--staffs .staffs.grid .cell p {
+    color: #666666;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0 18px;
+}

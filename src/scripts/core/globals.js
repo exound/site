@@ -7,6 +7,8 @@ const apiRoot = hasDom ?
       global.apiRoot;
 
 export default {
+  gaTrackId: "UA-75482390-1",
+  userDimension: "dimension4",
   hasDom,
   apiRoot,
   get pageData() {

@@ -438,6 +438,51 @@
     padding: 7px;
 }
 
+@custom-selector :--staffs-list main .left .staffs-list.control-group;
+
+:--staffs-list .field {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+:--staffs-list .field .staff.edit {
+    padding: 16px;
+    width: 220px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #DDDDDD;
+}
+
+:--staffs-list .field .staff.edit:nth-child(3n) {
+    margin-right: 0;
+}
+
+:--staffs-list .field .staff.edit .portrait {
+    display: block;
+    height: 176px;
+    background-color: #CCCCCC;
+    background-size: cover;
+    margin-bottom: 8px;
+}
+
+:--staffs-list .field .staff.edit input {
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 6px 0;
+    margin: 4px 0;
+    border: 0;
+    border-bottom: 1px solid #888888;
+    width: 100%;
+}
+
+:--staffs-list .field .staff.edit button.btn {
+    margin-top: 8px;
+}
+
+:--staffs-list .field .staff.edit button.btn.remove {
+    margin-left: 90px;
+}
+
 @custom-selector :--categories-list main .left .categories-list;
 
 :--categories-list.control-group .field {

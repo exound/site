@@ -6,7 +6,6 @@ import DiscussionItem from "../widgets/DiscussionItem";
 export default class Community extends React.Component {
   render() {
     const {
-      name,
       articles,
       advertisements
     } = this.props.appState.data;

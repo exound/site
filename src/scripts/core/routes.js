@@ -4,6 +4,7 @@ import {createRoutesFromReactChildren} from "react-router/lib/RouteUtils";
 import App from "../components/App";
 import Home from "../components/pages/Home";
 import Reviews from "../components/pages/Reviews";
+import Staffs from "../components/pages/Staffs";
 import Briefings from "../components/pages/Briefings";
 import Community from "../components/pages/Community";
 import Category from "../components/pages/Category";
@@ -15,6 +16,7 @@ import ManageArticles from "../components/pages/ManageArticles";
 import ManagePromotions from "../components/pages/ManagePromotions";
 import ManageBriefings from "../components/pages/ManageBriefings";
 import ManageLinks from "../components/pages/ManageLinks";
+import ManageStaffs from "../components/pages/ManageStaffs";
 import ManagePages from "../components/pages/ManagePages";
 import ManagePromotion from "../components/pages/ManagePromotion";
 import ManageArticle from "../components/pages/ManageArticle";
@@ -47,6 +49,7 @@ const routes = (
     <Route path="pages/:name" component={Page} />
     <Route path="profile/:id" component={Profile} />
     <Route path="reviews" component={Reviews} />
+    <Route path="staffs" component={Staffs} />
     <Route path="briefings" component={Briefings} />
     <Route path="manage" component={ManageArticles} />
     <Route path="manage/write/article" component={WriteArticle} />
@@ -66,6 +69,7 @@ const routes = (
     <Route path="manage/promotions" component={ManagePromotions} />
     <Route path="manage/categories" component={ManageCategories} />
     <Route path="manage/links" component={ManageLinks} />
+    <Route path="manage/staffs" component={ManageStaffs} />
     <Route path="manage/Pages" component={ManagePages} />
     <Route path="manage/profile" component={ManageProfile} />
     <Route path="sign_up" component={SignUp} />

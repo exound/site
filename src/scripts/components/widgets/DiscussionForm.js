@@ -45,8 +45,6 @@ export default class DiscussionForm extends React.Component {
   }
 
   save = () => {
-    console.log(this.form);
-
     if (this.form){ 
       this.setState({saving: true});
 

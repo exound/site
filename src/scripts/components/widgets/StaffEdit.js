@@ -20,14 +20,13 @@ import apiPath from "../../core/apiPath";
 export default class StaffEdit extends React.Component {
   constructor(props) {
     super(props);
-    const {id, portrait} = this.props.staff;
-    this.state = {portrait, id};
+    this.state = {portrait: this.props.staff.portrait};
   }
 
   submit = () => {
     this.form.submit();
     const state = {timeStamp: Date.now()};
-    if (!this.tate.id) state.portrait = null;
+    if (this.props.isNew) state.portrait = null;
     this.setState(state);
   };
 
@@ -41,6 +40,7 @@ export default class StaffEdit extends React.Component {
 
   render() {
     const {
+      isNew,
       staff
     } = this.props;
 
@@ -60,9 +60,13 @@ export default class StaffEdit extends React.Component {
                         afterRemove={this.remove}
                         url={apiPath(`staffs/${id}`)}/>;
 
+    const portraitItem = this.state.portrait ?
+          <Imager url={this.state.portrait} className="portrait" /> :
+          <div className="portrait" />;
+
     return (
-      <div className="staff edit" key={id || this.state.timeStamp}>
-        <Imager url={this.state.portrait} className="portrait" /> 
+      <div className="staff edit" key={isNew ? this.state.timeStamp : id}>
+        {portraitItem}
         <Input form={this.form}
                type="text"
                name="name"

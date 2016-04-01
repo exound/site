@@ -27,6 +27,7 @@ export default class StaffsList extends React.Component {
           {staffEditItems}
           <StaffEdit action={apiPath("staffs")}
                      method="post"
+                     isNew={true}
                      staff={{}} />
         </div>
       </div>

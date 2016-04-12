@@ -1,3 +1,4 @@
+import R from "ramda";
 import React from "react";
 
 import Imager from "./Imager";
@@ -24,6 +25,7 @@ export default class ArticleItem extends React.Component {
           "article item nocover";
 
     const coverDisplay = cover &&
+          R.contains(user.role, ["partner", "editor", "admin"]) &&
           <Imager max={500} url={cover} className="cover" />;
 
     const taxonomy = review ? device_type : category;

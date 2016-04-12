@@ -65,6 +65,7 @@ export default class ArticleForm extends React.Component {
     const coverable = {type: "Article", id};
 
     const coverUploader = id &&
+          R.contains(user.role, ["partner", "editor", "admin"]) &&
           <CoverUploader coverable={coverable}
                          action={apiPath("uploads")}
                          method="post"

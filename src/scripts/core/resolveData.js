@@ -254,7 +254,7 @@ function article(id) {
       categories,
       deviceTypes,
       advertisements: apiPath("advertisements", {
-        position: ["position3", "position4"]
+        position: ["position3", "position4", "position7"]
       }),
       article: apiPath(`articles/${id}`),
       comments: apiPath(`comments/for/${id}`)

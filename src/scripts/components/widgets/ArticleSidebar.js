@@ -23,6 +23,7 @@ export default class ArticleSidebar extends React.Component {
       <aside className="sidebar">
         {advertisementItems.position4}
         {briefingsDisplay}
+        {advertisementItems.position7}
       </aside>
     );
   }

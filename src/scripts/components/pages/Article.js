@@ -61,7 +61,7 @@ export default class Article extends React.Component {
     const taxonomy = review ? device_type : category;
 
     const articleAdvertisement = type === "discussion" ?
-          advertisements.position7 :
+          advertisements.position8 :
           advertisements.position3;
 
     const articleAdvertisementComponent = articleAdvertisement &&

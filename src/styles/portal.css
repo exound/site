@@ -321,11 +321,12 @@
     position: relative;
     box-sizing: border-box;
     padding: 20px 60px;
+    border-top: 1px solid #DDDDDD;
 }
 
-:--articles .discussion {
-    border-top: 4px solid #EFF0F4;
-    border-bottom: 4px solid #EFF0F4;
+:--articles .discussion .nick {
+    color: var(--exound-orange);
+    margin-left: 20px;
 }
 
 :--articles .discussion .content {
@@ -358,7 +359,6 @@
 :--articles .article {
     padding: 40px 60px;
     height: 300px;
-    border-top: 1px solid #DDDDDD;
 }
 
 :--articles .article:first-child {
@@ -379,6 +379,14 @@
 
 :--articles .article.nocover .content {
     width: 720px;
+}
+
+:--articles .article.nonpartner {
+    height: 220px;
+}
+
+:--articles .article.nonpartner .content {
+    height: auto;
 }
 
 :--articles .article .publish {

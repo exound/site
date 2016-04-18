@@ -51,7 +51,7 @@ export default class BrowserRenderer {
   }
 
   onStoreUpdate = (appState) => {
-    document.title = decodeURI(title(appState.data && appState.data.title));
+    document.title = title(appState.data && appState.data.title);
     this.run();
   };
 

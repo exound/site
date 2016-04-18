@@ -274,6 +274,7 @@ function page(name) {
   return getData({
     staticProps: {
       user,
+      advetisements: {}
     },
     preHooks: [
       withUser
@@ -283,9 +284,6 @@ function page(name) {
       briefings: briefingsUrl,
       categories,
       deviceTypes,
-      advertisements: apiPath("advertisements", {
-        position: ["position3", "position4"]
-      }),
       page: apiPath(`pages/named/${name}`)
     },
     postHooks: [

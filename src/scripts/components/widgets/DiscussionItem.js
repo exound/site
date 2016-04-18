@@ -9,8 +9,11 @@ export default class DiscussionItem extends React.Component {
       id,
       title,
       content,
-      published_at
+      published_at,
+      user
     } = this.props.article;
+
+    const {nick} = user;
 
     const discussionClassName = "discussion item";
 
@@ -27,6 +30,7 @@ export default class DiscussionItem extends React.Component {
             <Link to="/community">COMMUNITY 社区</Link>
           </span>
           <time>{chinese(published_at)}</time>
+          <span className="nick">{nick}</span>
         </section>
       </article>
     );

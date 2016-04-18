@@ -76,7 +76,7 @@ export default class PromotionForm extends React.Component {
       saving
     } = this.state;
 
-    const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
+    const hasPrivilege = R.contains(user.role, ["admin", "editor"])
         , isAuthor = !this.promotion.user || user.id === this.promotion.user.id;
 
     this.goBackLink = "/manage/promotions";

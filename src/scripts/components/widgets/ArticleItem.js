@@ -1,5 +1,6 @@
 import R from "ramda";
 import React from "react";
+import classNames from "classnames";
 
 import Imager from "./Imager";
 import {Link} from "react-router";
@@ -20,12 +21,10 @@ export default class ArticleItem extends React.Component {
       user
     } = this.props.article;
 
-    const articleClassName = cover ?
-          "article item" :
-          "article item nocover";
+    const canCover = R.contains(user.role, ["partner", "editor", "admin"]);
 
     const coverDisplay = cover &&
-          R.contains(user.role, ["partner", "editor", "admin"]) &&
+          canCover &&
           <Imager max={500} url={cover} className="cover" />;
 
     const taxonomy = review ? device_type : category;
@@ -34,8 +33,13 @@ export default class ArticleItem extends React.Component {
           `/device_types/${device_type}` :
           `/categories/${category}`;
 
+    const excerpt = canCover &&
+          <section className="excerpt">
+            {plaintext(content)}
+          </section>;
+
     return (
-      <article className={articleClassName}>
+      <article className={classNames("article", "item", {nocover: !(cover && canCover), nonpartner: !canCover})}>
         <section className="content">
           <h1 className="title">
             <Link to={`/articles/${id}`}>{title}</Link>
@@ -51,9 +55,7 @@ export default class ArticleItem extends React.Component {
             <time>{slashFormat(published_at)}</time>
           </section>
 
-          <section className="excerpt">
-            {plaintext(content)}
-          </section>
+          {excerpt}
         </section>
 
         <section className="misc">

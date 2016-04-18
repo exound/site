@@ -70,7 +70,7 @@ export default class BriefingForm extends React.Component {
       saving
     } = this.state;
 
-    const hasPrivilege = R.contains(user.role, ["admin", "moderator"])
+    const hasPrivilege = R.contains(user.role, ["admin", "editor"])
         , isAuthor = !this.briefing.user || user.id === this.briefing.user.id;
 
     this.goBackLink = isAuthor ?

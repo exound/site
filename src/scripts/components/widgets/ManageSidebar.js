@@ -25,7 +25,7 @@ export default class ManageSidebar extends React.Component {
           </div>;
 
     const articleRelated = R.contains(user.role, [
-      "author", "editor", "admin"
+      "author", "partner", "editor", "admin"
     ]) && <Link to="/manage/write/article">撰写文章</Link>;
 
     return (

@@ -38,6 +38,7 @@ function home() {
       links,
       deviceTypes,
       categories,
+      comments: apiPath("comments/recent"),
       briefings: briefingsUrl,
       advertisements: apiPath("advertisements", {
         position: ["position1", "position2", "position6"]

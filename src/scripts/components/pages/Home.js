@@ -18,7 +18,8 @@ export default class Home extends React.Component {
       promotions,
       articles,
       advertisements,
-      briefings
+      briefings,
+      comments
     } = this.props.appState.data;
 
     const loadMoreConfig = {
@@ -46,7 +47,8 @@ export default class Home extends React.Component {
                         articles={articles} />
 
           <HomeSidebar briefings={briefings}
-                       advertisements={R.omit(["position6"], advertisements)} />
+                       advertisements={R.omit(["position6"], advertisements)}
+                       comments={comments} />
         </section>
       </main>
     );

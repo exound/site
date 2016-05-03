@@ -12,6 +12,7 @@ export default class Comment extends React.Component {
     } = this.props;
 
     const {
+      id,
       content,
       created_at
     } = comment;
@@ -19,7 +20,7 @@ export default class Comment extends React.Component {
     const user = buildUser(comment.user);
 
     return (
-      <div className="comment">
+      <div className="comment" id={`comment-${id}`}>
         <Imager className="avatar" url={user.avatar} />
 
         <div className="right">

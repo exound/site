@@ -925,7 +925,9 @@
 }
 
 @custom-selector :--sidebar-briefings main aside.sidebar .briefings;
+@custom-selector :--sidebar-comments main aside.sidebar .comments;
 
+:--sidebar-comments header,
 :--sidebar-briefings header {
     display: flex;
     flex-flow: row nowrap;
@@ -935,15 +937,21 @@
     border-bottom: 1px solid #EEEEEE;
 }
 
+:--sidebar-comments header .more,
 :--sidebar-briefings header .more {
     font-size: 14px;
     color: var(--exound-gray);
 }
 
+:--sidebar-comments ul li,
 :--sidebar-briefings ul li {
     font-size: 14px;
     border-bottom: 1px solid #EEEEEE;
     padding: 8px 16px;
+}
+
+:--sidebar-comments a {
+    color: #888;
 }
 
 :--sidebar-briefings ul li:last-child {

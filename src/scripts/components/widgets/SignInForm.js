@@ -38,7 +38,7 @@ export default class SignInForm extends React.Component {
 
         const previousPath = this.location.state &&
               this.location.state.previousPath
-            , path =  previousPath ?
+            , path = (previousPath && !previousPath.match(/^\/sign/)) ?
               previousPath :
               "/";
         

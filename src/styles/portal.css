@@ -317,6 +317,7 @@
 @custom-selector :--articles .wrapper main .articles;
 
 :--articles .article,
+:--articles .np,
 :--articles .discussion {
     position: relative;
     box-sizing: border-box;
@@ -324,19 +325,23 @@
     border-top: 1px solid #DDDDDD;
 }
 
+:--articles .np .nick,
 :--articles .discussion .nick {
     color: var(--exound-orange);
     margin-left: 20px;
 }
 
+:--articles .np .content,
 :--articles .discussion .content {
     margin-bottom: 16px;
 }
 
+:--articles .np a,
 :--articles .discussion a {
     color: inherit;
 }
 
+:--articles .np .category:before,
 :--articles .discussion .category:before {
     font-size: 16px;
     font-weight: 100;
@@ -345,6 +350,7 @@
     margin-right: 8px;
 }
 
+:--articles .np .category,
 :--articles .discussion .category {
     font-size: 16px;
     font-weight: 800;
@@ -352,6 +358,7 @@
     margin-right: 32px;
 }
 
+:--articles .np .category a,
 :--articles .discussion .category a {
     color: var(--exound-black);
 }

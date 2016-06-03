@@ -71,13 +71,11 @@ export default class RadarChart extends React.Component {
   render() {
     const merged = R.merge({
       data: [],
-      width: 400,
-      height: 400
+      viewBox: "-160 -160 320 320"
     }, this.props);
 
     const {
-      height,
-      width
+      viewBox
     } = merged; 
 
     const data = R.map(
@@ -87,11 +85,6 @@ export default class RadarChart extends React.Component {
 
     const paths = Radar({data, rings: 6, max: 140, r: 140, center: [0, 0]});
 
-    const translate = this.translate(
-      cord => cord / 2,
-      [width, height]
-    );
-
     const score = (R.compose(
       R.reduce(R.add, 0),
       R.values,
@@ -99,14 +92,14 @@ export default class RadarChart extends React.Component {
 
     return (
       <svg style={{backgroundColor: "#2A2A2A"}}
-           height={height}
-           width={width}
+           viewBox={viewBox}
            className="radar-chart">
 
-        <g transform={translate}>
+        <g>
           {paths.rings.map(this.ring)}
           {paths.curves.map(this.curve)}
           <text textAnchor="middle"
+                className="a-score"
                 dominantBaseline="hanging"
                 transform="translate(0,12)"
                 fill="white"

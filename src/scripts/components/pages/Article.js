@@ -112,14 +112,14 @@ export default class Article extends React.Component {
 
             {copyRight}
             {articleAdvertisementComponent}
-
-            <CommentBox commentableId={id}
-                        commentableType="Article"
-                        user={currentUser}
-                        comments={comments} />
           </article>
 
           {sidebar}
+
+          <CommentBox commentableId={id}
+                      commentableType="Article"
+                      user={currentUser}
+                      comments={comments} />
         </section>
       </main>
     );

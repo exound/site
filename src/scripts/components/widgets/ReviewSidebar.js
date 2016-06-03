@@ -32,9 +32,7 @@ export default class ReviewSidebar extends React.Component {
     }, {}, scores)];
 
     const chart = !R.isEmpty(R.keys(chartData[0])) &&
-          <RadarChart data={chartData}
-                      height={370}
-                      width={345} />;
+          <RadarChart data={chartData} />;
 
     const sellerItems = R.map((seller) => {
       const info = sellers[seller];

@@ -108,6 +108,10 @@ export default class RichText extends React.Component {
             this.refs.fileInput.select();
             this.imageDialogCallback = callback;
           }
+        },
+        video_template_callback(data) {
+          console.log(data);
+          return `<video controls><source src="${data.source1}" ${(data.source1mime ? `type="${data.source1mime}"` : "")}></video>`;
         }
       };
     }

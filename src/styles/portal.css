@@ -69,6 +69,10 @@
     line-height: 64px;
 }
 
+:--top .btn {
+    display: none;
+}
+
 @custom-selector :--menu-ul .wrapper header.top .menu > ul;
 
 :--menu-ul {
@@ -296,7 +300,7 @@
 :--main-body {
     position: relative;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: space-between;
     width: 1200px;
     margin-top: 30px;
@@ -343,10 +347,8 @@
 
 :--articles .np .category:before,
 :--articles .discussion .category:before {
-    font-size: 16px;
     font-weight: 100;
     color: var(--exound-orange);
-    font-size: 20px;
     margin-right: 8px;
 }
 
@@ -444,6 +446,13 @@
 }
 
 @custom-selector :--portal-sidebar .wrapper main .sidebar;
+
+:--portal-sidebar {
+    order: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 
 :--portal-sidebar > * {
     margin-top: 20px;
@@ -567,7 +576,6 @@
     background-color: transparent;
     box-sizing: border-box;
     margin-right: 20px;
-    margin-bottom: 200px;
 }
 
 :--article .cover {
@@ -676,13 +684,13 @@
     padding: 4px 8px;
 }
 
-@custom-selector :--comment-box .wrapper main .article.left .comment-box;
-@custom-selector :--comment .wrapper main .article.left .comment;
+@custom-selector :--comment-box .wrapper main .comment-box;
+@custom-selector :--comment .wrapper main .comment-box .comment;
 
 :--comment-box {
     box-sizing: border-box;
+    width: 835px;
     padding: 40px;
-    width: 100%;
     background-color: white;
 }
 

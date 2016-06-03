@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Link} from "react-router";
-import {chinese} from "../../core/date";
+import {slashFormat} from "../../core/date";
 
 export default class DiscussionItem extends React.Component {
   render() {
@@ -29,7 +29,7 @@ export default class DiscussionItem extends React.Component {
           <span className="category fa fa-comment-o">
             <Link to="/community">COMMUNITY 社区</Link>
           </span>
-          <time>{chinese(published_at)}</time>
+          <time>{slashFormat(published_at)}</time>
           <span className="nick">{nick}</span>
         </section>
       </article>

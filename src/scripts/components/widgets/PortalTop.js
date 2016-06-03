@@ -6,6 +6,7 @@ import buildUser from "../../core/user";
 import MenuItem from "./MenuItem";
 import Menu from "./Menu";
 import List from "./List";
+import Button from "./Button";
 import {Link} from "react-router";
 import hasHistory from "../../decorators/hasHistory";
 import {findDOMNode} from "react-dom";
@@ -16,6 +17,14 @@ export default class PortalTop extends React.Component {
     super(props);
     this.state = {search: null};
   }
+
+  toggleMenu = () => {
+    const elm = findDOMNode(this.refs.leftMenu);
+    const display = elm.style.display;
+    const current = (display === "none" || !display) ? "block" : "none";
+
+    elm.style.display = current;
+  };
 
   get user() {
     return buildUser(this.props.user);
@@ -82,7 +91,8 @@ export default class PortalTop extends React.Component {
 
     return (
       <header className="top full-bg">
-        <Menu wrapper="nav" className="left main">
+        <Button onClick={this.toggleMenu} text={<i className="fa fa-bars" />} />
+        <Menu ref="leftMenu" wrapper="nav" className="left main">
           <Menu className="sub item full-bg" content="文 章">
             {this.categoriesMenuItems}
           </Menu>

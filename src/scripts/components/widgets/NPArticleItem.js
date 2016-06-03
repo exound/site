@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Link} from "react-router";
-import {chinese} from "../../core/date";
+import {slashFormat} from "../../core/date";
 
 export default class NPArticleItem extends React.Component {
   render() {
@@ -30,7 +30,7 @@ export default class NPArticleItem extends React.Component {
           <span className="category fa fa-gg-circle">
             <Link to={`/categories/${category}`}>{category}</Link>
           </span>
-          <time>{chinese(published_at)}</time>
+          <time>{slashFormat(published_at)}</time>
           <span className="nick">{nick}</span>
         </section>
       </article>

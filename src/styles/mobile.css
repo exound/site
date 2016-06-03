@@ -1,0 +1,532 @@
+@media (max-device-width : 800px) {
+    html {
+        font-size: 36px;
+    }
+
+    html * {
+        font-size: 1rem;
+    }
+
+    .fa {
+        font-size: 1rem;
+    }
+
+    h1, h2, h3, h4 {
+        font-size: 1rem;
+    }
+
+    .wrapper,
+    .wrapper > * {
+        max-width: 100%;
+    }
+
+    .wrapper header.top {
+        height: 96px;
+        left: 0;
+        margin: 0;
+    }
+
+    .wrapper header.top > h1 {
+        line-height: 96px;
+    }
+
+    .wrapper header.top .menu.right .search,
+    .wrapper header.top .menu.right .user,
+    .wrapper header.top .menu.right > ul > li,
+    .wrapper header.top > * {
+        height: 96px;
+    }
+
+    .wrapper header.top > h1 a {
+        font-size: 56px;
+    }
+
+    .wrapper header.top .btn,
+    .wrapper header.top .menu.right > ul > li {
+        width: 96px
+    }
+
+    .wrapper header.top > .right.menu .content,
+    .wrapper header.top > .right.menu .content i.fa {
+        padding: 0;
+        height: 96px;
+        width: 96px;
+        text-align: center;
+        line-height: 96px;
+        font-size: 60px;
+    }
+
+    .wrapper header.top > .right.menu .user .content {
+        box-sizing: border-box;
+        padding: 16px;
+    }
+
+    .wrapper header.top > .right.menu .content .avatar {
+        height: 64px;
+        width: 64px;
+        border-radius: 32px;
+    }
+
+    .wrapper header.top .user.menu.sub > ul {
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .wrapper header.top > .right.menu .sub > ul > li:nth-child(2),
+    .wrapper header.top > .right.menu .sub > ul > li:nth-child(3) {
+        display: none;
+    }
+
+    .wrapper header.top .btn {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+    }
+
+    .full-bg:before,
+    .sub.menu.full-bg > ul:before {
+        display: none;
+    }
+
+    .wrapper header.top nav.menu.left {
+        display: none;
+        left: 0;
+        top: 96px;
+        z-index: 2;
+        text-align: left;
+        width: 100%;
+    }
+
+    .wrapper header.top nav.menu.left > ul > li {
+        width: 100%;
+        height: auto;
+    }
+
+    .wrapper header.top > .main.menu > ul > li .sub.menu {
+        padding: 0;
+    }
+
+    .wrapper header.top > .main.menu > ul > li:last-child,
+    .wrapper header.top > .main.menu > ul > li .sub.menu .content {
+        padding: 8px 20px;
+        background-color: #333;
+    }
+
+    .wrapper header.top > .main.menu > ul > li:last-child *,
+    .wrapper header.top > .main.menu > ul > li .sub.menu .content * {
+        background-color: #333;
+    }
+
+    .wrapper header.top > .main.menu > ul > li:last-child .item {
+        padding: 0;
+        margin: 0;
+    }
+
+    .wrapper header.top > .main.menu > ul > li .sub.menu > ul {
+        width: 100%;
+        display: block;
+    }
+
+    .wrapper header.top > .main.menu > ul > li .sub.menu > ul > li {
+        margin-left: 0 !important;
+        padding: 12px 40px;
+    }
+
+    .wrapper main.portal {
+        flex-flow: column wrap;
+    }
+
+    .wrapper main.portal .top-promotions {
+        height: auto;
+        width: 100%;
+        background-size: 210%, 210%;
+    }
+
+    .wrapper main.portal .top-promotions a {
+        height: auto;
+    }
+
+    .wrapper main.portal .top-promotions a:before {
+        margin-top: 48%;
+        content: ' ';
+        font-size: 0;
+        display: inline-block;
+    }
+
+    .wrapper main.portal .top-promotions .dots {
+        display: none;
+    }
+
+    .wrapper main .body {
+        margin-top: 0;
+    }
+
+    .wrapper main .body,
+    .wrapper main .body .articles.left {
+        width: 100%;
+    }
+
+    .wrapper main .body .articles.left article {
+        padding: 16px 32px;
+        box-sizing: border-box;
+    }
+
+    .wrapper main .body .articles.left article.article.item * {
+        font-size: 1rem;
+    }
+
+    .wrapper main .body .articles.left article.article.item {
+        height: 360px;
+    }
+
+    .wrapper main .body .articles.left article.article.item .content {
+        height: 240px;
+        width: 100%;
+    }
+
+    .wrapper main .body .articles.left article.article.item .content,
+    .wrapper main .body .articles.left article.article.item .misc {
+        background: transparent;
+        position: relative;
+        z-index: 1;
+        text-shadow:
+        -1px -1px 0 #fff,  
+        1px  -1px 0 #fff,
+        -1px 1px  0 #fff,
+        1px  1px  0 #fff;
+    }
+
+    .wrapper main .body .articles.left article.article.item .misc {
+        transform: translateY(110px);
+    }
+
+    .wrapper main .body .articles.left article.article.item .misc .fa:before {
+        font-size: 36px;
+    }
+
+    .wrapper main .body .articles.left article .imager.cover {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 0;
+    }
+
+    .wrapper main .body .articles.left article .imager.cover:before {
+        content: '';
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+        background: linear-gradient(to right, white, transparent);
+    }
+
+    .wrapper main .body .articles.left article.np *,
+    .wrapper main .body .articles.left article.discussion * {
+        font-size: 1rem;
+    }
+
+    .wrapper main .body .articles.left article.np .content,
+    .wrapper main .body .articles.left article.discussion .content {
+        margin-bottom: 24px;
+    }
+
+    .wrapper main .body .articles.left article.np .title,
+    .wrapper main .body .articles.left article.discussion .title,
+    .wrapper main .body .articles.left article.np .misc,
+    .wrapper main .body .articles.left article.discussion .misc {
+        height: 50px;
+    }
+
+    .wrapper main .load-more {
+        width: 100%;
+    }
+
+    .wrapper main .load-more button {
+        height: 96px;
+        font-size: 40px;
+    }
+
+    .wrapper main .articles.left .chshgg a img {
+        height: auto;
+        width: 100%;
+    }
+
+    .wrapper main .articles.left .chshgg a img:before {
+        margin-top: 48%;
+        content: ' ';
+        font-size: 0;
+        display: inline-block;
+    }
+
+    .wrapper main .sidebar {
+        position: relative;
+        width: 100%;
+    }
+
+    .wrapper main .sidebar .briefings,
+    .wrapper main .sidebar .comments {
+        width: 100%;
+    }
+
+    .wrapper main .sidebar .briefings header,
+    .wrapper main .sidebar .comments header {
+        font-size: 0.88rem;
+    }
+
+    .wrapper main .sidebar .briefings header .more,
+    .wrapper main .sidebar .comments header .more {
+        display: none;
+    }
+
+    .wrapper main .sidebar .briefings .briefing,
+    .wrapper main .sidebar .comments .comment {
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .wrapper main .sidebar .briefings .briefing a,
+    .wrapper main .sidebar .comments .comment a {
+        max-width: 100%;
+        display:inline-block;
+        white-space: nowrap;
+        overflow:hidden;
+        text-overflow: ellipsis;
+    }
+
+    .wrapper main .sidebar .chshgg {
+        box-sizing: border-box;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .wrapper main .sidebar .chshgg img {
+        height: auto;
+        width: 100%;
+    }
+
+    .wrapper main .sidebar .chart {
+        margin-top: 20px;
+        margin-right: 0;
+        height: auto;
+        width: 100%;
+    }
+
+    .wrapper main .sidebar .chart svg text {
+        margin-top: 20px;
+        margin-right: 0;
+        height: auto;
+        width: 100%;
+        font-size: 0.4rem;
+    }
+
+    .wrapper main .sidebar .chart svg text.a-score {
+        font-size: 1rem;
+    }
+
+    .wrapper main .sidebar .sales {
+        margin-right: 0;
+        width: 100%;
+        bottom: 20px; 
+        right: 20px;
+    }
+
+    .wrapper main .sidebar .sales * {
+        font-size: 1rem !important;
+    }
+
+    .wrapper main .sidebar .sales .qrlink {
+        align-items: center;
+    }
+
+    .wrapper main .sidebar .sales .badge {
+        background-color: transparent !important;
+    }
+
+    .wrapper main .sidebar .chart svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper footer.bottom {
+        font-size: 32px;
+        padding: 20px 40px;
+        margin: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+        flex-flow: column;
+    }
+
+    .wrapper footer.bottom > * {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 40px;
+    }
+
+    .wrapper footer.bottom .copyright .title .logo-zh {
+        height: 64px;
+        width: 128px;
+    }
+
+    .wrapper main .article.left {
+        box-sizing: border-box;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .wrapper main .article.left * {
+        font-size: 1rem;
+    }
+
+    .wrapper main .article.left .cover {
+        width: 100%;
+        height: auto;
+    }
+
+    .wrapper main .article.left .cover:before {
+        margin-top: 54%;
+        content: ' ';
+        font-size: 0;
+        display: inline-block;
+    }
+
+    .wrapper main .article.left header {
+        padding: 20px;
+    }
+
+    .wrapper main .article.left header .share {
+        bottom: 20px; 
+        right: 20px;
+    }
+
+    .wrapper main .article.left header .share > * {
+        height: 70px;
+        width: 70px;
+        border-radius: 35px;
+        font-size: 48px;
+    }
+
+    .wrapper main .article.left .article-content p,
+    .wrapper main .article.left .article-content blockquote {
+        line-height: 50px;
+    }
+
+    .wrapper main .article.left .article-content p,
+    .wrapper main .article.left .article-content h1,
+    .wrapper main .article.left .article-content h2,
+    .wrapper main .article.left .article-content h3,
+    .wrapper main .article.left .article-content h4,
+    .wrapper main .article.left .article-content blockquote {
+        padding: 8px 4px;
+    }
+
+    .wrapper main .article.left .article-content blockquote:before {
+        left: -4px;
+    }
+
+    .wrapper main .article.left .article-content > * img {
+        width: calc(100% + 32px);
+        margin: 0 -16px;
+        height: auto;
+    }
+
+    .wrapper main .article.left .article-content iframe {
+        margin: 0 -16px !important;
+        width: calc(100% + 32px);
+        height: 640px;
+    }
+
+    .wrapper main .article.left .chshgg a img {
+        height: auto;
+        width: 100%;
+    }
+
+    .wrapper main .article.left .chshgg a img:before {
+        margin-top: 30%;
+        content: ' ';
+        font-size: 0;
+        display: inline-block;
+    }
+
+    .wrapper main .comment-box {
+        margin-top: 20px;
+        padding: 16px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .wrapper main .comment-box .comment .avatar {
+        width: 10%;
+        height: auto;
+    }
+
+    .wrapper main .comment-box .comment .avatar:before {
+        margin-top: 10%;
+        content: ' ';
+        font-size: 0;
+        display: inline-block;
+    }
+
+    .wrapper main .comment-box .comment .right {
+        width: calc(90% - 20px);
+    }
+
+    .wrapper main .comment-box .comment .right * {
+        font-size: 1rem;
+    }
+
+    .wrapper main .comment-box .comment .right .tip {
+        font-size: 1rem;
+    }
+
+    .wrapper main .comment-box .comment .right textarea,
+    .wrapper main .comment-box .comment .right textarea::placeholder {
+        font-size: 1rem;
+    }
+}
+
+@media (max-device-width: 640px) {
+    .wrapper main .article.left .article-content iframe {
+        height: 520px;
+    }
+}
+
+@media (max-device-width: 500px) {
+    .wrapper main .article.left .article-content iframe {
+        height: 400px;
+    }
+}
+
+@media (max-device-width: 414px) {
+    .wrapper main .article.left .article-content iframe {
+        height: 372px;
+    }
+}
+
+@media (max-device-width: 375px) {
+    .wrapper main .article.left .article-content iframe {
+        height: 337px;
+    }
+}
+
+@media (max-device-width: 320px) {
+    .wrapper main .article.left .article-content iframe {
+        height: 240px;
+    }
+}
+
+
+@media (-webkit-transition) or (max-device-width: 800px) {
+    .wrapper main.portal {
+        padding-top: 48%;
+    }
+
+    .wrapper main.portal .top-promotions {
+        position: absolute;
+        left: 0;
+        top: 64px;
+    }
+}

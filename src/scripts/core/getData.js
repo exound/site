@@ -19,7 +19,10 @@ export default function getData({
 }) {
   return co(function* () {
     const data = yield R.mapObj(
-      url => feq.get(url).then(res => res.body),
+      url => feq.get(url).then(res => {
+        if (res.body.errors) throw new Error("notfound");
+        else return res.body;
+      }),
       hookup(preHooks, resolve)
     );
 

@@ -765,7 +765,8 @@ signOut.pathPattern = /^\/sign_out$/;
 
 function notFound() {
   return Promise.resolve({
-    layout: "session"
+    layout: "session",
+    notfound: true
   });
 }
 
@@ -792,8 +793,13 @@ export default function resolveData(location) {
   }
 
   if (resolver) {
-    return Promise.resolve(resolver(matcher(resolver)[1]))
-      .then((data) => R.merge(data, {route: location.pathname, notfound: resolver === notFound}));
+    const resolution = resolver(matcher(resolver)[1])
+          .catch(rejection => notFound());
+
+    return Promise.resolve(resolution)
+      .then((data) => R.merge({
+        route: location.pathname
+      }, data));
   }
 
   return Promise.resolve({route: location.pathname});

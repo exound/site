@@ -76,9 +76,15 @@ connector.use(function *(next) {
   const data = !isManagePath && (yield resolver);
 
   if (data) store.data = data;
-  if (data && data.notfound) this.status = 404;
 
-  const app = !isManagePath && ServerRenderer.run({data, renderProps: props});
+  const isNotFound = data && data.notfound;
+
+  if (isNotFound) this.status = 404;
+
+  const app = !isManagePath && ServerRenderer.run({
+    data,
+    renderProps: isNotFound ? (yield this.match("/notfound")).props : props
+  });
 
   yield this.render({
     app,

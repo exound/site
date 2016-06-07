@@ -793,7 +793,7 @@ export default function resolveData(location) {
 
   if (resolver) {
     return Promise.resolve(resolver(matcher(resolver)[1]))
-      .then((data) => R.merge(data, {route: location.pathname}));
+      .then((data) => R.merge(data, {route: location.pathname, notfound: resolver === notFound}));
   }
 
   return Promise.resolve({route: location.pathname});

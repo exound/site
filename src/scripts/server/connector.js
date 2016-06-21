@@ -90,7 +90,7 @@ connector.use(function *(next) {
     app,
     apiRoot,
     data: data ? JSON.stringify(data) : null,
-    title: decodeURI(title(data.title))
+    title: title(data.title)
   });
 
   yield next;

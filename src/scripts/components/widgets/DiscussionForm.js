@@ -80,8 +80,6 @@ export default class DiscussionForm extends React.Component {
       tags
     } = this.article;
 
-    console.log(this.form);
-
     const {
       saving
     } = this.state;

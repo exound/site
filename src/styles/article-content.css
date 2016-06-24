@@ -22,7 +22,7 @@
     border: none;
 }
 
-.article-content figure iframe {
+.article-content > * iframe {
     margin: 0 -44px;
 }
 

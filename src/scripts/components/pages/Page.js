@@ -4,7 +4,6 @@ import QRCode from "qrcode.react";
 
 import Imager from "../widgets/Imager";
 import Link from "../widgets/Link";
-import ArticleSidebar from "../widgets/ArticleSidebar";
 import {slashFormat} from "../../core/date";
 import titleFn from "../../core/title";
 
@@ -40,10 +39,6 @@ export default class Page extends React.Component {
         , encodedUrl = encodeURI(currentUrl)
         , shareWeiboUrl = `http://service.weibo.com/share/share.php?title=${pageTitle}&url=${encodedUrl}&source=www.exound.com`;
 
-    const sidebar =( 
-      <ArticleSidebar briefings={briefings} advertisements={advertisements} />
-    );
-
     return (
       <main className="article-page">
         <section className="body">
@@ -75,8 +70,6 @@ export default class Page extends React.Component {
                      dangerouslySetInnerHTML={{__html: content}} />
 
           </article>
-
-          {sidebar}
         </section>
       </main>
     );

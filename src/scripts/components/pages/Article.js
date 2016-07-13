@@ -62,7 +62,7 @@ export default class Article extends React.Component {
 
     const articleAdvertisement = type === "discussion" ?
           advertisements.position8 :
-          advertisements.position3;
+          null; // advertisements.position3;
 
     const articleAdvertisementComponent = articleAdvertisement &&
           <Advertisement advertisement={articleAdvertisement} />;

@@ -11,7 +11,7 @@ import Advertisement from "../widgets/Advertisement";
 export default class Home extends React.Component {
   articleComponentFactory = (obj) => {
     if (obj.type === "discussion") return DiscussionItem;
-    if (obj.user.role === "author") return NPArticleItem;
+    if (obj.user.role === "author" || obj.user.role === "normal") return NPArticleItem;
     return ArticleItem;
   };
 

@@ -45,7 +45,7 @@ export default class DiscussionForm extends React.Component {
   }
 
   save = () => {
-    if (this.form){ 
+    if (this.form){
       this.setState({saving: true});
 
       this.form.submit().then(({body}) => {
@@ -98,7 +98,7 @@ export default class DiscussionForm extends React.Component {
                     name="published"
                     label="发布帖子" />
           </div>;
-          
+
     const removeButton = id &&
           <Remove url={apiPath(`articles/${id}`)}
                   text="删 除"
@@ -117,7 +117,7 @@ export default class DiscussionForm extends React.Component {
     return (
       <section className="body">
         <section className="left">
-          <div className="form"> 
+          <div className="form">
             <Input form={this.form}
                    disabled={!canEdit}
                    defaultValue={title}

@@ -47,10 +47,6 @@ export default class Page extends React.Component {
             <header>
               <h1>{title}</h1>
 
-              <section className="publish">
-                <time>{slashFormat(created_at)}</time>
-              </section>
-
               <section className="share">
                 <Link className="weibo" to={shareWeiboUrl}>
                   <i className="fa fa-weibo"/>

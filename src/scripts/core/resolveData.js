@@ -41,7 +41,7 @@ function home() {
       comments: apiPath("comments/recent"),
       briefings: briefingsUrl,
       advertisements: apiPath("advertisements", {
-        position: ["position1", "position2", "position6"]
+        position: ["position1", "position2", "position6", "position8"]
       }),
       promotions: apiPath("promotions", {limit: 5}),
       articles: apiPath("articles/published", {limit: 20})

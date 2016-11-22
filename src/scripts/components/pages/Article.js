@@ -42,7 +42,7 @@ export default class Article extends React.Component {
     } = article;
 
     const coverDisplay = cover &&
-          <Imager max={835} url={cover} className="cover" />;
+          <Imager max={835} url={cover} elm="img" className="cover" />;
 
     const currentUrl = `http://www.exound.com${this.props.location.pathname}`
         , encodedUrl = encodeURI(currentUrl)

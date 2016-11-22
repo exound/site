@@ -14,7 +14,8 @@ export default class ManageArticles extends React.Component {
 
     const loadMoreConfig = {
       url: "/articles/published",
-      offset: 40
+      limit: 50,
+      offset: 50
     };
 
     if (route === "/manage/articles/mine" ||

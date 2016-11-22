@@ -54,10 +54,13 @@
     height: auto;
 }
 
-.article-content > * > img {
-    margin: 0 auto !important;
+.article-content img[width="750"] {
+    margin: 0 -19px !important;
 }
 
+.article-content img[width=800] {
+    margin: 0 -44px !important;
+}
 
 .article-content > * {
     text-align: justify;

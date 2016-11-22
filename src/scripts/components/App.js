@@ -40,6 +40,7 @@ export default class App extends Component {
 
     return (
       <div className="wrapper">
+        <img style={{height:0, width:0, position: "absolute"}} src="/wxicon.png" />
         <PortalTop deviceTypes={deviceTypes}
                    categories={categories}
                    user={user}/>

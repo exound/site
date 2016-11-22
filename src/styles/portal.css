@@ -559,6 +559,15 @@
     height: 100%;
 }
 
+:--bottom .partners {
+    width: 414px;
+    height: 96px;
+    background-image: url(~!file!../images/partners.png);
+    background-size: contain;
+    position: absolute;
+    right: 0;
+}
+
 @custom-selector :--category-name .wrapper main.category-page h1.category-name;
 @custom-selector :--profile-nick .wrapper main.profile-page h1.profile-nick;
 
@@ -582,6 +591,7 @@
     width: 835px;
     height: 450px;
     background-color: #CCCCCC;
+    object-fit: cover;
 }
 
 :--article-content,

@@ -8,7 +8,8 @@ export default class Imager extends React.Component {
       className,
       children,
       max,
-      style
+      style,
+      elm
     } = R.merge({
       style: {},
       className: ""
@@ -20,6 +21,8 @@ export default class Imager extends React.Component {
 
     const mark = url.match(/\?/) ? "&" : "?"
         , query = max ? `${mark}max=${max}` : "";
+
+    if (elm === "img") return <img src={`${url}${query}`} className={`imager ${className}`} />;
 
     style.backgroundImage = `url('${url}${query}')`;
 

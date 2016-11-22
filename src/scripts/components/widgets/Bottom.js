@@ -33,6 +33,8 @@ export default class Bottom extends React.Component {
         {this.queue(queues.queue1)}
         {this.queue(queues.queue2)}
         {this.queue(queues.queue3)}
+
+        <div className="partners"></div>
       </footer>
     );
   }

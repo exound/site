@@ -31,6 +31,7 @@ export default class HomeSidebar extends React.Component {
         {briefingsDisplay}
         {advertisementItems[1]}
         {recentComments}
+        {advertisementItems[2]}
       </aside>
     );
   }

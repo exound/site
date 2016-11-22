@@ -75,7 +75,7 @@ export default class ArticleForm extends React.Component {
       <section className="body">
         <section className="left">
           {coverUploader}
-          <div className="form"> 
+          <div className="form">
             <Input form={this.form}
                    disabled={!canEdit}
                    defaultValue={title}

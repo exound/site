@@ -60,9 +60,8 @@ export default class Article extends React.Component {
 
     const taxonomy = review ? device_type : category;
 
-    const articleAdvertisement = type === "discussion" ?
-          advertisements.position8 :
-          null; // advertisements.position3;
+    const articleAdvertisement = advertisements.position8;
+          // advertisements.position3;
 
     const articleAdvertisementComponent = articleAdvertisement &&
           <Advertisement advertisement={articleAdvertisement} />;

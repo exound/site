@@ -244,7 +244,7 @@ profile.pathPattern = /^\/profile\/(.+)$/;
 function article(id) {
   return getData({
     staticProps: {
-      user,
+      user
     },
     preHooks: [
       withUser
@@ -255,7 +255,7 @@ function article(id) {
       categories,
       deviceTypes,
       advertisements: apiPath("advertisements", {
-        position: ["position4", "position7"]
+        position: ["position4", "position7", "position8"]
       }),
       article: apiPath(`articles/${id}`),
       comments: apiPath(`comments/for/${id}`)
